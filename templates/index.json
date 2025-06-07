@@ -463,36 +463,36 @@
           "type": "testimonials_slide",
           "settings": {
             "rating": 5,
-            "slide_text": "“Description feedback from your buyers”",
-            "slide_name": "Buyer's name",
-            "slide_position": "Buyer's position"
+            "slide_text": "Grâce à leurs eBooks optimisés, j’ai réalisé plus de 12 000 € en moins d’un mois sur TikTok Shop. Le contenu est clair, stratégique, et surtout actionnable dès la première lecture !",
+            "slide_name": "Sérine M.",
+            "slide_position": ""
           }
         },
         "block_2": {
           "type": "testimonials_slide",
           "settings": {
             "rating": 5,
-            "slide_text": "“Description feedback from your buyers”",
-            "slide_name": "Buyer's name",
-            "slide_position": "Buyer's position"
+            "slide_text": "Je ne pensais pas qu’un simple eBook pouvait me donner un plan aussi précis pour réussir sur TikTok. Résultat : mes ventes ont explosé en une semaine.",
+            "slide_name": "Maysa B.",
+            "slide_position": ""
           }
         },
         "block_3": {
           "type": "testimonials_slide",
           "settings": {
             "rating": 5,
-            "slide_text": "“Description feedback from your buyers”",
-            "slide_name": "Buyer's name",
-            "slide_position": "Buyer's position"
+            "slide_text": "Franchement, c’est une pépite. Les stratégies qu’ils expliquent sont actuelles, testées et orientées résultat. J’ai enfin compris comment transformer mes vues en ventes.",
+            "slide_name": "Mayada L.",
+            "slide_position": ""
           }
         },
         "ec4d0210-9771-4cf8-8d64-44b9e56bcf71": {
           "type": "testimonials_slide",
           "settings": {
             "rating": 5,
-            "slide_text": "“Description feedback from your buyers”",
-            "slide_name": "Buyer's name",
-            "slide_position": "Buyer's position"
+            "slide_text": "J’ai testé plusieurs agences, mais celle-ci m’a vraiment apporté un déclic. Leurs eBooks sont une vraie formation condensée, j’ai généré mes premières ventes dès les 3 premiers jours.",
+            "slide_name": "Lamia A.",
+            "slide_position": ""
           }
         },
         "53e60b71-8b96-4160-84a1-be5d5f4b59a1": {
@@ -555,17 +555,17 @@
       "settings": {
         "layout": "marquee",
         "color_scheme": "",
-        "subheading": "Subheading",
-        "subheading_style": "subtitle",
+        "subheading": "Ebootik",
+        "subheading_style": "subtitle subtitle--secondary",
         "subheading_icon": "none",
-        "heading": "Some heading",
+        "heading": "Vos Retours 🤑🚀",
         "heading_size": "h2",
         "heading_line": "simple",
         "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
-        "text": "Some description",
+        "text": "",
         "text_align": "left",
         "slide_color_scheme": "",
         "slide_text_size": "recommended",
