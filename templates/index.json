@@ -214,7 +214,7 @@
         "slider_gap_mobile": 10,
         "slider_direction": "left",
         "icon_width": 100,
-        "header_color": "#ffffff",
+        "header_color": "#000000",
         "border_color": "#ffffff",
         "background-color": "#000000",
         "slider-background-color": "#000000",
