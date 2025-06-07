@@ -102,7 +102,7 @@
       "settings": {
         "section_type": "background",
         "color_scheme": "",
-        "header_overlay": false,
+        "header_overlay": true,
         "header_transparent": false,
         "column_to_show": 3,
         "opacity_overlay": 0.3,
@@ -141,75 +141,6 @@
         "padding_bottom": "m",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
-      }
-    },
-    "hero": {
-      "type": "hero",
-      "blocks": {
-        "block_1": {
-          "type": "subtitle",
-          "settings": {
-            "subheading": "Subheading",
-            "subheading_style": "subtitle subtitle--secondary",
-            "subheading_icon": "star"
-          }
-        },
-        "block_2": {
-          "type": "title",
-          "settings": {
-            "heading": "Heading",
-            "heading_size": "h1",
-            "heading_line": "simple",
-            "line_color": "#1566e0",
-            "word_break": false,
-            "heading_animation": "none",
-            "word_break_an": false
-          }
-        },
-        "block_3": {
-          "type": "description",
-          "settings": {
-            "description": "Some description"
-          }
-        },
-        "block_4": {
-          "type": "buttons",
-          "settings": {
-            "show_button_1": true,
-            "button_label_1": "Label",
-            "button_link_1": "",
-            "button_style_1": "primary",
-            "show_button_2": true,
-            "button_label_2": "Label",
-            "button_link_2": "",
-            "button_style_2": "simple"
-          }
-        }
-      },
-      "block_order": [
-        "block_1",
-        "block_2",
-        "block_3",
-        "block_4"
-      ],
-      "settings": {
-        "layout": "overlay",
-        "header_overlay": false,
-        "header_transparent": false,
-        "block_type": "subtle",
-        "color_scheme": "",
-        "full_screen": false,
-        "show_video": false,
-        "overlay_opacity": 0.2,
-        "image_ratio": "16/9",
-        "object_fit": "cover",
-        "desktop_image_position": "after",
-        "mobile_image_position": "after",
-        "mobile_image_overlay": "overlay",
-        "horizontal_alignment": "center",
-        "vertical_alignment": "bottom",
-        "padding_top": "s",
-        "padding_bottom": "xs"
       }
     },
     "1f309bc4-1a66-455b-90cb-63c739d1df21": {
@@ -265,108 +196,6 @@
         "card_heading_size": "h5",
         "padding_top": "l",
         "padding_bottom": "m",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
-      }
-    },
-    "slideshow": {
-      "type": "slideshow",
-      "blocks": {
-        "block_1": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "background-2",
-            "icon": "none",
-            "overlay_opacity": 0.5,
-            "show_video": false,
-            "loop_video": true,
-            "heading": "Some heading",
-            "heading_size": "recommended",
-            "description": "Some description",
-            "tab_heading": "Heading",
-            "show_button": true,
-            "button_style": "simple_link",
-            "button_label": "Shop Now",
-            "button_link": ""
-          }
-        },
-        "block_2": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "background-2",
-            "icon": "none",
-            "overlay_opacity": 0.5,
-            "show_video": false,
-            "loop_video": true,
-            "heading": "Some heading",
-            "heading_size": "recommended",
-            "description": "Some description",
-            "tab_heading": "Heading",
-            "show_button": true,
-            "button_style": "simple_link",
-            "button_label": "Shop Now",
-            "button_link": ""
-          }
-        },
-        "block_3": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "background-2",
-            "icon": "none",
-            "overlay_opacity": 0.5,
-            "show_video": false,
-            "loop_video": true,
-            "heading": "Some heading",
-            "heading_size": "recommended",
-            "description": "Some description",
-            "tab_heading": "Heading",
-            "show_button": true,
-            "button_style": "simple_link",
-            "button_label": "Shop Now",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "block_1",
-        "block_2",
-        "block_3"
-      ],
-      "settings": {
-        "layout": "simple",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "enable_border": false,
-        "border_full": false,
-        "subheading": "",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566e0",
-        "word_break": false,
-        "text": "",
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text_align": "left",
-        "height": "16/9",
-        "text_align_content": "bottom-left",
-        "enable_autoplay": true,
-        "enable_parallax": false,
-        "enable_pagination": true,
-        "pagination_type": "tabs",
-        "pagination_color_scheme": "background-2",
-        "pagination_width": "medium",
-        "enable_navigation": false,
-        "navigation_color_scheme": "",
-        "slide_duration": 5,
-        "icon_size": "recommended",
-        "icon_style": "contrast",
-        "icon_fill_type": "solid",
-        "show_tab_icon": true,
-        "padding_top": "l",
-        "padding_bottom": "l",
         "margin_top": "no-indent",
         "margin_bottom": "no-indent"
       }
@@ -751,9 +580,7 @@
   },
   "order": [
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
-    "hero",
     "1f309bc4-1a66-455b-90cb-63c739d1df21",
-    "slideshow",
     "dbbd77aa-b38d-4df0-a757-03142a78e36b",
     "5c94bd84-824f-4368-a89e-e1a1cdccf6d3",
     "ec8eb8a5-0272-4472-a5f6-cbe0ad1f37a3",
