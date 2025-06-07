@@ -601,7 +601,7 @@
         "block_1": {
           "type": "accordion",
           "settings": {
-            "question": "Some title",
+            "question": "Quand est-ce que je recevrai mon Ebook?",
             "answer": "<p>Some description</p>",
             "opened": true
           }
@@ -633,17 +633,17 @@
         "color_scheme": "",
         "enable_border": false,
         "border_full": false,
-        "subheading": "Subheading",
-        "subheading_style": "subtitle",
+        "subheading": "Ebootik",
+        "subheading_style": "subtitle subtitle--secondary",
         "subheading_icon": "none",
-        "heading": "Some heading",
+        "heading": "FAQ'S",
         "heading_size": "h2",
         "heading_line": "simple",
         "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
-        "text": "Some description",
+        "text": "",
         "text_align": "center",
         "row_color_scheme": "",
         "padding_top": "l",
