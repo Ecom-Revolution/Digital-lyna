@@ -1,0 +1,1527 @@
+{% liquid
+  assign heading_text = section.settings.heading_text
+  assign heading_size = section.settings.heading_size
+  assign heading_weight = section.settings.heading_weight
+  assign heading_family = section.settings.heading_family
+  assign heading_color = section.settings.heading_color
+
+  assign heading_size_mobile = section.settings.heading_size_mobile
+  assign heading_weight_mobile = section.settings.heading_weight_mobile
+
+  assign rating_text = section.settings.rating_text
+  assign rating_size = section.settings.rating_size
+  assign rating_weight = section.settings.rating_weight
+  assign rating_family = section.settings.rating_family
+  assign rating_color = section.settings.rating_color
+
+  assign rating_size_mobile = section.settings.rating_size_mobile
+  assign rating_weight_mobile = section.settings.rating_weight_mobile
+
+  assign rating_svg = section.settings.rating_svg
+  assign rating_svg_color = section.settings.rating_svg_color
+  assign rating_svg_size = section.settings.rating_svg_size
+
+  assign rating_svg_size_mobile = section.settings.rating_svg_size_mobile
+
+  assign block_heading_size = section.settings.block_heading_size
+  assign block_heading_weight = section.settings.block_heading_weight
+  assign block_heading_family = section.settings.block_heading_family
+  assign block_heading_color = section.settings.block_heading_color
+
+  assign block_heading_size_mobile = section.settings.block_heading_size_mobile
+  assign block_heading_weight_mobile = section.settings.block_heading_weight_mobile
+
+  
+  assign block_text_size = section.settings.block_text_size
+  assign block_text_weight = section.settings.block_text_weight
+  assign block_text_family = section.settings.block_text_family
+  assign block_text_color = section.settings.block_text_color
+
+  assign block_text_size_mobile = section.settings.block_text_size_mobile
+  assign block_text_weight_mobile = section.settings.block_text_weight_mobile
+
+  assign block_author = section.settings.block_author
+  assign block_author_size = section.settings.block_author_size
+  assign block_author_weight = section.settings.block_author_weight
+  assign block_author_family = section.settings.block_author_family
+  assign block_author_color = section.settings.block_author_color
+
+  assign block_author_size_mobile = section.settings.block_author_size_mobile
+  assign block_author_weight_mobile = section.settings.block_author_weight_mobile
+
+  assign block_svg = section.settings.block_svg
+  assign block_svg_color = section.settings.block_svg_color
+
+
+  assign bottom_text = section.settings.bottom_text
+  assign bottom_text_size = section.settings.bottom_text_size
+  assign bottom_text_weight = section.settings.bottom_text_weight
+  assign bottom_text_family = section.settings.bottom_text_family
+  assign bottom_text_color = section.settings.bottom_text_color
+
+  assign bottom_text_size_mobile = section.settings.bottom_text_size_mobile
+  assign bottom_text_weight_mobile = section.settings.bottom_text_weight_mobile
+
+  assign block_border_radius = section.settings.block_block_border_radius
+  assign block_padding = section.settings.block_block_padding
+  assign block_border_size = section.settings.block_border_size
+  assign block_border_style = section.settings.block_border_style
+  assign block_border_color = section.settings.block_border_color
+  assign block_background = section.settings.block_background
+
+  assign section_margin_top = section.settings.section_margin_top
+  assign section_margin_bottom = section.settings.section_margin_bottom
+  assign section_background = section.settings.section_background
+
+  assign slidepervieweb = section.settings.slide_per_view_web
+  assign slideperviewmobile = section.settings.slide_per_view_mobile
+  assign autoplay = section.settings.autoplay
+  assign progressbarColor = section.settings.progress_bar_color
+  assign progressbarBg = section.settings.progress_bar_bg
+
+%}
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <style>
+      .section-pc-{{section.id}} {
+        border-top: solid #000000 0px;
+        border-bottom: solid #000000 0px;
+        margin-top: {{ section_margin_top }}px;
+        margin-bottom: {{ section_margin_bottom }}px;
+        overflow: hidden;
+      }
+
+      .section-pc-{{section.id}}-settings {
+        margin: 0 auto;
+        padding-top: 27px;
+        padding-bottom: 27px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .testimonials-heading-pc-{{section.id}} {
+        text-align: center;
+      }
+
+      .testimonials-heading-pc-{{section.id}} * {
+        margin: 0;
+        font-size: {{ heading_size_mobile }}px;
+        color: {{ heading_color }};
+        line-height: 130%;
+        text-transform: unset;
+        font-weight: {{ heading_weight_mobile }};
+      }
+
+      .testimonials-heading-pc-{{section.id}} strong {
+        font-weight: 700;
+        font-size: 28px;
+      }
+
+      .testimonials-rating-pc-{{section.id}} {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+
+      .testimonials-rating-text-pc-{{section.id}} {
+        margin: 0;
+        font-size: {{ rating_size_mobile }}px;
+        color: {{ rating_color }};
+        line-height: 130%;
+      }
+
+      .testimonials-stars-pc-{{section.id}} {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .testimonials-stars-pc-{{section.id}} svg,
+      .testimonials-stars-pc-{{section.id}} img {
+        display: block;
+        width: {{rating_svg_size_mobile}}px;
+        height: {{rating_svg_size_mobile}}px;
+        object-fit: cover;
+      }
+
+      .testimonials-slider-wrapper-pc-{{section.id}} {
+        margin-top: 15px;
+      }
+
+      .testimonials-slider-pc-{{section.id}} {
+        padding: 8px;
+        overflow: visible !important;
+      }
+
+      .testimonials-slide-pc-{{section.id}} {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: {{ block_padding }}px;
+        border-radius: {{ block_border_radius }}px;
+        border: {{ block_border_size }}px {{ block_border_style }} {{ block_border_color }};
+        background-color: {{ block_background }};
+        box-sizing: border-box !important;
+        height: auto !important;
+      }
+
+      .testimonials-title-pc-{{section.id}} {
+        margin: 0;
+        font-size: 12px;
+        color: #b8b8b8;
+        line-height: 130%;
+        text-transform: unset;
+      }
+
+      .testimonials-text-pc-{{section.id}} {
+        margin: 0;
+        margin-top: 15px;
+        font-size: 16px;
+        color: #000000;
+        line-height: 150%;
+        text-transform: unset;
+        font-weight: 700;
+      }
+
+      .testimonials-bottom-pc-{{section.id}} {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        position: relative;
+        padding-right: 20px;
+      }
+
+      .testimonials-bottom-pc-{{section.id}}:before {
+        content: "”";
+        position: absolute;
+        top: 0;
+        right: 0px;
+        color: black;
+        font-size: 50px;
+        line-height: 124%;
+      }
+
+      .testimonials-avatar-pc-{{section.id}} {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #DDDDDD;
+        overflow: hidden;
+      }
+
+      .testimonials-avatar-pc-{{section.id}} img {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+      .testimonials-author-pc-{{section.id}} {
+        margin: 0;
+        font-size: {{ block_author_size_mobile }}px;
+        color: {{ block_author_color }};
+        line-height: 130%;
+        font-family: {{ block_author_family.family }}, {{ block_author_family.fallback_families }};
+        text-transform: unset;
+        font-weight: {{ block_author_weight_mobile }};
+      }
+      .testimonials-text-pc-{{section.id}} {
+        font-size: {{ block_text_size_mobile }}px;
+        font-weight: {{ block_text_weight_mobile }};
+        font-family: {{ block_text_family.family }}, {{ block_text_family.fallback_families }};
+        color: {{ block_text_color }};
+    }
+
+      .testimonials-navigation-pc-{{section.id}} {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}},
+      .testimonials-btn-next-pc-{{section.id}} {
+        position: static !important;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        border: 0px solid #ffffff;
+        border-radius: 50%;
+        background: #ffffff;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        -webkit-appearance: none;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}} svg,
+      .testimonials-btn-next-pc-{{section.id}} svg {
+        height: 34px;
+        width: 34px;
+      }
+
+      .testimonials-btn-next-pc-{{section.id}} svg {
+        transform: rotate(180deg);
+        margin-left: 2px;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}} svg {
+        margin-left: -2px;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}} svg path,
+      .testimonials-btn-next-pc-{{section.id}} svg path {
+        fill: {{ progressbarBg }};
+        transition: all 0.3s ease 0s;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}}:hover,
+      .testimonials-btn-next-pc-{{section.id}}:hover {
+        transition: all 0.3s ease 0s;
+        border: 0px solid #ffffff;
+        background: #ffffff;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}}:hover svg path,
+      .testimonials-btn-next-pc-{{section.id}}:hover svg path {
+        fill: {{progressbarColor}};
+        transition: all 0.3s ease 0s;
+      }
+
+      .testimonials-btn-prev-pc-{{section.id}}.swiper-button-disabled,
+      .testimonials-btn-next-pc-{{section.id}}.swiper-button-disabled {
+        opacity: 0.3;
+      }
+
+      .testimonials-pagination-pc-{{section.id}} {
+        position: static !important;
+        min-width: 150px;
+        max-width: fit-content;
+        height: 6px !important;
+        justify-content: center;
+        align-items: center;
+        background-color: {{ progressbarBg  }} !important;
+        border-radius: 2px;
+      }
+
+      .testimonials-pagination-pc-{{section.id}} .swiper-pagination-progressbar-fill {
+        background-color: {{ progressbarColor }} !important;
+        border-radius: 20px;
+      }
+
+      .testimonials-bottom-text-pc-{{section.id}} {
+        text-align: center;
+        margin-top: 18px;
+      }
+
+      .testimonials-bottom-text-pc-{{section.id}} * {
+        margin: 0;
+        font-size: {{ bottom_text_size_mobile }}px;
+        color: {{ bottom_text_color }};
+        font-weight: {{ bottom_text_weight }};
+        font-family: {{ bottom_text_family.family }}, {{ bottom_text_family.fallback_families }};
+        line-height: 130%;
+        text-transform: unset;
+        text-decoration: none;
+        user-select: none;
+      }
+
+      @media(min-width: 1024px) {
+
+        .section-pc-{{section.id}} {
+          margin-top: {{ section_margin_top }}px;
+          margin-bottom: {{ section_margin_bottom }}px;
+        }
+
+        .section-pc-{{section.id}}-settings {
+          padding: 0 5rem;
+          padding-top: 36px;
+          padding-bottom: 36px;
+          padding-left: 5rem;
+          padding-right: 5rem;
+        }
+
+        .testimonials-heading-pc-{{section.id}} * {
+          font-size: {{ heading_size }}px;
+          font-weight: {{ heading_weight }};
+          font-family: {{ heading_family.family }}, {{ heading_family.fallback_families }};
+          color: {{ heading_color }};
+        }
+
+        .testimonials-heading-pc-{{section.id}} strong {
+          font-size: 50px;
+        }
+
+        .testimonials-rating-pc-{{section.id}} {
+          margin-top: 16px;
+        }
+
+        .testimonials-rating-text-pc-{{section.id}} {
+          font-size: {{ rating_size }}px;
+          font-weight: {{ rating_weight }};
+          font-family: {{ rating_family.family }}, {{ rating_family.fallback_families }};
+          color: {{ rating_color }};
+        }
+
+        .testimonials-slider-wrapper-pc-{{section.id}} {
+          margin-top: 20px;
+        }
+
+        .testimonials-slide-pc-{{section.id}} {
+          padding: {{ block_padding }}px;
+        }
+
+        .testimonials-title-pc-{{section.id}} {
+          font-size: {{ block_heading_size }}px;
+          font-weight: {{ block_heading_weight }};
+          font-family: {{ block_heading_family.family }}, {{ block_heading_family.fallback_families }};
+          color: {{ block_heading_color }};
+        }
+
+        .testimonials-text-pc-{{section.id}} {
+          margin-top: 20px;
+          font-size: {{ block_text_size }}px;
+          font-weight: {{ block_text_weight }};
+          font-family: {{ block_text_family.family }}, {{ block_text_family.fallback_families }};
+          color: {{ block_text_color }};
+        }
+
+        .testimonials-avatar-pc-{{section.id}} {
+          width: 62px;
+          height: 62px;
+        }
+
+        .testimonials-author-pc-{{section.id}} {
+          /* font-size: px; */
+        font-size: {{ block_author_size }}px;
+        font-weight: {{ block_author_weight }};
+        font-family: {{ block_author_family.family }}, {{ block_author_family.fallback_families }};
+        color: {{ block_author_color }};
+        }
+
+        .testimonials-btn-prev-pc-{{section.id}},
+        .testimonials-btn-next-pc-{{section.id}} {
+          width: 34px;
+          height: 34px;
+        }
+
+        .testimonials-btn-prev-pc-{{section.id}} svg,
+        .testimonials-btn-next-pc-{{section.id}} svg {
+          height: 42px;
+          width: 42px;
+        }
+
+       .testimonials-pagination-pc-{{section.id}} {
+         min-width: 150px;
+         height: 6px !important;
+       }
+
+        .testimonials-bottom-text-pc-{{section.id}} {
+          margin-top: 24px;
+        }
+
+        .testimonials-bottom-text-pc-{{section.id}} * {
+          font-size: {{ bottom_text_size }}px;
+        font-weight: {{ bottom_text_weight }};
+        font-family: {{ bottom_text_family.family }}, {{ bottom_text_family.fallback_families }};
+        color: {{ bottom_text_color }};
+        }
+        .testimonials-stars-pc-{{section.id}} svg,
+      .testimonials-stars-pc-{{section.id}} img {
+        display: block;
+        width: {{rating_svg_size}}px;
+        height: {{rating_svg_size}}px;
+        object-fit: cover;
+      }
+
+      }
+  </style>
+  <style>
+    
+  </style>
+
+  <style>
+    
+  </style>
+
+  <style>
+    .testimonials-btn-prev-pc-{{section.id}},
+    .testimonials-btn-next-pc-{{section.id}} {
+      display: flex;
+    }
+  </style>
+
+  <style>
+    @media(min-width: 1024px) {
+      .testimonials-btn-prev-pc-{{section.id}},
+      .testimonials-btn-next-pc-{{section.id}} {
+        display: flex;
+      }
+    }
+  </style>
+
+  <style>
+    .testimonials-pagination-pc-{{section.id}} {
+      display: flex !important;
+    }
+  </style>
+
+  <style>
+    @media(min-width: 1024px) {
+      .testimonials-pagination-pc-{{section.id}} {
+        display: flex !important;
+      }
+    }
+  </style>
+
+  <style>
+    .testimonials-slider-pc-{{section.id}}.preview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      gap: 20px;
+    }
+
+    .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}} {
+      width: 18%;
+    }
+
+    .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}}:not(:first-child) {
+      margin-left: 20px;
+    }
+  </style>
+
+  <div
+    class="section-pc-{{section.id}} testimonials-pc-{{section.id}}"
+    style="background-color: {{ section_background }}; background-image: ;"
+  >
+    <div class="section-pc-{{section.id}}-settings">
+      <div class="testimonials-heading-pc-{{section.id}}">
+        {% if heading_text != blank %}
+            {{ heading_text }}
+        
+        {% endif %}
+      </div>
+
+      <div class="testimonials-rating-pc-{{section.id}}">
+        <p class="testimonials-rating-text-pc-{{section.id}}">{{ rating_text }}</p>
+
+        <div class="testimonials-stars-pc-{{section.id}}">
+        {% for i in (1..rating_svg) %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+            <path d="M10 0L12.9389 5.95492L19.5106 6.90983L14.7553 11.5451L15.8779 18.0902L10 15L4.12215 18.0902L5.24472 11.5451L0.489435 6.90983L7.06107 5.95492L10 0Z" fill="{{rating_svg_color}}"></path>
+          </svg>
+        {% endfor %}
+        </div>
+      </div>
+
+      <div class="testimonials-slider-wrapper-pc-{{section.id}}">
+        <div class="testimonials-slider-pc-{{section.id}} swiper ">
+          <div
+            class="swiper-wrapper"
+            
+          >
+            
+            {% for block in section.blocks %}
+                <div class="testimonials-slide-pc-{{section.id}} swiper-slide">
+                    <p class="testimonials-title-pc-{{section.id}}">{{ block.settings.review_heading }}</p>
+                    <p class="testimonials-text-pc-{{section.id}}">
+                        {{ block.settings.review_text }}
+                    </p>
+                    <div class="testimonials-bottom-pc-{{section.id}}">
+                        <div class="testimonials-avatar-pc-{{section.id}}">
+                            {% if block.settings.review_avatar %}
+                                <img src="{{ block.settings.review_avatar | img_url: '100x100' }}" alt="{{ block.settings.review_author }}" loading="lazy">
+                            {% else %}
+                                <img src="//section.store/cdn/shop/files/Ellipse_8-2.png?v=1677311285" alt="{{ block.settings.review_author }}" loading="lazy">
+                            {% endif %}
+                        </div>
+                        <div class="testimonials-content-pc-{{section.id}}">
+                            <p class="testimonials-author-pc-{{section.id}}">
+                                {{ block.settings.review_author }}
+                            </p>
+                            <div class="testimonials-stars-pc-{{section.id}}">
+                                {% for i in (1..block.settings.rating) %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                        <path d="M10 0L12.9389 5.95492L19.5106 6.90983L14.7553 11.5451L15.8779 18.0902L10 15L4.12215 18.0902L5.24472 11.5451L0.489435 6.90983L7.06107 5.95492L10 0Z" fill="{{ block_svg_color }}"></path>
+                                    </svg>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+          </div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+        <div class="testimonials-navigation-pc-{{section.id}}">
+          <div
+            class="testimonials-btn-prev-pc-{{section.id}}"
+            tabindex="0"
+            role="button"
+            aria-label="Previous slide"
+            aria-controls="swiper-wrapper-4eef38247e7a06c2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g>
+            </svg>
+          </div>
+          <div class="testimonials-pagination-pc-{{section.id}} swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal">
+            <span
+              class="swiper-pagination-progressbar-fill"
+              style="transform: translate3d(0px, 0px, 0px) scaleX(0.142857) scaleY(1); transition-duration: 300ms;"
+            ></span>
+          </div>
+          <div
+            class="testimonials-btn-next-pc-{{section.id}}"
+            tabindex="0"
+            role="button"
+            aria-label="Next slide"
+            aria-controls="swiper-wrapper-4eef38247e7a06c2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-bottom-text-pc-{{section.id}}">
+        {% if bottom_text != blank %}
+            {{ bottom_text }}
+        
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
+
+  <script>
+    function initTestimonials9() {
+      let googleElement = document.querySelector(".testimonials-heading-pc-{{section.id}} em");
+      let googleText;
+      if(googleElement) {
+       googleText = googleElement.innerText;
+      }
+
+      let bottomElement = document.querySelector(".testimonials-bottom-text-pc-{{section.id}} em");
+      let bottomText;
+      if(bottomElement) {
+       bottomText = bottomElement.innerText;
+      }
+
+      if (googleElement && googleText.toLowerCase() === "google") {
+        googleElement.innerHTML = "";
+
+        const colors = ["#2F76F0", "#E52F22", "#F6AD03", "#3075EF", "#239A41", "#E52F22"];
+
+        for (let i = 0; i < googleText.length; i++) {
+          let span = document.createElement("span");
+          span.style.color = colors[i];
+          span.textContent = googleText[i];
+          googleElement.appendChild(span);
+        }
+        googleElement.style.fontStyle = "normal";
+      }
+      if (bottomElement && bottomText.toLowerCase() === "google") {
+        bottomElement.innerHTML = "";
+
+        const colors = ["#2F76F0", "#E52F22", "#F6AD03", "#3075EF", "#239A41", "#E52F22"];
+
+        for (let i = 0; i < bottomText.length; i++) {
+          let span = document.createElement("span");
+          span.style.color = colors[i];
+          span.textContent = bottomText[i];
+          bottomElement.appendChild(span);
+        }
+        bottomElement.style.fontStyle = "normal";
+      }
+      document.querySelector('.testimonials-slider-pc-{{section.id}}').classList.remove('preview');
+      const slider = new Swiper('.testimonials-slider-pc-{{section.id}}', {
+        speed: 300,
+        loop: true,
+        {% if autoplay == true %}
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        {% endif %}
+        effect: "creative",
+        creativeEffect: {
+          perspective: true,
+          limitProgress: 2,
+          prev: {
+              translate: ['-105%', '4%', 0],
+              rotate: [0, 0, -2],
+              origin: "center"
+          },
+          next: {
+              translate: ['105%', '4%', 0],
+              rotate: [0, 0, 2],
+              origin: "center"
+          },
+        },
+        navigation: {
+          nextEl: '.testimonials-btn-next-pc-{{section.id}}',
+          prevEl: '.testimonials-btn-prev-pc-{{section.id}}'
+        },
+        pagination: {
+          el: '.testimonials-pagination-pc-{{section.id}}',
+          type: 'progressbar'
+        },
+        breakpoints: {
+          320: {
+            centeredSlides: true,
+            spaceBetween: 20,
+            slidesPerView: 1.2
+          },
+          768: {
+            centeredSlides: true,
+            spaceBetween: 20,
+            slidesPerView: {{ slideperviewmobile }}
+          },
+          1024: {
+            centeredSlides: true,
+            spaceBetween: 20,
+            slidesPerView: {{ slidepervieweb }}
+          }
+        }
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', initTestimonials9);
+
+    if (Shopify.designMode) {
+       document.addEventListener('shopify:section:unload', initTestimonials9);
+       document.addEventListener('shopify:section:load', initTestimonials9);
+    }
+  </script>
+  
+{% schema %}
+{
+    "name": "PC - Google Review #2",
+    "settings": [
+        {
+            "type": "header",
+            "content": "This section is a property of PeakConversion",
+            "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info - please save to see all changes"
+        }, 
+        {
+            "type": "header",
+            "content": "Desktop Heading"
+        },
+        {
+            "type": "liquid",
+            "id": "heading_text",
+            "label": "Heading Text",
+            "default": "<p>Over <strong>250+</strong> reviews on<br><em style='font-style: normal;'><span style='color: rgb(47, 118, 240);'>G</span><span style='color: rgb(229, 47, 34);'>o</span><span style='color: rgb(246, 173, 3);'>o</span><span style='color: rgb(48, 117, 239);'>g</span><span style='color: rgb(35, 154, 65);'>l</span><span style='color: rgb(229, 47, 34);'>e</span></em>from our <em>clients</em></p>"
+
+        },
+        {
+            "type": "range",
+            "id": "heading_size",
+            "label": "Heading Size",
+            "default": 48,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "heading_weight",
+            "label": "Heading Weight",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "heading_family",
+            "label": "Heading Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Mobile Heading"
+        },
+        {
+            "type": "range",
+            "id": "heading_size_mobile",
+            "label": "Heading Size Mobile",
+            "default": 26,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "heading_weight_mobile",
+            "label": "Heading Weight Mobile",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Desktop Rating Rate Subheading"
+        },
+        {
+            "type": "text",
+            "id": "rating_text",
+            "label": "Rating Text",
+            "default": "4.8 / 5.0"
+        },
+        {
+            "type": "range",
+            "id": "rating_size",
+            "label": "Rating Size",
+            "default": 18,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "rating_weight",
+            "label": "Rating Weight",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "rating_family",
+            "label": "Rating Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "rating_color",
+            "label": "Rating Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Mobile Rating Rate Subheading"
+        },
+        {
+            "type": "range",
+            "id": "rating_size_mobile",
+            "label": "Rating Size Mobile",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "rating_weight_mobile",
+            "label": "Rating Weight Mobile",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "SVG Desktop"
+        },
+        {
+            "type": "range",
+            "id": "rating_svg",
+            "label": "Rating SVG",
+            "default": 5,
+            "min": 0,
+            "max": 5,
+            "step": 1
+        },
+        {
+            "type": "color",
+            "id": "rating_svg_color",
+            "label": "Rating SVG Color",
+            "default": "#f4ac03"
+        },
+        {
+            "type": "range",
+            "id": "rating_svg_size",
+            "label": "Rating SVG Size",
+            "default": 20,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "header",
+            "content": "SVG Mobile"
+        },
+        {
+            "type": "range",
+            "id": "rating_svg_size_mobile",
+            "label": "Rating SVG Size Mobile",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "header",
+            "content": "Desktop Slider Block"
+        },
+        {
+            "type": "range",
+            "id": "block_heading_size",
+            "label": "Block Heading Size",
+            "default": 12,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_heading_weight",
+            "label": "Block Heading Weight",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "block_heading_family",
+            "label": "Block Heading Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "block_heading_color",
+            "label": "Block Heading Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Block Heading Mobile"
+        },
+        {
+            "type": "range",
+            "id": "block_heading_size_mobile",
+            "label": "Block Heading Size Mobile",
+            "default": 12,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_heading_weight_mobile",
+            "label": "Block Heading Weight Mobile",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Block Text Desktop"
+        },
+        
+        {
+            "type": "range",
+            "id": "block_text_size",
+            "label": "Block Text Size",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_text_weight",
+            "label": "Block Text Weight",
+            "default": "700",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "block_text_family",
+            "label": "Block Text Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "block_text_color",
+            "label": "Block Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Block Text Mobile"
+        },
+        {
+            "type": "range",
+            "id": "block_text_size_mobile",
+            "label": "Block Text Size Mobile",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_text_weight_mobile",
+            "label": "Block Text Weight Mobile",
+            "default": "700",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Block Author Desktop"
+        },
+        {
+            "type": "range",
+            "id": "block_author_size",
+            "label": "Block Author Size",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_author_weight",
+            "label": "Block Author Weight",
+            "default": "700",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "block_author_family",
+            "label": "Block Author Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "block_author_color",
+            "label": "Block Author Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Block Author Mobile"
+        },
+        {
+            "type": "range",
+            "id": "block_author_size_mobile",
+            "label": "Block Author Size Mobile",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "block_author_weight_mobile",
+            "label": "Block Author Weight Mobile",
+            "default": "700",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "SVG Desktop"
+        },
+        {
+            "type": "color",
+            "id": "block_svg_color",
+            "label": "Block SVG Color",
+            "default": "#f4ac03"
+        },
+        {
+            "type": "header",
+            "content": "Desktop Bottom Text"
+        },
+        {
+            "type": "liquid",
+            "id": "bottom_text",
+            "label": "Bottom Text",
+            "default": "<p><a href='https://google.com' title='https://google.com'>Read more on <em style='font-style: normal;'><span style='color: rgb(47, 118, 240);'>G</span><span style='color: rgb(229, 47, 34);'>o</span><span style='color: rgb(246, 173, 3);'>o</span><span style='color: rgb(48, 117, 239);'>g</span><span style='color: rgb(35, 154, 65);'>l</span><span style='color: rgb(229, 47, 34);'>e</span></em></a></p>"
+        },
+        {
+            "type": "range",
+            "id": "bottom_text_size",
+            "label": "Bottom Text Size",
+            "default": 18,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "bottom_text_weight",
+            "label": "Bottom Text Weight",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "bottom_text_family",
+            "label": "Bottom Text Font Family",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "bottom_text_color",
+            "label": "Bottom Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Mobile Bottom Text"
+        },
+        {
+            "type": "range",
+            "id": "bottom_text_size_mobile",
+            "label": "Bottom Text Size Mobile",
+            "default": 16,
+            "min": 10,
+            "max": 100
+        },
+        {
+            "type": "select",
+            "id": "bottom_text_weight_mobile",
+            "label": "Bottom Text Weight Mobile",
+            "default": "400",
+            "options": [
+                {
+                    "value": "300",
+                    "label": "Light"
+                },
+                {
+                    "value": "400",
+                    "label": "Normal"
+                },
+                {
+                    "value": "700",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Block Layout"
+        },
+        {
+            "type": "range",
+            "id": "block_block_border_radius",
+            "label": "Block Border Radius",
+            "default": 30,
+            "min": 0,
+            "max": 100
+        },
+        {
+            "type": "range",
+            "id": "block_block_padding",
+            "label": "Block Padding",
+            "default": 24,
+            "min": 0,
+            "max": 100
+        },
+        {
+            "type": "range",
+            "id": "block_border_size",
+            "label": "Block Border Size",
+            "default": 0,
+            "min": 0,
+            "max": 10
+        },
+        {
+            "type": "select",
+            "id": "block_border_style",
+            "label": "Block Border Style",
+            "default": "solid",
+            "options": [
+                {
+                    "value": "solid",
+                    "label": "Solid"
+                },
+                {
+                    "value": "dashed",
+                    "label": "Dashed"
+                },
+                {
+                    "value": "dotted",
+                    "label": "Dotted"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "block_border_color",
+            "label": "Block Border Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "block_background",
+            "label": "Block Background",
+            "default": "#f8f8f8"
+        },
+        {
+            "type": "header",
+            "content": "Swiper options"
+        },
+        {
+            "type": "range",
+            "id": "slide_per_view_web",
+            "label": "Slides Per View (Web)",
+            "default": 5,
+            "min": 1,
+            "max": 10
+        },
+        {
+            "type": "range",
+            "id": "slide_per_view_mobile",
+            "label": "Slides Per View (Tablet)",
+            "default": 3,
+            "min": 1,
+            "max": 10
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": true
+        },
+        {
+            "type": "color",
+            "id": "progress_bar_color",
+            "label": "Progress Bar Color",
+            "default": "#838383"
+        },
+        {
+            "type": "color",
+            "id": "progress_bar_bg",
+            "label": "Progress Bar Background",
+            "default": "#d9d9d9"
+        },
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "range",
+            "id": "section_margin_top",
+            "label": "Section Margin Top",
+            "default": 0,
+            "min": 0,
+            "max": 100
+        },
+        {
+            "type": "range",
+            "id": "section_margin_bottom",
+            "label": "Section Margin Bottom",
+            "default": 0,
+            "min": 0,
+            "max": 100
+        },
+        {
+            "type": "color",
+            "id": "section_background",
+            "label": "Section Background",
+            "default": "#ffffff"
+        }
+    ],
+    "blocks":[
+        {
+            "type": "review",
+            "name": "Review",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Review"
+                },
+                {
+                    "type": "text",
+                    "id": "review_heading",
+                    "label": "Block Heading",
+                    "default": "Crop top"
+                },
+                {
+                    "type": "text",
+                    "id": "review_text",
+                    "label": "Review Text",
+                    "default": "The real gem is the integrated smartphone app with guided classes and body tracking. I really like it."
+                },
+                {
+                    "type": "text",
+                    "id": "review_author",
+                    "label": "Review Author",
+                    "default": "Elise A."
+                },
+                {
+                    "type": "image_picker",
+                    "id": "review_avatar",
+                    "label": "Review Avatar"
+
+                },
+                {
+                    "type": "header",
+                    "content": "Rating"
+                },
+                {
+                    "type": "range",
+                    "id": "rating",
+                    "label": "Rating",
+                    "default": 5,
+                    "min": 0,
+                    "max": 5,
+                    "step": 1
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Testimonials",
+            "name": "PC - Google Review #2",
+            "blocks": [
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Crop top",
+                        "review_text": "The real gem is the integrated smartphone app with guided classes and body tracking. I really like it.",
+                        "review_author": "Elise A.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Great product",
+                        "review_text": "Amazing product! Highly recommend.",
+                        "review_author": "John D.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Good value",
+                        "review_text": "Good value for money.",
+                        "review_author": "Sarah P.",
+                        "review_avatar": "",
+                        "rating": 4
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Excellent",
+                        "review_text": "Excellent customer service.",
+                        "review_author": "Mike W.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Very satisfied",
+                        "review_text": "Very satisfied with the purchase.",
+                        "review_author": "Anna K.",
+                        "review_avatar": "",
+                        "rating": 4
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Great quality",
+                        "review_text": "Will buy again!",
+                        "review_author": "Tom H.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Not bad",
+                        "review_text": "Not bad, but could be better.",
+                        "review_author": "Lucy M.",
+                        "review_avatar": "",
+                        "rating": 3
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Top",
+                        "review_text": "Exceeded my expectations.",
+                        "review_author": "James B.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Decent quality",
+                        "review_text": "Decent quality for the price.",
+                        "review_author": "Emily R.",
+                        "review_avatar": "",
+                        "rating": 4
+                    }
+                },
+                {
+                    "type": "review",
+                    "settings": {
+                        "review_heading": "Fast shipping",
+                        "review_text": "Fast shipping and great product.",
+                        "review_author": "Chris T.",
+                        "review_avatar": "",
+                        "rating": 5
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

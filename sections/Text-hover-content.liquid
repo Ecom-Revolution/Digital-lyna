@@ -1,0 +1,925 @@
+{% assign heading_size = section.settings.heading_size  %}
+{% assign heading_color = section.settings.heading_color %}
+{% assign main_content = section.settings.main_content  %}
+{% assign main_content_size = section.settings.main_content_size %}
+{% assign main_content_color = section.settings.main_content_color  %}
+{% assign button_link_size = section.settings.button_link_size  %}
+{% assign button_link_padding_top = section.settings.button_link_padding_top  %}
+{% assign button_radius = section.settings.button_radius %}
+{% assign button_link_padding_left = section.settings.button_link_padding_left  %}
+{% assign button_link_text_color = section.settings.button_link_text_color  %}
+{% assign button_link_background_color = section.settings.button_link_background_color  %}
+
+{% assign border_size = section.settings.border_size %}
+{% assign border_style = section.settings.border_style %}
+{% assign border_color = section.settings.border_color %}
+
+{% assign overlay_background_color = section.settings.overlay_background_color  %}
+{% assign overlay_opacity = section.settings.overlay_opacity %}
+{% assign section_background_image = section.settings.section_background_image  %}
+{% assign layout_max_width = section.settings.layout_max_width  %}
+{% assign layout_padding_left = section.settings.layout_padding_left  %}
+{% assign layout_padding_right = section.settings.layout_padding_right  %}
+{% assign layout_margin_top = section.settings.layout_margin_top  %}
+{% assign layout_margin_bottom = section.settings.layout_margin_bottom  %}
+{% assign block_heading_color = section.settings.block_heading_color %}
+{% assign align = section.settings.align %}
+{% assign block_main_content_color = section.settings.block_main_content_color %}
+{% assign block_bg_color = section.settings.block_bg_color %}
+{% comment %} {%  assign block_text_color = section.settings.block_text_color %} {% endcomment %}
+{% assign block_heading_size = section.settings.block_heading_size %}
+{% assign block_main_content_size = section.settings.block_main_content_size %}
+{% comment %} declare heading text, btn text {% endcomment %}
+ {% assign heading_text = section.settings.heading_text %}
+ {% assign btn_text = section.settings.btn_text %}
+ {% assign btn_url = section.settings.btn_url %}
+ {% assign block_border_style = section.settings.block_border_style %}
+ {% assign block_border_color = section.settings.block_border_color %}
+ {%  assign block_border_size = section.settings.block_border_size %}
+ {% assign block_border_radius = section.settings.block_border_radius %}
+
+<style>
+
+  .section-{{section.id}} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    border-radius: 0px;
+    position: relative;
+    
+  }
+
+  .section-{{section.id}}-settings {
+    margin: {{ layout_margin_top }}px auto {{ layout_margin_bottom }}px auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: {{ layout_padding_left }}px;
+    padding-right: {{ layout_padding_right }}px;;
+    position: relative;
+  }
+
+  .text-block-content-{{section.id}} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 95%;
+    margin: auto;
+    padding: 2rem;
+  }
+
+  .text-block-heading-{{section.id}} {
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-block-heading-{{section.id}} * {
+    margin: 0;
+    font-size: {{ heading_size }}px;
+    color: {{ heading_color}};
+    line-height: 130%;
+    text-transform: unset;
+    word-break: break-word;
+  }
+
+  .text-block-text-{{section.id}} {
+    width: 100%;
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .text-block-text-{{section.id}} * {
+    margin: 0;
+    font-size: 18px;
+    color: {{ main_content_color}};
+    line-height: 150%;
+    text-transform: unset;
+    word-break: break-word;
+  }
+
+  .text-block-text-{{section.id}} a {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 3px solid {{ block_bg_color }};
+  }
+
+  .text-block-button-{{section.id}} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: fit-content;
+    margin-top: 40px;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: unset;
+    text-decoration: none;
+    padding: {{ button_link_padding_top}}px {{ button_link_padding_left}}px;
+    transition: all 0.25s ease 0s;
+    position: relative;
+    font-weight: 700;
+    z-index: 2;
+    box-sizing: border-box;
+
+      color: {{ button_link_text_color }};
+      background-color: {{ button_link_background_color }};
+      border-radius: {{ button_radius }}px;
+      border: {{ border_size }}px {{ border_style }} {{ border_color }};
+  }
+
+  .text-block-button-{{section.id}} svg {
+    background: transparent;
+    width: 14px;
+    height: 14px;
+  }
+
+  .text-block-button-{{section.id}} svg path {
+    fill: #323b43;
+    transition: all 0.25s ease 0s;
+  }
+
+  .text-block-button-{{section.id}}:hover {
+    color: #787d81;
+    transition: all 0.25s ease 0s;
+  }
+
+  .text-block-button-{{section.id}}:hover svg path {
+    fill: #787d81;
+    transition: all 0.25s ease 0s;
+  }
+
+  .text-block-item-{{section.id}} {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.25s ease 0s;
+    padding: 20px 20px;
+    border-radius: 18px;
+    border: 0px solid #323b43;
+    background-color: {{ block_bg_color}};
+    overflow: hidden;
+    width: 100%;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-block-item-{{section.id}}.active {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.25s ease 0s;
+    z-index: 2;
+  }
+
+  .text-block-item-heading-{{section.id}} {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: {{ block_heading_size }}px;
+    color: {{ block_heading_color}} !important;
+    line-height: 130%;
+    text-transform: unset;
+    word-break: break-word;
+  }
+
+  .text-block-item-text-{{section.id}} {
+    margin: 0;
+    margin-top: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: {{ block_main_content_size }}px;
+    color: {{ block_main_content_color}};
+    line-height: 150%;
+    text-transform: unset;
+    word-break: break-word;
+  }
+
+  .text-block-item-link-{{section.id}} {
+    display: block;
+    width: 100%;
+    max-width: 28px;
+    margin-top: 16px;
+  }
+
+  .text-block-item-link-{{section.id}} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    stroke: {{ block_main_content_color }};
+  }
+
+  .text-block-item-link-{{section.id}} svg path {
+    fill: #323b43;
+    transition: all 0.25s ease 0s;
+  }
+
+  .text-block-item-link-{{section.id}}:hover svg path {
+    fill: #787d81;
+    transition: all 0.25s ease 0s;
+  }
+
+  @media(min-width: 1024px) {
+
+    .section-{{section.id}} {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-left: 0rem;
+      margin-right: 0rem;
+      border-radius: 0px;
+    }
+
+    .section-{{section.id}}-settings {
+      padding: 0 5rem;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      padding-left: {{ layout_padding_left }}px;
+      padding-right: {{ layout_padding_right }}px;
+    }
+
+    .text-block-content-{{section.id}} {
+      align-items: {{ align }};
+      max-width: 80%;
+    margin: auto;
+    padding: 2rem;
+    }
+
+    .text-block-heading-{{section.id}} {
+      text-align: {{ align }};
+    }
+
+    .text-block-heading-{{section.id}} * {
+      font-size: {{ heading_size  }}px;
+      color: {{ heading_color }};
+    }
+
+    .text-block-text-{{section.id}} {
+      margin-top: 40px;
+      text-align: {{ align }};
+    }
+
+    .text-block-text-{{section.id}} * {
+      font-size: {{ main_content_size }}px !important;
+      color: {{ main_content_color }};
+    }
+
+    .text-block-button-{{section.id}} {
+      margin-top: 60px;
+      padding: {{ button_link_padding_top }}px {{ button_link_padding_left }}px {{ button_link_padding_top }}px {{ button_link_padding_left }}px;
+      font-size: {{ button_link_size }}px;
+      color: {{ button_link_text_color }};
+      background-color: {{ button_link_background_color }};
+      border-radius: {{ button_radius }}px;
+      border: {{ border_size }}px {{ border_style }} {{ border_color }};
+    }
+
+    .text-block-item-{{section.id}} {
+      padding: 20px 20px;
+      max-width: 400px;
+      align-items: {{ align }};
+    }
+
+    .text-block-item-heading-{{section.id}} {
+      text-align: {{ align }};
+      color: {{ block_heading_color }} !important;
+      font-size: {{ block_heading_size }}px;
+    }
+
+    .text-block-item-text-{{section.id}} {
+      text-align: {{ align }};
+      margin-top: 16px;
+      font-size: {{ block_main_content_size }}px;
+    }
+
+    .text-block-item-link-{{section.id}} {
+      margin-top: 16px;
+      max-width: 28px;
+    }
+  }
+</style>
+<style>
+  .section-{{section.id}}-settings {
+    {% if layout_max_width != true %}
+    max-width: 120rem;
+    {%  else %} 
+      max-width: 100%;
+    {% endif %}
+  }
+  
+    margin: {{ layout_margin_top }}px auto {{ layout_margin_bottom }}px auto;
+</style>
+
+<style>
+  .text-block-button-{{section.id}} {
+    /* padding: 0px !important; */
+    max-width: fit-content !important;
+  }
+</style>
+
+<style>
+  .text-block-{{section.id}} {
+    background-image: url('{% if section_background_image != blank  %}{{ section_background_image | img_url: 'master' }}{% else %}https://img.freepik.com/photos-gratuite/illustration-conception-paire-chaussures-sport-generee-par-ai_188544-19642.jpg?t=st=1729760581~exp=1729764181~hmac=98efefe4176d6fffc1d4502c2babef40c79f29f787bac1586d3acc66548192e4&w=1380{% endif %}') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    margin: {{ layout_margin_top }}px auto {{ layout_margin_bottom }}px auto;
+    {% if layout_max_width != true %}
+    max-width: 120rem;
+    {%  else %} 
+      max-width: 100%;
+    {% endif %}
+  }
+</style>
+
+<style>
+  .text-block-{{section.id}}:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ overlay_background_color }};
+    opacity: {{ overlay_opacity }};
+    z-index: 0;
+    border-radius: 0px;
+  }
+
+  @media(min-width: 1024px) {
+    .text-block-{{section.id}}:before {
+      border-radius: 0px;
+    }
+  }
+</style>
+
+<div class="section-{{section.id}} text-block-{{section.id}}">
+  
+  <div class="section-{{section.id}}-settings">
+    <div class="text-block-content-{{section.id}}">
+    {% if heading_text != blank %}
+        <div class="text-block-heading-{{section.id}}">
+            <h2 style="color: {{ heading_color }};">{{ heading_text }}</h2>
+        </div>
+    {% endif %}
+
+      <div class="text-block-text-{{section.id}}">
+        {{ main_content }}
+      </div>
+
+    {% if btn_text != blank %}
+        <a href="{{ btn_url }}" class="text-block-button-{{section.id}}">
+            <span>{{ btn_text }}</span>
+        </a>
+    {% endif %}
+    {% for block in section.blocks %}
+        <div class="text-block-item-{{section.id}}" style="position: absolute; border: {{ block_border_size }}px {{ block_border_style }} {{ block_border_color }}; border-radius: {{ block_border_radius }} !important;">
+            <p class="text-block-item-heading-{{section.id}}">{{ block.settings.heading_text }}</p>
+            <div class="text-block-item-text-{{section.id}}">
+                {{ block.settings.main_content }}
+            </div>
+            <a href="{{ block.settings.icon_lnk }}" class="text-block-item-link-{{section.id}}">
+                <svg
+                    fill="none"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="icon icon-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 28 16"
+                >
+                    <g><path d="M27.888 7.693 20.662.138a.468.468 0 0 0-.645-.02.464.464 0 0 0-.021.634l6.505 6.802H.452a.456.456 0 0 0-.307.137.441.441 0 0 0 0 .616c.08.083.19.132.307.137h26.049l-6.507 6.805a.46.46 0 0 0 .021.635.464.464 0 0 0 .645-.02l7.226-7.556a.472.472 0 0 0 0-.61l.002-.005Z" fill="currentColor"></path></g>
+                </svg>
+            </a>
+        </div>
+    {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "PC Text Hover Content #2",
+    "settings": [
+        {
+            "type": "header",
+            "content": "This section is a property of PeakConversion",
+            "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info - please save to see all changes"
+        },
+        {
+            "type": "header",
+            "content": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "heading_text",
+            "label": "Heading Text",
+            "default": "KEY INGREDIENTS"
+        },
+        {
+            "type": "range",
+            "id": "heading_size",
+            "label": "Heading Size",
+            "default": 20,
+            "min": 1,
+            "max": 92,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "header",
+            "content": "Main Content"
+        },
+       {
+        "type": "header",
+        "content": "Main content"
+       },
+        {
+            "type": "richtext",
+            "id": "main_content",
+            "label": "Main Content",
+            "default": "<p>Lorem ipsum dolor sit <a>amet</a>, consectetur adipiscing elit. Fusce ullamcorper, purus at auctor bibendum, erat justo <a>volutpat</a> orci, nec tempor risus lectus sit amet nulla. Nulla facilisi. Aliquam erat volutpat. Sed <a>pharetra</a> purus ut odio dapibus, nec facilisis justo dictum.</p>"
+        },
+        {
+            "type": "range",
+            "id": "main_content_size",
+            "label": "Main Content Size",
+            "default": 35,
+            "min": 12,
+            "max": 72,
+            "step": 1
+        },
+        {
+            "type": "color",
+            "id": "main_content_color",
+            "label": "Main Content Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "header",
+            "content": "Button Link"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text",
+            "default": "Learn More"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "range",
+            "id": "button_link_size",
+            "label": "Button Link Size",
+            "default": 18,
+            "min": 12,
+            "max": 72,
+            "step": 1
+        },
+      
+        {
+            "type": "range",
+            "id": "button_radius",
+            "label": "Button radius",
+            "default": 8,
+            "min": 0,
+            "max": 99,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "button_link_padding_top",
+            "label": "Button Link Padding Y",
+            "default": 12,
+            "min": 0,
+            "max": 72,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "button_link_padding_left",
+            "label": "Button Link Padding X",
+            "default": 32,
+            "min": 0,
+            "max": 72,
+            "step": 1
+        },
+      
+      {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border Style",
+         "default":"solid",
+      "options": [
+        {
+          "label": "Solid",
+          "value": "solid"
+        },
+        {
+          "label": "Dotted",
+          "value": "dotted"
+        },
+        {
+          "label": "Dashed",
+          "value": "dashed"
+        },
+        {
+          "label": "Double",
+          "value": "double"
+        },
+        {
+          "label": "Groove",
+          "value": "groove"
+        },
+        {
+          "label": "Inset",
+          "value": "inset"
+        },
+        {
+          "label": "Outset",
+          "value": "outset"
+        },
+        {
+          "label": "Ridge",
+          "value": "ridge"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+      {
+        "type": "color_background",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#000"
+      },
+      
+        {
+            "type": "range",
+            "id": "border_size",
+            "label": "Button size",
+            "default": 1,
+            "min": 0,
+            "max": 72,
+            "step": 1
+        },
+        {
+            "type": "color",
+            "id": "button_link_text_color",
+            "label": "Button Link Text Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "button_link_background_color",
+            "label": "Button Link Background Color",
+            "default": "transparent"
+        },
+        {
+            "type": "header",
+            "content": "Overlay"
+        },
+        {
+            "type": "color",
+            "id": "overlay_background_color",
+            "label": "Overlay Background Color",
+            "default": "#000000"
+        },
+        {
+            "type": "range",
+            "id": "overlay_opacity",
+            "label": "Overlay Opacity",
+            "default": 0.6,
+            "min": 0,
+            "max": 1,
+            "step": 0.1,
+            "info": "Set opacity at 1 to have background color instead of background image"
+        },
+        {
+            "type": "header",
+            "content": "Section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "section_background_image",
+            "label": "Section Background Image"
+        },
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        {
+          "label": "Left",
+          "value": "start"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "end"
+        }
+      ]
+    },
+        {
+            "type": "checkbox",
+            "id": "layout_max_width",
+            "label": "Enable Max Width",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "layout_padding_left",
+            "label": "Layout Padding Left",
+            "default": 2.5,
+            "min": 0,
+            "max": 10,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "layout_padding_right",
+            "label": "Layout Padding Right",
+            "default": 2.5,
+            "min": 0,
+            "max": 10,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_top",
+            "label": "Layout Margin Top",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_bottom",
+            "label": "Layout Margin Bottom",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+          "type": "header",
+          "content": "Block settings"
+        },
+      
+      {
+      "type": "select",
+      "id": "block_border_style",
+      "label": "Border Style",
+         "default":"solid",
+      "options": [
+        {
+          "label": "Solid",
+          "value": "solid"
+        },
+        {
+          "label": "Dotted",
+          "value": "dotted"
+        },
+        {
+          "label": "Dashed",
+          "value": "dashed"
+        },
+        {
+          "label": "Double",
+          "value": "double"
+        },
+        {
+          "label": "Groove",
+          "value": "groove"
+        },
+        {
+          "label": "Inset",
+          "value": "inset"
+        },
+        {
+          "label": "Outset",
+          "value": "outset"
+        },
+        {
+          "label": "Ridge",
+          "value": "ridge"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+      {
+        "type": "color",
+        "id": "block_border_color",
+        "label": "Block border color"
+      },
+      {
+        "type": "range",
+        "id": "block_border_size",
+        "label": "Block border size",
+        "min": 0,
+        "max": 80,
+        "default": 0,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "block_border_radius",
+        "label": "Block border radius",
+        "min": 0,
+        "max": 80,
+        "default": 0,
+        "step": 1,
+        "unit": "px"
+      },
+        {
+          "type": "color",
+          "id": "block_heading_color",
+          "label": "Block Heading Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "block_main_content_color",
+          "label": "Block Main Content Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Block Background Color",
+          "default": "#555"
+        },
+        {
+          "type": "range",
+          "id": "block_heading_size",
+          "label": "Block Heading Size",
+          "default": 24,
+          "min": 12,
+          "max": 72,
+          "step": 1
+        },
+        {
+          "type": "range",
+          "id": "block_main_content_size",
+          "label": "Block Main Content Size",
+          "default": 16,
+          "min": 12,
+          "max": 72,
+          "step": 1
+        }
+    ],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Text Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "heading_text",
+                    "label": "Heading Text",
+                    "default": "Shea Butter"
+                },
+                {
+                    "type": "textarea",
+                    "id": "main_content",
+                    "label": "Main Content",
+                    "default": "<p><b>amet</b> links to a resource explaining how to create compelling product descriptions that captivate the reader’s attention and convert leads into customers.</p>"
+                },
+              {
+                "type": "url",
+                "id": "icon_lnk",
+                "label": "icon link"
+              }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "PC Text Hover Content #2",
+            "category": "Custom",
+            "blocks": [
+              {
+                "type": "text",
+                "settings": {
+                  "heading_text": "Nice thing",
+                  "main_content": "<p><b>amet</b> links to a resource explaining how to create compelling product descriptions that captivate the reader’s attention and convert leads into customers.</p>"
+                }
+              },
+              {
+                "type": "text",
+                "settings": {
+                  "heading_text": "Good",
+                  "main_content": "<p><b>volutpat</b> orci, nec tempor risus lectus sit amet nulla. This link directs users to a detailed guide on improving website design and usability to enhance user experience through</p>"
+                }
+              },
+              {
+                "type": "text",
+                "settings": {
+                  "heading_text": "Caféine",
+                  "main_content": "<p><b>pharetra</b> purus ut odio dapibus, nec facilisis justo dictum. This link leads to a comprehensive overview of modern SEO strategies, covering everything from keyword research to on-page optimization, helping boost organic traffic.</p>"
+                }
+              }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+<script>
+  function initTextBlock2() {
+    const textBlockItems = document.querySelectorAll('.text-block-item-{{section.id}}');
+    const textBlockLinks = document.querySelectorAll('.text-block-text-{{section.id}} a');
+
+    if(textBlockLinks) {
+      textBlockLinks.forEach(link => {
+        link.removeAttribute('href');
+        link.removeAttribute('title');
+      })
+    }
+
+    textBlockItems.forEach((item, index) => {
+      const link = textBlockLinks[index];
+      item.style.position = 'absolute';
+      item.style.top = link.offsetTop + link.offsetHeight - 5 +  'px';
+      if(window.innerWidth < 1024) {
+        item.style.left = 50 + '%';
+        item.style.transform = 'translateX(-50%)';
+      } else {
+        item.style.left = link.offsetLeft + link.offsetWidth - (item.offsetWidth / 2) - (link.offsetWidth / 2) + 'px';
+      }
+
+      link.addEventListener('mouseenter', () => {
+        item.classList.add('active');
+      });
+
+      item.addEventListener('mouseenter', () => {
+        item.classList.add('active');
+      });
+
+      link.addEventListener('mouseleave', () => {
+        item.classList.remove('active');
+      });
+
+      item.addEventListener('mouseleave', () => {
+        item.classList.remove('active');
+      });
+    });
+
+    if (window.innerWidth < 1024) {
+      if(textBlockLinks) {
+        textBlockLinks.forEach((link,index) => {
+          let item = textBlockItems[index];
+          link.addEventListener('click', ()=> {
+            if(textBlockItems) {
+              textBlockItems.forEach(item => {
+                item.classList.remove('active');
+              })
+            }
+            item.classList.add('active');
+          })
+        })
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initTextBlock2);
+
+  if (Shopify.designMode) {
+     document.addEventListener('shopify:section:unload', initTextBlock2);
+     document.addEventListener('shopify:section:load', initTextBlock2);
+  }
+</script>

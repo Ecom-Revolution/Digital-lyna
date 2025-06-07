@@ -1,0 +1,394 @@
+{% liquid
+  assign enable_italic = section.settings.italic
+  assign margin_top = section.settings.margin_top
+  assign margin_bottom = section.settings.margin_bottom
+  assign padding = section.settings.padding
+  assign border_style = section.settings.border_style
+  assign border_size =  section.settings.border_size
+  assign border_color = section.settings.border_color
+  assign font = section.settings.font
+%}
+<style>
+    :root{
+      --text-color: {{ section.settings.text_color }}; --animation-duration-{{section.id}}: {{ section.settings.duration }}s;
+    }
+  #peakconversion__{{ section.id }} *{
+    font-family: {{ font.family }}, {{ font.fallback_families }};
+  }
+  #peakconversion__{{ section.id }}{
+    margin-top: {{ margin_top }}px;
+    margin-bottom: {{ margin_bottom}}px;
+    border-top: {{ border_size}}px {{ border_style }} {{ border_color }};
+    border-bottom: {{ border_size}}px {{ border_style }} {{ border_color }};
+  }
+    #peakconversion__{{ section.id }} .ss-announcement-bar,
+    #peakconversion__{{ section.id }} .ss-announcement-bar__message {
+      overflow: hidden;
+    }
+    #peakconversion__{{ section.id }} .ss-announcement-bar:hover {
+      opacity:0.90;
+    }
+    #peakconversion__{{ section.id }} .announcement-bar__link {
+      display: block;
+      width: 100%;
+      padding: {{ padding }}rem 0rem;
+      text-decoration: none;
+      color: {{ section.settings.text_color }};
+      line-height:0;
+      font-size: {{ section.settings.text_size }}px; ;
+      font-weight: {{ section.settings.text_weight }};
+    }
+    #peakconversion__{{ section.id }} .announcement-bar__link:hover {
+      color: {{ section.settings.text_color }};
+    }
+    #peakconversion__{{ section.id }} #marq {
+      width: 100%;
+      border: inset;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: unset;
+      border: 0;
+      box-shadow: unset;
+      border-color: currentcolor;
+      vertical-align: middle;
+    }
+
+    @keyframes marquesina-{{ section.id }} {
+      from {
+        transform: translateX(-50%);
+      }
+      to {
+        transform: translateX(0%);
+      }
+    }
+    @keyframes marquesina-reverse-{{ section.id }} {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    #peakconversion__{{ section.id }} .ss-announcement-bar-{{ section.id }} #orig {
+      display: inline-block;
+      overflow: hidden;
+      transform: translate(0);
+    }
+
+    #peakconversion__{{ section.id }} .ss-announcement-bar__message {
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    #peakconversion__{{ section.id }} #orig.reverse .announcement-bar__message {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    #peakconversion__{{ section.id }} .ss-announcement-bar__message li {
+
+      line-height: 1;
+      font-size: {{ section.settings.text_size }}px;
+      font-weight: {{ section.settings.text_weight }};
+      display: inline-block;
+      padding-right: 114px;
+      position: relative;
+
+    }
+    #peakconversion__{{ section.id }} .ss-announcement-bar__message li::after {
+      content: '';
+      width: 3.5px;
+      height: 3.5px;
+      background-color: {{ section.settings.text_color }};
+      background-image: none;
+      opacity: 0.3;
+      border-radius: 50%;
+      position: absolute;
+      top: 40%;
+      right: 50px;
+    }
+    @media (max-width: 480px) {
+     peakconversion__{{ section.id }} #marq {
+        max-height: 39px;
+      }
+  peakconversion__{{ section.id }} .ss-announcement-bar__message li {
+        padding-right: 55px;
+      }
+      peakconversion__{{ section.id }} .ss-announcement-bar__message li::after {
+        right: 25px;
+      }
+    }
+    #peakconversion__{{ section.id }} .ss-announcement-bar-{{ section.id }} #orig {
+      animation: marquesina-{{ section.id }} var(--animation-duration-{{section.id}}, 45s) infinite normal linear 1s;
+    }
+
+    #peakconversion__{{ section.id }} .ss-announcement-bar-{{ section.id }} #orig.reverse {
+      animation: marquesina-reverse-{{ section.id }} var(--animation-duration-{{section.id}}, 45s) infinite normal linear 2s !important;
+    }
+</style>
+<div id="peakconversion__{{ section.id }}">
+  <div
+    class="ss-announcement-bar ss-announcement-bar-{{ section.id }}"
+    aria-label="Announcement"
+    style="
+      {% if section.settings.gradient_bg != blank %}
+        background: {{ section.settings.gradient_bg }};
+      {% else %}
+        background-color: {{ section.settings.bg_color }};
+      {% endif %}
+    "
+  >
+    <div class="announcement-bar__link">
+      <div class="" id="marq">
+        <span id="orig" class="{% if section.settings.reverse == true %}reverse{% endif %}">
+          <ul class="ss-announcement-bar__message">
+            {% for i in (1..30) %}
+              {% for block in section.blocks %}
+                <li>
+                  {% if block.settings.item_link != blank %}
+                    <a href="{{ block.settings.item_link }}">
+                  {% endif %}
+                  {% if enable_italic == true %}
+                    <i>
+                  {% endif %}
+                      {{ block.settings.item }}
+                  {% if enable_italic == true %}
+                    </i>
+                  {% endif %}
+                  {% if block.settings.item_link != blank %}
+                    </a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PC- ANNOUCEMENT BAR #1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "This section is a property of PeakConversion",
+      "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info - please save to see all changes"
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Text Weight",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "italic",
+      "label": "Enable italic",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border Style",
+         "default":"solid",
+      "options": [
+        {
+          "label": "Solid",
+          "value": "solid"
+        },
+        {
+          "label": "Dotted",
+          "value": "dotted"
+        },
+        {
+          "label": "Dashed",
+          "value": "dashed"
+        },
+        {
+          "label": "Double",
+          "value": "double"
+        },
+        {
+          "label": "Groove",
+          "value": "groove"
+        },
+        {
+          "label": "Inset",
+          "value": "inset"
+        },
+        {
+          "label": "Outset",
+          "value": "outset"
+        },
+        {
+          "label": "Ridge",
+          "value": "ridge"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#000"
+      },
+      {
+        "type": "range",
+        "id": "border_size",
+        "label": "Border size",
+        "default": 0,
+        "min": 0,
+        "max": 72,
+        "step": 1
+      },
+    {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+            "step": 1
+    },
+    {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "min": 0,
+        "max": 100,
+        "default": 20,
+            "step": 1
+    },
+    {
+        "type": "range",
+        "id": "padding",
+        "label": "Padding",
+        "min": 1,
+        "max": 10,
+        "default": 1.8,
+            "step": 0.1
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "gradient_bg",
+      "label": "Gradient Background (CSS)",
+      "default": "linear-gradient(90deg, #ff7e5f, #feb47b)"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "number",
+      "id": "duration",
+      "label": "Animation duration",
+      "default": 60
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse Direction",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "font",
+      "label": "Font",
+      "default": "josefin_sans_n4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner Item",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Text",
+          "id": "item",
+          "default": "FREE SHIPPING"
+        },
+         {
+          "type": "url",
+          "label": "Link",
+          "id": "item_lnk"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PC- ANNOUCEMENT BAR #1",
+      "blocks": [
+        {
+          "type": "banner",
+          "settings": {
+            "item": "Lorem ipsum dolor sit amet"
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "item": "Ut enim ad minima veniam"
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "item": "Neque porro quisquam est"
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "item": "At vero eos et accusamus"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

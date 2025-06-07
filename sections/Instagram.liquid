@@ -1,0 +1,772 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+  assign heading_weight = section.settings.heading_weight
+  assign heading_color = section.settings.heading_color
+  assign heading_size_mobile = section.settings.heading_size_mobile
+
+  assign subheading = section.settings.subheading
+  assign subheading_size = section.settings.subheading_size
+  assign subheading_weight = section.settings.subheading_weight
+  assign subheading_color = section.settings.subheading_color
+  assign subheading_size_mobile = section.settings.subheading_size_mobile
+
+  assign button_label = section.settings.button_label
+  assign button_link = section.settings.button_link
+  assign button_size = section.settings.button_size
+  assign button_weight = section.settings.button_weight
+  assign button_color = section.settings.button_color
+  assign button_size_mobile = section.settings.button_size_mobile
+  assign button_radius = section.settings.button_radius
+  assign button_border_width = section.settings.button_border_width
+  assign button_border_color = section.settings.button_border_color
+  assign button_style = section.settings.button_style
+  assign button_background = section.settings.button_background
+
+  assign image_border_radius = section.settings.image_border_radius
+  assign image_border_width = section.settings.image_border_width
+  assign image_border_color = section.settings.image_border_color
+  assign image_border_style = section.settings.image_border_style
+
+  assign layout_border_width = section.settings.layout_border_width
+  assign layout_border_style = section.settings.layout_border_style
+  assign layout_border_color = section.settings.layout_border_color
+  assign layout_margin_top = section.settings.layout_margin_top
+  assign layout_margin_bottom = section.settings.layout_margin_bottom
+  assign layout_background = section.settings.layout_background
+%}
+
+<style data-shopify="">
+    .section-pc-{{section.id}} {
+      border-top: solid {{ layout_border_width }}px {{ layout_border_style }} {{ layout_border_color }};
+      border-bottom: solid {{ layout_border_width }}px {{ layout_border_style }} {{ layout_border_color }};
+      margin-top: {{ layout_margin_top }}px;
+      margin-bottom: {{ layout_margin_bottom }}px;
+      border-radius: 0px;
+    }
+    
+   
+    
+    .section-pc-{{section.id}}-settings {
+      margin: 0 auto;
+      padding-top: 27px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  
+    .instafeed-left-pc-{{section.id}} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .instafeed-heading-pc-{{section.id}} {
+      text-align: center;
+    }
+  
+    .instafeed-heading-pc-{{section.id}} * {
+      margin: 0;
+      font-size: {{ heading_size_mobile }}px;
+      color: {{ heading_color }};
+      font-weight: {{ heading_weight }};
+      line-height: 130%;
+      text-transform: unset;
+    }
+  
+    .instafeed-text-pc-{{section.id}} {
+      text-align: center;
+      margin-top: 9px;
+    }
+  
+    .instafeed-text-pc-{{section.id}} * {
+      margin: 0;
+      font-size: {{ subheading_size_mobile }}px;
+      color: {{ subheading_color }};
+      font-weight: {{ subheading_weight }};
+      line-height: 130%;
+      text-transform: unset;
+    }
+  
+    .instafeed-button-pc-{{section.id}} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 250px;
+      margin: 0;
+      margin-top: 32px;
+      font-size: {{ button_size_mobile }}px;
+      color: {{ button_color }};
+      line-height: 100%;
+      text-align: center;
+      text-transform: unset;
+      text-decoration: none;
+      padding: 18px 32px;
+      border-radius: {{  button_radius }}px;
+      transition: all 0.25s ease 0s;
+      position: relative;
+      font-weight: {{ button_weight }};
+      z-index: 2;
+    }
+  
+    .instafeed-button-pc-{{section.id}}:hover {
+      color: {{ button_background}};
+      transition: all 0.25s ease 0s;
+    }
+  
+    .instafeed-button-pc-{{section.id}} svg {
+      width: 14px;
+      height: 14px;
+    }
+  
+    .instafeed-button-pc-{{section.id}} svg path {
+      fill: #1a192e;
+      transition: all 0.25s ease 0s;
+    }
+  
+    .instafeed-button-pc-{{section.id}}:hover svg path {
+      fill: #ffffff;
+      transition: all 0.25s ease 0s;
+    }
+  
+    .instafeed-image-slider-pc-{{section.id}} {
+      margin-top: 32px;
+      padding-bottom: 27px;
+    }
+  
+    .instafeed-image-slide-pc-{{section.id}} {
+      width: 100%;
+      flex: 0 0 180px;
+      overflow: hidden;
+      border-radius: {{ image_border_radius }}px;
+        border: {{ image_border_width }}px {{ image_border_style }} {{ image_border_color }};
+      
+    }
+    
+    .instafeed-image-slide-pc-{{section.id}} img,
+    .instafeed-image-slide-pc-{{section.id}} svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  
+    .instafeed-image-slide-pc-{{section.id}} svg {
+      background-color: #a0a0a0;
+    }
+  
+    .marquee-horizontal-pc-{{section.id}} {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        overflow: hidden;
+        width: 100%;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+  
+    html[dir="rtl"] .marquee-horizontal-pc-{{section.id}} {
+      flex-direction: row-reverse;
+    }
+  
+    .track-horizontal-pc-{{section.id}} {
+        padding-left: 20px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+        width: calc((180px * 5) + (20px * 5));
+        gap: 20px;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        white-space: nowrap;
+        will-change: transform;
+        animation: marquee-horizontal-left 32000ms linear infinite;
+    }
+  
+    @keyframes marquee-horizontal-left {
+      0% {
+          transform: translateZ(0);
+          visibility: visible;
+      }
+      
+      100% {
+          transform: translate3d(-100%,0,0);
+      }
+    }
+  
+    @keyframes marquee-horizontal-right {
+      0% {
+          transform: translate3d(-100%,0,0);
+          visibility: visible;
+      }
+      
+      100% {
+          transform: translateZ(0);
+      }
+    }
+    
+    @media(min-width: 1024px) {
+  
+
+      .section-pc-{{section.id}} {
+        margin-top: {{ layout_margin_top }}px;
+        margin-bottom: {{ layout_margin_bottom }}px;
+      }
+      
+      .section-pc-{{section.id}}-settings {
+        padding: 0 5rem;
+        padding-top: 36px;
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+  
+      .instafeed-top-pc-{{section.id}} {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+      }
+  
+      .instafeed-left-pc-{{section.id}} {
+        display: block;
+      }
+    
+      .instafeed-heading-pc-{{section.id}} {
+        text-align: left;
+      }
+  
+      .instafeed-heading-pc-{{section.id}} * {
+        font-size: {{ heading_size}}px;
+      }
+  
+      .instafeed-text-pc-{{section.id}} {
+        margin-top: 12px;
+        text-align: left;
+      }
+    
+      .instafeed-text-pc-{{section.id}} * {
+        font-size: {{ subheading_size }}px;
+      }
+  
+      .instafeed-button-pc-{{section.id}} {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        margin-top: 0px;
+        max-width: 250px;
+        padding: 18px 32px;
+        font-size: {{ button_size }}px;
+      }
+  
+      .instafeed-image-slider-pc-{{section.id}} {
+        margin-top: 90px;
+        padding-bottom: 36px;
+      }
+  
+      .instafeed-image-slide-pc-{{section.id}} {
+        flex: 0 0 350px;
+      }
+  
+      .track-horizontal-pc-{{section.id}} {
+        padding-left: 40px;
+        width: calc((350px * 5) + (40px * 5));
+        gap: 40px;
+      }
+  
+      
+      
+    }</style>
+  <style>
+    .section-pc-{{section.id}}-settings {
+      max-width: 120rem;
+    }
+  </style>
+
+  <style>
+    .instafeed-button-pc-{{section.id}} {
+       margin-left: auto;
+       margin-right: auto;
+     }
+  </style>
+
+  <style>
+    .instafeed-button-pc-{{section.id}} {
+      background-color: {{  button_background}};
+      border:  {{ button_border_width }}px {{ button_style }} {{ button_border_color }};
+    }
+
+    .instafeed-button-pc-{{section.id}}:hover {
+      background-color: {{ button_color }};
+    }
+  </style>
+
+  <style>
+    .instafeed-image-slide-pc-{{section.id}} {
+     aspect-ratio: 12/12;
+    }
+  </style>
+
+  <style>
+    @media(min-width: 1024px) {
+      .instafeed-image-slide-pc-{{section.id}} {
+       aspect-ratio: 12/12;
+      }
+    }
+  </style>
+
+  <div
+    class="section-pc-{{section.id}} instafeed-pc-{{section.id}}"
+    style="background-color: {{  layout_background }}; background-image: ;"
+  >
+    <div class="section-pc-{{section.id}}-settings">
+      <div class="instafeed-top-pc-{{section.id}}">
+        <div clas="instafeed-left-pc-{{section.id}}">
+          {% if heading != blank %}
+            <div class="instafeed-heading-pc-{{section.id}}">
+              {{ heading }}
+            </div>
+          {% endif %}
+          {% if subheading != blank %}
+            <div class="instafeed-text-pc-{{section.id}}">
+              <p>{{ subheading }}</p>
+            </div>
+          {% endif %}
+        </div>
+
+        <a href="{{ button_link }}" class="instafeed-button-pc-{{section.id}}"> {{ button_label }} </a>
+      </div>
+    </div>
+    <div class="instafeed-image-slider-pc-{{section.id}}">
+      <div class="marquee-horizontal-pc-{{section.id}}">
+        {% for i in (1..4) %}
+          <div class="track-horizontal-pc-{{section.id}}">
+            {% for i in (1..6) %}
+              {% for block in section.blocks %}
+                <div class="instafeed-image-slide-pc-{{section.id}}">
+                  <a href="{{  block.settings.link }}">
+                    {% if block.settings.image != blank %}
+                      <img
+                        src="{{ block.settings.image | img_url: 'master' }}"
+                        alt=""
+                        loading="lazy"
+                      >
+                    {% else %}
+                      {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  </a>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+{% schema %}
+{
+  "name": "PC - Instagram #3",
+  "settings": [
+    {
+      "type": "header",
+      "content": "This section is a property of PeakConversion",
+      "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info"
+  },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Follow us on <em>Instagram</em>"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": 52,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Weight",
+      "default": "bold",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a192e"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "default": 32,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Subheading Settings"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading Size",
+      "default": 16,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "subheading_weight",
+      "label": "Subheading Weight",
+      "default": "normal",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#1a192e"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_mobile",
+      "label": "Subheading Size (Mobile)",
+      "default": 16,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "@peakconversion"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button Size",
+      "default": 16,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Button Weight",
+      "default": "bold",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#1a192e"
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Button Size (Mobile)",
+      "default": 14,
+      "min": 10,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button Radius",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "label": "Button Border Width",
+      "default": 1,
+      "min": 0,
+      "max": 10,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#333"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "default": "solid",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius",
+      "default": 24,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_border_width",
+      "label": "Image Border Width",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "image_border_color",
+      "label": "Image Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "image_border_style",
+      "label": "Image Border Style",
+      "default": "solid",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "layout_border_width",
+      "label": "Layout Border Width",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "layout_border_style",
+      "label": "Layout Border Style",
+      "default": "solid",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "layout_border_color",
+      "label": "Layout Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "layout_margin_top",
+      "label": "Layout Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "layout_margin_bottom",
+      "label": "Layout Margin Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "layout_background",
+      "label": "Layout Background",
+      "default": "#f6f3ff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Instagram",
+      "name": "PC - Instagram #3",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        },
+
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

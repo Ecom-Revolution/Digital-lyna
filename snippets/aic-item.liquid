@@ -1,0 +1,67 @@
+{% comment %}
+  	Renders animated image collage image
+  	Accepts:
+  	- image: {Object} Slider image
+  	- section: {Object} Section
+  	- block: {Object} Block
+  - width (For bottom layout)
+  	Usage:
+  {% render 'aic-item', image: block.settings.image, section: section %}
+{% endcomment %}
+
+<div
+  class="aic__slide"
+  {% if width %}
+    style="--slide-width: {{ width }}px"
+  {% endif %}
+>
+  {% if image != blank %}
+    {% assign height = width | divided_by: image.aspect_ratio | round: 2 %}
+    <div
+      class="aic__image aic__image--{{ block.id }}"
+    >
+      {% liquid
+        assign aspect_ratio = image.aspect_ratio
+
+        case section.settings.image_ratio
+          when 'portrait'
+            assign image_ratio = 1.4
+          when 'square'
+            assign image_ratio = 1
+          else
+            assign image_ratio = 0.5
+        endcase
+      %}
+
+      {% if aspect_ratio > image_ratio and image.width > image.height %}
+        {% capture sizes %}
+						calc((100vw - 40px) * {{ aspect_ratio }} * {{ image_ratio }})
+					{% endcapture %}
+      {% elsif aspect_ratio > image_ratio and image.width < image.height %}
+        {% capture sizes %}
+						calc((100vw - 40px) / {{ aspect_ratio }} * {{ image_ratio }})
+					{% endcapture %}
+      {% else %}
+        {% capture sizes %} 
+						calc((100vw - 40px))
+					{% endcapture %}
+      {% endif %}
+      {%- capture style -%}object-fit: cover;{%- endcapture -%}
+      {{
+        image
+        | image_url: width: image.width
+        | image_tag:
+          loading: 'lazy',
+          sizes: sizes,
+          widths: '360, 535, 600, 720, 940, 1066',
+          width: width,
+          height: height,
+          style: style
+      }}
+    </div>
+  {% else %}
+    <div class="aic__image aic__image--placeholder">
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+</div>

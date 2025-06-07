@@ -1,0 +1,829 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+  assign heading_weight = section.settings.heading_weight
+  assign heading_color = section.settings.heading_color
+  assign heading_font = section.settings.heading_font
+
+  assign heading_size_mobile = section.settings.heading_size_mobile
+
+  assign text = section.settings.text
+  assign text_size = section.settings.text_size
+  assign text_weight = section.settings.text_weight
+  assign text_color = section.settings.text_color
+  assign text_font = section.settings.text_font
+
+  assign text_size_mobile = section.settings.text_size_mobile
+
+  assign button_text = section.settings.button_text
+  assign button_url = section.settings.button_url
+  assign button_size = section.settings.button_size
+  assign button_weight = section.settings.button_weight
+  assign button_font = section.settings.button_font
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_text_color = section.settings.button_text_color
+  assign button_border_radius = section.settings.button_border_radius
+  assign button_border_width = section.settings.button_border_width
+  assign button_border_color = section.settings.button_border_color
+  assign button_border_style = section.settings.button_border_style
+
+  assign button_size_mobile = section.settings.button_size_mobile
+
+  assign image_border_radius = section.settings.image_border_radius
+  assign image_border_width = section.settings.image_border_width
+  assign image_border_color = section.settings.image_border_color
+  assign image_border_style = section.settings.image_border_style
+
+  assign animation_speed = section.settings.animation_speed
+
+  assign layout_margin_top = section.settings.layout_margin_top
+  assign layout_margin_bottom = section.settings.layout_margin_bottom
+  assign layout_background = section.settings.layout_background
+  assign layout_gradient_on_image = section.settings.layout_gradient_on_image
+  assign layout_enable_gradient_on_image = section.settings.layout_enable_gradient_on_image
+  assign layout_enable_max_width = section.settings.layout_enable_max_width
+%}
+
+<style>
+  .section-pc-{{section.id}} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .section-pc-{{section.id}}-settings {
+    margin: 0 auto;
+    padding-top: 36px;
+    padding-bottom: 0px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .hero-body-pc-{{section.id}} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  .hero-heading-pc-{{section.id}} {
+    text-align: left;
+  }
+
+  .hero-heading-pc-{{section.id}} * {
+    margin: 0;
+    font-size: {{ heading_size_mobile }}px;
+    color: {{ heading_color }};
+    font-weight: {{ heading_weight }};
+    font-family: {{ heading_font.family }}{% if heading_font.fallback_families.size > 0 %}, {{ heading_font.fallback_families }}{% endif %} !important;
+    line-height: 130%;
+    text-transform: unset;
+  }
+
+  .hero-text-pc-{{section.id}} {
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .hero-text-pc-{{section.id}} * {
+    margin: 0;
+    font-size: {{ text_size_mobile }}px;
+    color: {{ text_color }};
+    font-weight: {{ text_weight }};
+    font-family: {{ text_font.family }}{% if text_font.fallback_families.size > 0 %}, {{ text_font.fallback_families }}{% endif %} !important;
+    line-height: 170%;
+    text-transform: unset;
+  }
+
+  .hero-button-pc-{{section.id}} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 250px;
+    margin: 0;
+    margin-top: 16px;
+    font-size: {{ button_size_mobile }}px;
+    color: {{ button_text_color }};
+    line-height: 100%;
+    text-align: center;
+    text-transform: unset;
+    text-decoration: none;
+    padding: 16px 24px;
+    border-radius: {{ button_border_radius }}px;
+    transition: all 0.25s ease 0s;
+    position: relative;
+    font-weight: {{ button_weight }};
+    z-index: 2;
+    border: {{ button_border_width }}px {{ button_border_style }} {{ button_border_color }};
+    background-color: {{ button_bg_color }};
+  }
+
+  .hero-images-wrapper-pc-{{section.id}} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    height: 300px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-images-left-pc-{{section.id}},
+  .hero-images-right-pc-{{section.id}} {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-images-inner-pc-{{section.id}} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .hero-image-pc-{{section.id}} {
+    border-radius: {{ image_border_radius }}px;
+    border: {{ image_border_width }}px {{ image_border_style }} {{ image_border_color }};
+    overflow: hidden;
+  }
+
+  .hero-image-pc-{{section.id}} img,
+  .hero-image-pc-{{section.id}} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media(min-width: 1024px) {
+
+    .section-pc-{{section.id}} {
+      margin-top: {{ layout_margin_top }}px;
+      margin-bottom: {{ layout_margin_bottom }}px;
+      margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-pc-{{section.id}}-settings {
+      padding: 0 5rem;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    .hero-body-pc-{{section.id}} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 80px;
+    }
+
+    .hero-heading-pc-{{section.id}} {
+      text-align: left;
+    }
+
+    .hero-heading-pc-{{section.id}} * {
+      font-size: {{ heading_size }}px;
+    }
+
+    .hero-text-pc-{{section.id}} {
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .hero-text-pc-{{section.id}} * {
+      font-size: {{ text_size }}px;
+    }
+
+    .hero-button-pc-{{section.id}} {
+      margin-top: 40px;
+      max-width: 250px;
+      padding: 16px 24px;
+      font-size: {{ button_size }}px;
+    }
+
+    .hero-images-wrapper-pc-{{section.id}} {
+      height: 700px;
+      max-width: 100%;
+      gap: 20px;
+    }
+
+
+  }
+</style>
+<style>
+  .section-pc-{{section.id}}-settings {
+    {% if layout_enable_max_width == true %}
+        max-width: 100%;
+    {% else %}
+        max-width: 150rem;
+    {% endif %}
+  }
+</style>
+
+<style>
+  .hero-button-pc-{{section.id}} {
+     margin-left: auto;
+     margin-right: auto;
+   }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+   .hero-button-pc-{{section.id}} {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .hero-content-pc-{{section.id}} {
+      order: 1;
+    }
+
+    .hero-images-pc-{{section.id}} {
+      order: 2;
+    }
+  }
+</style>
+
+<style>
+  .hero-images-wrapper-pc-{{section.id}} {
+     margin-left: auto;
+     margin-right: auto;
+   }
+</style>
+
+<style>
+  .hero-image-pc-{{section.id}}{
+   aspect-ratio: 12/9;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .hero-image-pc-{{section.id}} {
+     aspect-ratio: 12/12;
+    }
+  }
+</style>
+
+<style>
+  .hero-images-inner-pc-{{section.id}} {
+    padding: 0px 5px;
+  }
+  .hero-image-pc-{{section.id}} {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  }
+</style>
+
+<style>
+  .hero-images-left-pc-{{section.id}} {
+    animation: leftImagesAnimationpc-{{section.id}} {{ animation_speed }}s linear infinite alternate;
+  }
+
+  .hero-images-right-pc-{{section.id}} {
+    animation: rightImagesAnimationpc-{{section.id}} {{ animation_speed }}s linear infinite alternate;
+  }
+
+  @keyframes leftImagesAnimationpc-{{section.id}} {
+    0% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes rightImagesAnimationpc-{{section.id}} {
+    0% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+    {% if layout_enable_gradient_on_image == true %}
+    .hero-images-gradient-pc-{{section.id}}.top{
+        display: block !important;
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        background-image: linear-gradient({{layout_gradient_on_image}}, rgba(250, 235, 227, 0));
+        top: -1px;
+        bottom: auto;
+        left: 0%;
+        right: 0%;
+        height: 140px;
+    }
+    .hero-images-gradient-pc-{{section.id}}.bottom{
+        display: block !important;
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        background-image: linear-gradient(to top, rgba(250, 235, 227, 0), {{layout_gradient_on_image}});
+        top: auto;
+        bottom: -1px;
+        left: 0%;
+        right: 0%;
+        height: 140px;
+        transform: rotate(180deg);
+    }
+    {% endif %}
+</style>
+
+<div
+  class="section-pc-{{section.id}} hero-pc-{{section.id}}"
+  style="background-color:{{ layout_background }}; background-image: ;"
+>
+  <div class="section-pc-{{section.id}}-settings">
+    <div class="hero-body-pc-{{section.id}}">
+      <div class="hero-content-pc-{{section.id}}">
+        <div class="hero-heading-pc-{{section.id}}">
+          {% if heading != blank %}
+            <p>
+              <strong>{{ heading }}</strong>
+            </p>
+          {% endif %}
+        </div>
+        {% if text != blank %}
+          <div class="hero-text-pc-{{section.id}}">
+            <p>
+              {{ text }}
+            </p>
+          </div>
+        {% endif %}
+        {% if button_text != blank %}
+          <a href="{{ button_url }}" class="hero-button-pc-{{section.id}}"> {{ button_text }} </a>
+        {% endif %}
+      </div>
+
+      <div class="hero-images-pc-{{section.id}}">
+        <div class="hero-images-wrapper-pc-{{section.id}}">
+          <div class="hero-images-gradient-pc-{{section.id}} top"></div>
+          <div class="hero-images-left-pc-{{section.id}}">
+            <div class="hero-images-inner-pc-{{section.id}}">
+              {% for i in (1..10) %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'image_left' %}
+                    <div class="hero-image-pc-{{section.id}}">
+                      {% if block.settings.image != blank %}
+                        <img
+                          src="{{  block.settings.image | img_url: 'master' }}"
+                          alt=""
+                          loading="lazy"
+                        >
+                      {% else %}
+                        {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="hero-images-right-pc-{{section.id}}">
+            <div class="hero-images-inner-pc-{{section.id}}">
+              {% for i in (1..10) %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'image_right' %}
+                    <div class="hero-image-pc-{{section.id}}">
+                      {% if block.settings.image != blank %}
+                        <img
+                          src="{{  block.settings.image | img_url: 'master' }}"
+                          alt=""
+                          loading="lazy"
+                        >
+                      {% else %}
+                        {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="hero-images-gradient-pc-{{section.id}} bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "PC Hero Featured #2",
+    "settings": [
+      {
+            "type": "header",
+            "content": "This section is a property of PeakConversion",
+            "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info"
+        },
+    {
+        "type": "header",
+        "content": "Heading"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Lorem ipsum dolor sit amet elit"
+    },
+    {
+        "type": "range",
+        "id": "heading_size",
+        "label": "Heading Size",
+        "default": 60,
+        "min": 12,
+        "max": 72,
+        "step": 1
+    },
+    {
+        "type": "select",
+        "id": "heading_weight",
+        "label": "Heading Weight",
+        "default": "bold",
+        "options": [
+            {
+                "value": "normal",
+                "label": "Normal"
+            },
+            {
+                "value": "bold",
+                "label": "Bold"
+            }
+        ]
+    },
+    {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#000000"
+    },
+    {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "josefin_sans_n4"
+    },
+    {
+        "type": "range",
+        "id": "heading_size_mobile",
+        "label": "Heading Size (Mobile)",
+        "default": 24,
+        "min": 12,
+        "max": 72,
+        "step": 1
+    },
+    {
+        "type": "header",
+        "content": "Text"
+    },
+    {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut  ullamco lt cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+        "type": "range",
+        "id": "text_size",
+        "label": "Text Size",
+        "default": 22,
+        "min": 12,
+        "max": 36,
+        "step": 1
+    },
+    {
+        "type": "select",
+        "id": "text_weight",
+        "label": "Text Weight",
+        "default": "normal",
+        "options": [
+            {
+                "value": "normal",
+                "label": "Normal"
+            },
+            {
+                "value": "bold",
+                "label": "Bold"
+            }
+        ]
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+    },
+    {
+        "type": "font_picker",
+        "id": "text_font",
+        "label": "Text Font",
+        "default": "josefin_sans_n4"
+    },
+    {
+        "type": "range",
+        "id": "text_size_mobile",
+        "label": "Text Size (Mobile)",
+        "default": 16,
+        "min": 12,
+        "max": 36,
+        "step": 1
+    },
+    {
+        "type": "header",
+        "content": "Button"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop now"
+    },
+    {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button URL"
+    },
+    {
+        "type": "range",
+        "id": "button_size",
+        "label": "Button Size",
+        "default": 17,
+        "min": 12,
+        "max": 36,
+        "step": 1
+    },
+    {
+        "type": "select",
+        "id": "button_weight",
+        "label": "Button Weight",
+        "default": "bold",
+        "options": [
+            {
+                "value": "normal",
+                "label": "Normal"
+            },
+            {
+                "value": "bold",
+                "label": "Bold"
+            }
+        ]
+    },
+    {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "Button Font",
+        "default": "josefin_sans_n4"
+    },
+    {
+        "type": "color",
+        "id": "button_bg_color",
+        "label": "Button Background Color",
+        "default": "#000000"
+    },
+    {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "range",
+        "id": "button_border_radius",
+        "label": "Button Border Radius",
+        "default": 4,
+        "min": 0,
+        "max": 50,
+        "step": 1
+    },
+    {
+        "type": "range",
+        "id": "button_border_width",
+        "label": "Button Border Width",
+        "default": 1,
+        "min": 0,
+        "max": 10,
+        "step": 1
+    },
+    {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button Border Color",
+        "default": "#000000"
+    },
+    {
+        "type": "select",
+        "id": "button_border_style",
+        "label": "Button Border Style",
+        "default": "solid",
+        "options": [
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "button_size_mobile",
+        "label": "Button Size (Mobile)",
+        "default": 16,
+        "min": 12,
+        "max": 36,
+        "step": 1
+    },
+    {
+        "type": "header",
+        "content": "Image"
+    },
+    {
+        "type": "range",
+        "id": "image_border_radius",
+        "label": "Image Border Radius",
+        "default": 12,
+        "min": 0,
+        "max": 50,
+        "step": 1
+    },
+    {
+        "type": "range",
+        "id": "image_border_width",
+        "label": "Image Border Width",
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "step": 1
+    },
+    {
+        "type": "color",
+        "id": "image_border_color",
+        "label": "Image Border Color",
+        "default": "#000000"
+    },
+    {
+        "type": "select",
+        "id": "image_border_style",
+        "label": "Image Border Style",
+        "default": "solid",
+        "options": [
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Animation"
+    },
+    {
+        "type": "range",
+        "id": "animation_speed",
+        "label": "Animation Speed",
+        "default": 60,
+        "min": 10,
+        "max": 100,
+        "step": 1
+    },
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "range",
+        "id": "layout_margin_top",
+        "label": "Layout Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+    },
+    {
+        "type": "range",
+        "id": "layout_margin_bottom",
+        "label": "Layout Margin Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+    },
+    {
+        "type": "color",
+        "id": "layout_background",
+        "label": "Layout Background",
+        "default": "#fff9f9"
+    },
+    {
+        "type": "color",
+        "id": "layout_gradient_on_image",
+        "label": "Gradient Color on Image",
+        "default": "#faebe3"
+    },
+    {
+        "type": "checkbox",
+        "id": "layout_enable_gradient_on_image",
+        "label": "Enable Gradient on Image",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "layout_enable_max_width",
+        "label": "Enable Max Width",
+        "default": false
+    }
+    ],
+    "blocks": [
+        {
+            "type": "image_left",
+            "name": "Image Left",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        },
+        {
+            "type": "image_right",
+            "name": "Image Right",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Image - Text ",
+            "name": "PC Hero Featured #2",
+            "blocks": [
+                {
+                    "type": "image_left"
+                },
+                {
+                    "type": "image_left"
+                },
+                {
+                    "type": "image_left"
+                },
+                {
+                    "type": "image_left"
+                },
+                {
+                    "type": "image_left"
+                },
+                {
+                    "type": "image_right"
+                },
+                {
+                    "type": "image_right"
+                },
+                {
+                    "type": "image_right"
+                },
+                {
+                    "type": "image_right"
+                },
+                {
+                    "type": "image_right"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

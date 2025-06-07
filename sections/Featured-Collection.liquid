@@ -1,0 +1,1596 @@
+{% assign collection = section.settings.collection %}
+{% assign collection_title = section.settings.collection_title %}
+{% assign collection_title_size = section.settings.collection_title_size %}
+{% assign collection_title_color = section.settings.collection_title_color %}
+
+{% assign collection_link_text = section.settings.collection_link_text %}
+{% assign collection_link_color = section.settings.collection_link_color %}
+{% assign collection_link_color_hover = section.settings.collection_link_color_hover %}
+{% assign collection_link_enabled = section.settings.collection_link_enabled %}
+{% assign collection_title_enabled = section.settings.collection_title_enabled %}
+
+{% assign section_padding = section.settings.section_padding %}
+
+{% assign section_top_margin = section.settings.section_top_margin %}
+{% assign section_bottom_margin = section.settings.section_bottom_margin %}
+
+
+{% assign section_product_border_radius = section.settings.section_product_border_radius %}
+
+{% assign collection_button_color = section.settings.collection_button_color %}
+
+{% assign collection_button_text_color = section.settings.collection_button_text_color %}
+{% assign collection_button_border_radius = section.settings.collection_button_border_radius %}
+{% assign collection_button_hover_background = section.settings.collection_button_hover_background %}
+{% assign collection_button_hover_text_color = section.settings.collection_button_hover_text_color %}
+
+{% assign collection_tag_color = section.settings.collection_badge_color %}
+{% assign collection_tag_text = section.settings.collection_badge_text %}
+{% assign collection_tag_text_color = section.settings.collection_badge_text_color %}
+{% assign collection_tag_border_radius = section.settings.collection_badge_border_radius %}
+
+{% assign enable_vendor = section.settings.enable_vendor %}
+{% assign show_atc = section.settings.show_atc %}
+{% assign show_price = section.settings.show_price %}
+
+{% assign swiper_slides_per_view = section.settings.swiper_slides_per_view %}
+{% assign swiper_autoplay = section.settings.swiper_autoplay %}
+{% assign swiper_delay = section.settings.swiper_delay %}
+{% assign swiper_space_between = section.settings.swiper_space_between %}
+{% assign drag_bar_color = section.settings.scroll_bar_color %}
+{% assign arrow_color = section.settings.arrow_color %}
+{% assign arrow_bg_color = section.settings.arrow_bg_color %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+    .section-{{ section.id }} {
+      border-top: solid #000000 0px;
+      border-bottom: solid #000000 0px;
+      margin-left: 0rem;
+      margin-right: 0rem;
+      border-radius: 0px;
+      overflow: hidden;
+    }
+
+    .section-{{ section.id }}-settings {
+      margin: 0px auto;
+      padding-top: 27px;
+      padding-bottom: 27px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .collection-top-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+  .collection-heading-{{ section.id }} * {
+      margin: 0px;
+      font-size: {{ collection_title_size }}px;
+      line-height: 130%;
+      color: {{ collection_title_color }};
+      text-transform: unset;
+      word-break: break-word;
+      font-weight: 700;
+  }
+
+    .collection-all-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin: 0px;
+      font-size: 16px;
+      line-height: 130%;
+      color: {{ collection_link_color }};
+      text-transform: unset;
+      word-break: break-word;
+      text-decoration: none;
+      transition: all 0.25s ease 0s;
+      max-width: fit-content;
+    }
+
+    .collection-all-{{ section.id }}:hover {
+      transition: all 0.25s ease 0s;
+      color: {{ collection_link_color_hover }};
+    }
+
+    .collection-all-arrow-{{ section.id }} {
+      display: none;
+      width: 13px;
+      height: 13px;
+      transform: rotate(-90deg);
+    }
+
+    .collection-all-arrow-{{ section.id }} path {
+      fill: #121212;
+      transition: all 0.25s ease 0s;
+    }
+
+    .collection-slider-{{ section.id }} {
+      margin-top: 40px;
+      overflow: visible !important;
+    }
+
+    .collection-slider-{{ section.id }} .swiper-wrapper {
+      align-items: stretch !important;
+    }
+
+    .collection-slide-{{ section.id }} {
+      box-sizing: border-box !important;
+      height: auto !important;
+      text-decoration: none;
+      display: flex !important;
+      flex-direction: column;
+    }
+
+    .collection-content-{{ section.id }} {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .collection-images-{{ section.id }} {
+      position: relative;
+      border: 0px solid #121212;
+      border-radius: {{ section_product_border_radius }}px;
+      overflow: hidden;
+    }
+
+    .collection-image-{{ section.id }} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transition: all 0.3s ease 0.15s;
+    }
+
+    .collection-second-image-{{ section.id }} {
+      opacity: 0;
+    }
+
+    .collection-image-{{ section.id }} img,
+    .collection-image-{{ section.id }} svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .collection-image-{{ section.id }} svg {
+      background-color: #AFAFAF;
+    }
+
+  .collection-title-{{ section.id }} {
+      margin: 0px;
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 130%;
+      color: #000;
+      text-transform: unset;
+      word-break: break-word;
+      font-weight: 700;
+  }
+
+    .collection-vendor-{{ section.id }} {
+      margin: 0;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #434343;
+      line-height: 130%;
+      text-transform: unset;
+      transition: all 0.25s ease 0s;
+    }
+
+  .collection-button-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      margin: 0;
+      margin-top: 14px;
+      font-size: {{ section.settings.collection_button_text_size }}px;
+      color: {{ collection_button_text_color }};
+      line-height: 100%;
+      text-align: center;
+      text-transform: unset;
+      text-decoration: none;
+      padding: 12px 12px;
+      border-radius: {{ collection_button_border_radius }}px;
+      transition: all 1s ease 0s;
+      background-color: {{ collection_button_color }};
+      border: 0px;
+      cursor: pointer;
+      font-weight: 700;
+  }
+
+    .collection-button-inner-{{ section.id }} {
+      margin: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .collection-button-{{ section.id }}:hover {
+      color: {{ collection_button_hover_text_color }};
+      background-color: {{ collection_button_hover_background }};
+      transition: all 0.25s ease 0s;
+    }
+
+    .collection-button-{{ section.id }} svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .collection-button-{{ section.id }} svg path {
+      fill: #ffffff;
+      transition: all 0.25s ease 0s;
+    }
+
+    .collection-button-{{ section.id }}:hover svg path {
+      fill: #ffffff;
+      transition: all 0.25s ease 0s;
+    }
+
+    .collection-price-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+  .collection-price-{{ section.id }} * {
+      margin: 0;
+      font-size: 12px;
+      color: {{ collection_button_text_color }};
+      line-height: 150%;
+      text-transform: unset;
+      font-style: normal;
+    }
+
+    .collection-compare-price-{{ section.id }} {
+      opacity: 0.8;
+      font-size: 11.2px;
+      color: {{ collection_button_text_color }};
+      text-decoration: line-through !important;
+    }
+
+    .collections-navigation-{{ section.id }} {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .collection-buttons-{{ section.id }} {
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    .collection-btn-prev-{{ section.id }},
+    .collection-btn-next-{{ section.id }} {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border: 0px;
+      border: 0.5px solid #c7c7c7;
+      border-radius: 100px;
+      background: transparent;
+      background: {{ arrow_bg_color }};
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      -webkit-appearance: none;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,.15);
+    }
+
+    .collection-btn-prev-{{ section.id }} .animate-icon,
+    .collection-btn-next-{{ section.id }} .animate-icon {
+      pointer-events: none;
+      place-items: center;
+      display: grid;
+    }
+
+    .collection-btn-prev-{{ section.id }} .animate-icon:before,
+    .collection-btn-next-{{ section.id }} .animate-icon:before {
+      content: "";
+      grid-area: 1 / -1;
+      transition: all .2s ease;
+      width: 7px;
+      height: 7px;
+      transform: rotate(calc(1 * 45deg));
+      box-sizing: border-box;
+      border-style: solid;
+      border: 0px;
+      border-right: 2px solid currentColor;
+      border-top: 2px solid currentColor;
+      position: relative;
+      left: -1px;
+    }
+
+    .collection-btn-prev-{{ section.id }} .animate-icon:before {
+      left: unset;
+      right: -1px;
+      border-right: 0px;
+      border-top: 0px;
+      border-bottom: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+    }
+
+    .collection-btn-prev-{{ section.id }} .animate-icon:after,
+    .collection-btn-next-{{ section.id }} .animate-icon:after {
+      content: "";
+      grid-area: 1 / -1;
+      transition: all .2s ease;
+      width: 6.7px;
+      height: 1.6px;
+      transform-origin: center;
+      opacity: 0;
+      background: currentColor;
+      transform: scaleX(.5);
+    }
+
+    .collection-btn-prev-{{ section.id }} span,
+    .collection-btn-next-{{ section.id }} span {
+      color: {{arrow_color}};
+    }
+
+    .collection-btn-prev-{{ section.id }}.swiper-button-disabled,
+    .collection-btn-next-{{ section.id }}.swiper-button-disabled {
+      opacity: 0.5;
+    }
+
+    .collection-scrollbar-{{ section.id }} {
+      flex: 1 1 auto;
+      position: static !important;
+      height: 3px !important;
+      background-color: #ece6f7 !important;
+      z-index: 2 !important;
+    }
+
+    .collection-scrollbar-{{ section.id }} .swiper-scrollbar-drag {
+      display: block !important;
+      background-color: {{ drag_bar_color }}!important;
+    }
+
+  .collection-tag-{{ section.id }} {
+      margin: 0;
+      font-size: 11px;
+      color: {{ collection_tag_text_color }};
+      line-height: 100%;
+      text-align: center;
+      text-transform: unset;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: {{ collection_tag_color }};
+      padding: 5px 15px;
+      border: 0px solid #121212;
+      border-radius: {{ collection_tag_border_radius }}px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      font-weight: 700;
+  }
+
+    @media(min-width: 1024px) {
+
+      .section-{{ section.id }} {
+        
+      margin-top: {{ section_top_margin}}px;
+      margin-bottom: {{ section_bottom_margin }}px;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        border-radius: 0px;
+      }
+
+      .section-{{ section.id }}-settings {
+      padding:0px {{ section_padding }}px ;
+      margin-top: {{ section_margin }}px;
+      margin-bottom: {{ section_margin }}px;
+      margin-left: 0px;
+      margin-right: 0px;
+      }
+
+      .collection-heading-{{ section.id }} * {
+        font-size: {{ collection_title_size }}px;
+      }
+
+      .collection-all-{{ section.id }} {
+        font-size: 16px;
+      }
+
+      .collection-all-arrow-{{ section.id }} {
+        display: none !important;
+      }
+
+      .collection-all-text-{{ section.id }} {
+        display: inline !important;
+      }
+
+      .collection-slider-{{ section.id }} {
+        margin-top: 40px;
+      }
+
+      .collection-slide-{{ section.id }}:hover .collection-second-image-{{ section.id }} {
+        opacity: 1;
+        transition: all 0.3s ease 0s;
+      }
+
+      .collection-slide-{{ section.id }}:hover .collection-first-image-{{ section.id }} {
+        opacity: 0;
+        transition: all 0.3s ease 0s;
+      }
+
+      .collection-title-{{ section.id }} {
+        margin-top: 12px;
+        font-size: 16px;
+      }
+
+      .collection-vendor-{{ section.id }} {
+        margin-top: 4px;
+        font-size: 14px;
+      }
+
+      .collection-button-{{ section.id }} {
+        margin-top: 14px;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+
+      .collection-price-{{ section.id }} * {
+        font-size: 14px;
+      }
+
+      .collection-btn-prev-{{ section.id }},
+      .collection-btn-next-{{ section.id }} {
+        width: 36px;
+        height: 36px;
+        transition: all 0.25s ease 0s;
+      }
+
+      .collection-btn-prev-{{ section.id }} .animate-icon:before,
+      .collection-btn-next-{{ section.id }} .animate-icon:before {
+        width: 7px;
+        height: 7px;
+      }
+
+      .collection-btn-prev-{{ section.id }} .animate-icon:after,
+      .collection-btn-next-{{ section.id }} .animate-icon:after {
+        width: 6.7px;
+      }
+
+      .collections-navigation-{{ section.id }} {
+        margin-top: 20px;
+      }
+
+      .collection-tag-{{ section.id }} {
+        font-size: 11px;
+        padding: 5px 15px;
+      }
+    }
+</style>
+
+<style>
+  .collection-button-{{ section.id }} {
+    background-color: {{ collection_button_color }};
+
+  }
+
+  .collection-button-{{ section.id }}:hover {
+    background-color: {{ collection_button_hover_background }};
+
+  }
+</style>
+
+<style>
+  .collection-images-{{ section.id }} {
+   aspect-ratio: 9.6/12;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+   .collection-images-{{ section.id }} {
+     aspect-ratio: 9.6/12;
+    }
+  }
+</style>
+
+<style>
+  .collection-buttons-{{ section.id }} {
+    display: none;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .collection-buttons-{{ section.id }} {
+      display: flex;
+    }
+  }
+</style>
+
+<style>
+  .collection-scrollbar-{{ section.id }} {
+    display: none !important;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .collection-scrollbar-{{ section.id }} {
+      display: flex !important;
+    }
+  }
+</style>
+
+<style>
+  .collection-slider-{{ section.id }}.preview .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .collection-slider-{{ section.id }}.preview .collection-slide-{{ section.id }} {
+    width: 100%;
+  }
+
+  .collection-slider-{{ section.id }}.preview .collection-slide-{{ section.id }}:not(:first-child) {
+    margin-left: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    .collection-slider-{{ section.id }}.preview .collection-slide-{{ section.id }}:not(:first-child) {
+      margin-left: 20px;
+    }
+
+    .collection-slider-{{ section.id }}.preview .collection-slide-{{ section.id }} {
+      width: calc(100% / 4 - (20px * 3));
+    }
+  }
+  @media only screen and (max-width: 768px){
+    .collection-price-{{ section.id }}{
+      display: none;
+    }
+    .collection-button-inner-{{ section.id }}{
+      text-align: center;
+      margin: auto;
+    }
+    .collection-heading-{{ section.id }} *{
+      font-size: {{ section.settings.collection_title_size_mobile}}px !important;
+    }
+    .collection-title-{{ section.id }} {
+      font-size: {{ section.settings.product_title_size_mobile}}px !important;
+    }
+  }
+</style>
+
+<div class="section-{{ section.id }} products-{{ section.id }}" style="background-color:#ffffff; background-image: ;">
+  <div class="section-{{ section.id }}-settings">
+    <div class="collection-top-{{ section.id }}">
+      {% if collection_title_enabled %}
+        <div class="collection-heading-{{ section.id }}">
+          <h2>{{ collection_title }}</h2>
+        </div>
+      {% endif %}
+
+      {% if collection_link_enabled %}
+        <a href="{{ collection.url }}" class="collection-all-{{ section.id }}">
+          <span class="collection-all-text-{{ section.id }}">{{ collection_link_text }}</span>
+          <span style="margin-top: -5px;" class="collection-all-text-{{ section.id }}">→</span>
+          <svg
+            class="collection-all-arrow-{{ section.id }}"
+            width="16"
+            height="9"
+            viewBox="0 0 16 9"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 1.38462L14.5455 0L8 6.23077L1.45455 0L0 1.38462L8 9L16 1.38462Z" fill="currentColor"></path>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+    <div class="collection-slider-{{ section.id }} swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+      <div
+        class="swiper-wrapper"
+        id="swiper-wrapper-c8890922f9222813"
+        aria-live="polite"
+        style="transition-duration: 0ms; transform: translate3d(-928.286px, 0px, 0px); transition-delay: 0ms;"
+      >
+      {% if collection != blank  %}
+        {% for product in collection.products %}
+          <a
+            href="{{ product.url }}"
+            class="collection-slide-{{ section.id }} swiper-slide"
+          >
+            <div class="collection-images-{{ section.id }}">
+              {% if section.settings.collection_badge %}
+                <p
+                  class="collection-tag-{{ section.id }}"
+                  style="background-color: {{ section.settings.collection_badge_bg_color }}; color: {{ section.settings.collection_badge_text_color }}; border-radius: {{ section.settings.collection_badge_border_radius }}px;"
+                >
+                  {{ collection_tag_text }}
+                </p>
+              {% endif %}
+              <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+                <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" loading="lazy">
+              </div>
+              {% if product.images.size > 1 %}
+                <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }}">
+                  <img src="{{ product.images[1] | img_url: '600x600' }}" alt="{{ product.title }}" loading="lazy">
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="collection-content-{{ section.id }}">
+              <div class="collection-content-top-{{ section.id }}">
+                <p class="collection-title-{{ section.id }}">
+                  {{ product.title }}
+                </p>
+                {% if enable_vendor == true %}
+                <p class="collection-vendor-{{ section.id }}">
+                  {{ product.vendor }}
+                </p>
+                {% endif %}
+              </div>
+              {% if show_atc == true %}
+              <div class="collection-button-{{ section.id }}">
+                <p class="collection-button-inner-{{ section.id }}" {% if show_price == false %} style="margin: auto !important;" {% endif %}>
+                  {{ section.settings.collection_button_text }}
+                </p>
+                {% if show_price == true %}
+                <div class="collection-price-{{ section.id }}">
+                  <p class="collection-regular-price-{{ section.id }}">{{ product.price | money }}</p>
+                  {% if product.compare_at_price > product.price %}
+                    <p class="collection-compare-price-{{ section.id }}">{{ product.compare_at_price | money }}</p>
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+      
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' |  placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }}" style="height: 370px !important;">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="collection-slide-{{ section.id }} swiper-slide"
+          
+        >
+          <div class="collection-images-{{ section.id }}">
+            
+              <p
+                class="collection-tag-{{ section.id }}"
+                style="background-color: #000; color: #fff; border-radius: 8px;"
+              >
+                New
+              </p>
+              
+            <div class="collection-image-{{ section.id }} collection-first-image-{{ section.id }}">
+              
+            <div style="height: 310px !important;">
+              {{ 'product-4' | placeholder_svg_tag: 'placeholder_svg' }}
+            </div>
+            </div>
+            
+              <div class="collection-image-{{ section.id }} collection-second-image-{{ section.id }} style="height: 270px !important;"">
+                {{ 'product-3' |  placeholder_svg_tag: 'placeholder_svg'  }}
+              </div>
+            
+          </div>
+
+          <div class="collection-content-{{ section.id }}">
+            <div class="collection-content-top-{{ section.id }}">
+              <p class="collection-title-{{ section.id }}">
+                Product
+              </p>
+              <p class="collection-vendor-{{ section.id }}">
+                PeakConversion
+              </p>
+            </div>
+
+            <div class="collection-button-{{ section.id }}">
+              <p class="collection-button-inner-{{ section.id }}">
+                Buy now
+              </p>
+              <div class="collection-price-{{ section.id }}">
+                <p class="collection-regular-price-{{ section.id }}">$30.75</p>
+                
+                  <p class="collection-compare-price-{{ section.id }}">$50.99</p>
+                
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endif %}
+      </div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>
+    <div class="collections-navigation-{{ section.id }}">
+      <div class="collection-scrollbar-{{ section.id }} swiper-scrollbar swiper-scrollbar-horizontal">
+        <div
+          class="swiper-scrollbar-drag"
+          style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms; width: 0px;"
+        ></div>
+      </div>
+      <div class="collection-buttons-{{ section.id }}">
+        <button
+          class="collection-btn-prev-{{ section.id }}"
+          tabindex="0"
+          aria-label="Previous slide"
+          aria-controls="swiper-wrapper-c8890922f9222813"
+          aria-disabled="false"
+        >
+          <span class="animate-icon"></span>
+        </button>
+        <button
+          class="collection-btn-next-{{ section.id }} swiper-button-disabled"
+          tabindex="-1"
+          aria-label="Next slide"
+          aria-controls="swiper-wrapper-c8890922f9222813"
+          aria-disabled="true"
+          disabled=""
+        >
+          <span class="animate-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PC Featured Collection #1",
+  "settings": [
+  {
+    "type": "header",
+    "content": "This section is a property of PeakConversion",
+    "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info - please save to see all changes"
+  },
+  {
+    "type": "header",
+    "content": "Collection Settings",
+    "info": "To edit the content you select a collection"
+  },
+    {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection",
+        "info": "each collection product must have at least two image to display properly"
+    },
+    {
+        "type": "text",
+        "id": "collection_title",
+        "label": "Collection Title",
+        "default": "Trending Now"
+    },
+    {
+        "type": "range",
+        "id": "collection_title_size",
+        "label": "Collection Title Size",
+        "min": 12,
+        "max": 48,
+        "default": 40
+    },
+    
+    {
+        "type": "range",
+        "id": "collection_title_size_mobile",
+        "label": "Collection Title Size mobile",
+        "min": 12,
+        "max": 48,
+        "default": 22
+    },
+    
+    {
+        "type": "range",
+        "id": "product_title_size_mobile",
+        "label": "Product Title Size mobile",
+        "min": 12,
+        "max": 48,
+        "default": 12
+    },
+    {
+        "type": "color",
+        "id": "collection_title_color",
+        "label": "Collection Title Color",
+        "default": "#121212"
+    },
+    {
+        "type": "text",
+        "id": "collection_link_text",
+        "label": "Collection Link Text",
+        "default": "Shop All"
+    },
+    {
+        "type": "color",
+        "id": "collection_link_color",
+        "label": "Collection Link Color",
+        "default": "#121212"
+    },
+    {
+        "type": "checkbox",
+        "id": "collection_link_enabled",
+        "label": "Enable Collection Link",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "collection_title_enabled",
+        "label": "Enable Collection Title",
+        "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "collection_badge",
+        "label": "Enable Collection Badge",
+        "default": true
+    },
+    {
+        "type": "color",
+        "id": "collection_badge_bg_color",
+        "label": "Collection Badge Background Color",
+        "default": "#a16eff"
+    },
+    {
+        "type": "text",
+        "id": "collection_badge_text",
+        "label": "Collection Badge Text",
+        "default": "Best Seller"
+    },
+    {
+        "type": "color",
+        "id": "collection_badge_text_color",
+        "label": "Collection Badge Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "range",
+        "id": "collection_badge_border_radius",
+        "label": "Collection Badge Border Radius",
+        "min": 0,
+        "max": 50,
+        "default": 2
+    },
+    {
+        "type": "header",
+        "content": "Section layout"
+    },
+    {
+        "type": "range",
+        "id": "section_padding",
+        "label": "Section Padding",
+        "min": 0,
+        "max": 100,
+        "default": 27
+    },
+    {
+        "type": "range",
+        "id": "section_top_margin",
+        "label": "Section Margin Top",
+        "min": 0,
+        "max": 100,
+        "default": 32
+    },
+    
+    {
+        "type": "range",
+        "id": "section_bottom_margin",
+        "label": "Section Margin bottom",
+        "min": 0,
+        "max": 100,
+        "default": 32
+    },
+    {
+        "type": "range",
+        "id": "section_product_border_radius",
+        "label": "Section Product Border Radius",
+        "min": 0,
+        "max": 50,
+        "default": 10
+    },
+    {
+        "type": "header",
+        "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_atc",
+      "label": "Show buy button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+        "type": "color",
+        "id": "collection_button_color",
+        "label": "Button Color",
+        "default": "#000000"
+    },
+    {
+        "type": "text",
+        "id": "collection_button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+    },
+    {
+        "type": "color",
+        "id": "collection_button_text_color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "range",
+        "id": "collection_button_text_size",
+        "label": "Button Text Size",
+        "min": 12,
+        "max": 48,
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "collection_button_border_radius",
+        "label": "Button Border Radius",
+        "min": 0,
+        "max": 50,
+        "default": 10
+    },
+    {
+        "type": "color",
+        "id": "collection_button_hover_background",
+        "label": "Button Hover Background",
+        "default": "#000000"
+    },
+    {
+        "type": "color",
+        "id": "collection_button_hover_text_color",
+        "label": "Button Hover Text Color",
+        "default": "#ffffff"
+    },
+
+    {
+        "type": "header",
+        "content": "Slider Settings"
+    },
+    {
+      "type": "color",
+      "id": "scroll_bar_color",
+      "label": "Scroll bar color",
+      "default": "#8a819b"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#7b7b7b"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background color",
+      "default": "#ebebeb"
+    },
+    {
+        "type": "range",
+        "id": "swiper_slides_per_view",
+        "label": "Slides Per View",
+        "min": 1,
+        "max": 10,
+        "default": 6,
+        "step": 1
+    },
+    {
+        "type": "checkbox",
+        "id": "swiper_autoplay",
+        "label": "Autoplay",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "swiper_delay",
+        "label": "Delay",
+        "min": 1000,
+        "max": 9000,
+        "default": 5000,
+        "step": 1000,
+        "unit": "ms"
+    },
+    {
+        "type": "range",
+        "id": "swiper_space_between",
+        "label": "Space Between",
+        "min": 0,
+        "max": 90,
+        "default": 20,
+        "step": 1,
+        "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Products",
+      "name": "PC Featured Collection #1"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  function initFeaturedCollection7() {
+    document.querySelector('.collection-slider-{{ section.id }}').classList.remove('preview');
+    const slider = new Swiper(".collection-slider-{{ section.id }}", {
+      speed: 300,
+      spaceBetween: 20,
+      {% if swiper_autoplay == true %}
+        autoplay: {
+            delay: {{ swiper_delay }},
+            disableOnInteraction: false
+        },
+    {% endif  %}
+      navigation: {
+        nextEl: '.collection-btn-next-{{ section.id }}',
+        prevEl: '.collection-btn-prev-{{ section.id }}',
+      },
+      scrollbar: {
+        el: '.collection-scrollbar-{{ section.id }}',
+        draggable: true,
+      },
+      breakpoints: {
+        320: {
+          spaceBetween: 16,
+          slidesPerView: 2.5
+        },
+        768: {
+          spaceBetween: 16,
+          slidesPerView: 4
+        },
+        1024: {
+          spaceBetween: {{ swiper_space_between }},
+          slidesPerView: {{ swiper_slides_per_view }}
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initFeaturedCollection7);
+
+  if (Shopify.designMode) {
+     document.addEventListener('shopify:section:unload', initFeaturedCollection7);
+     document.addEventListener('shopify:section:load', initFeaturedCollection7);
+  }
+</script>

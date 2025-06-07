@@ -1,0 +1,1558 @@
+{% liquid 
+    assign heading = section.settings.heading
+    assign heading_size = section.settings.heading_size
+    assign heading_weight = section.settings.heading_weight
+    assign heading_color =  section.settings.heading_color
+    assign heading_font = section.settings.heading_font
+
+    assign heading_size_mobile = section.settings.heading_size_mobile
+    assign heading_weight_mobile = section.settings.heading_weight_mobile
+
+
+    assign text = section.settings.text
+    assign text_size = section.settings.text_size
+    assign text_weight = section.settings.text_weight
+    assign text_color = section.settings.text_color
+    assign text_font = section.settings.text_font
+
+    assign text_size_mobile = section.settings.text_size_mobile
+    assign text_weight_mobile = section.settings.text_weight_mobile
+
+    assign slide_border_radius = section.settings.slide_border_radius
+    assign slide_border_size = section.settings.slide_border_size
+    assign slide_border_style = section.settings.slide_border_style
+    assign slide_border_color = section.settings.slide_border_color
+    assign slide_bg_color = section.settings.slide_bg_color
+
+    assign author_size = section.settings.author_size
+    assign author_weight = section.settings.author_weight
+    assign author_color = section.settings.author_color
+    assign author_font = section.settings.author_font
+
+    assign author_size_mobile = section.settings.author_size_mobile
+    assign author_weight_mobile = section.settings.author_weight_mobile
+
+    assign job_title_size = section.settings.job_title_size
+    assign job_title_weight = section.settings.job_title_weight
+    assign job_title_color = section.settings.job_title_color
+    assign job_title_font = section.settings.job_title_font
+
+    assign job_title_size_mobile = section.settings.job_title_size_mobile
+    assign job_title_weight_mobile = section.settings.job_title_weight_mobile
+
+    assign social_icon_size = section.settings.social_icon_size
+    assign social_icon_color = section.settings.social_icon_color
+
+    assign social_icon_size_mobile = section.settings.social_icon_size_mobile
+
+    assign slide_content_size = section.settings.slide_content_size
+    assign slide_content_weight = section.settings.slide_content_weight
+    assign slide_content_color = section.settings.slide_content_color
+    assign slide_content_font = section.settings.slide_content_font
+
+    assign slide_content_size_mobile = section.settings.slide_content_size_mobile
+    assign slide_content_weight_mobile = section.settings.slide_content_weight_mobile
+
+    assign button_size = section.settings.button_size
+    assign button_weight = section.settings.button_weight
+    assign button_color = section.settings.button_color
+    assign button_font = section.settings.button_font
+
+    assign button_size_mobile = section.settings.button_size_mobile
+    assign button_weight_mobile = section.settings.button_weight_mobile
+
+    assign button_border_radius = section.settings.button_border_radius
+    assign button_border_size = section.settings.button_border_size
+    assign button_border_style = section.settings.button_border_style
+    assign button_border_color = section.settings.button_border_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign enable_button_underline = section.settings.enable_button_underline
+
+    assign slides_per_view_desktop = section.settings.slides_per_view_desktop
+    assign slides_per_view_tablet = section.settings.slides_per_view_tablet
+    assign slides_per_view_mobile = section.settings.slides_per_view_mobile
+    assign space_between_slides_desktop = section.settings.space_between_slides_desktop
+    assign space_between_slides_tablet = section.settings.space_between_slides_tablet
+    assign space_between_slides_mobile = section.settings.space_between_slides_mobile
+    assign auto_play = section.settings.auto_play
+    assign auto_play_speed = section.settings.auto_play_speed
+    assign loop = section.settings.loop
+    assign show_pagination = section.settings.show_pagination
+    assign show_navigation = section.settings.show_navigation
+    assign slide_global_color = section.settings.slide_global_color
+
+    assign layout_margin_top = section.settings.layout_margin_top
+    assign layout_margin_bottom = section.settings.layout_margin_bottom
+    assign layout_background = section.settings.layout_background
+    assign layout_enable_max_width = section.settings.layout_enable_max_width
+%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  .section-pc-{{section.id}} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: {{ layout_margin_top }}px;
+    margin-bottom: {{ layout_margin_bottom }}px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0px;
+    overflow: hidden;
+    
+  }
+
+  .section-pc-{{section.id}}-settings {
+    margin: 0 auto;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    {% if layout_enable_max_width == true %}
+
+      max-width: 100%;
+      {% else %}
+      max-width: 1400px;
+      {% endif %}
+  }
+
+  .testimonials-heading-pc-{{section.id}} {
+    text-align: center;
+  }
+
+  .testimonials-heading-pc-{{section.id}} * {
+    margin: 0;
+    font-weight: {{ heading_weight_mobile}};
+    font-size: {{ heading_size_mobile }}px;
+    color: {{ heading_color }};
+    font-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    line-height: 130%;
+    text-transform: unset;
+    text-decoration: none;
+  }
+
+  .testimonials-text-pc-{{section.id}} {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .testimonials-text-pc-{{section.id}} * {
+    margin: 0;
+    font-size: {{ text_size_mobile }}px;
+    color: {{ text_color }};
+    font-family: {{ text_font.family }}, {{ text_font.fallback_families }};
+    font-weight: {{ text_weight_mobile }};
+    line-height: 150%;
+    text-transform: unset;
+    text-decoration: none;
+  }
+
+  .testimonials-slider-body-pc-{{section.id}} {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .testimonials-slider-pc-{{section.id}} {
+    flex: 1 1 0 !important;
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .testimonials-slider-pc-{{section.id}} .swiper-wrapper {
+    align-items: stretch !important;
+  }
+
+  .testimonials-slide-pc-{{section.id}} {
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    border: {{ slide_border_size }}px {{ slide_border_style }} {{ slide_border_color }};
+    border-radius: {{ slide_border_radius }}px;
+    background-color: {{ slide_bg_color }};
+    height: auto !important;
+  }
+
+  .testimonials-image-pc-{{section.id}} img,
+  .testimonials-image-pc-{{section.id}} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonials-image-pc-{{section.id}} svg {
+    background-color: transparent ;
+  }
+
+  .testimonials-content-pc-{{section.id}} {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 30px 18px;
+  }
+
+  .testimonials-author-pc-{{section.id}} {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .testimonials-author-inner-pc-{{section.id}} {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .testimonials-author-image-pc-{{section.id}} {
+    flex-shrink: 0;
+    width: 36px;
+    border-radius: 100px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+
+  .testimonials-author-image-pc-{{section.id}} img,
+  .testimonials-author-image-pc-{{section.id}} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonials-author-image-pc-{{section.id}} svg {
+    background-color: #AFAFAF;
+  }
+
+  .testimonials-author-name-pc-{{section.id}} {
+    margin: 0;
+    font-size: {{ author_size_mobile }}px;
+    color: {{ author_color }};
+    font-weight: {{ author_weight_mobile }};
+    font-family: {{ author_font.family }}, {{ author_font.fallback_families }} ;
+    line-height: 130%;
+    text-transform: unset;
+    word-wrap: break-word;
+  }
+
+  .testimonials-author-job-title-pc-{{section.id}} {
+    margin: 0;
+    font-size: {{ job_title_size_mobile }}px;
+    color: {{ job_title_color }};
+    font-weight: {{ job_title_weight }};
+    font-family: {{ job_title_font.family }}, {{ job_title_font.fallback_families }};
+    line-height: 150%;
+    text-transform: unset;
+    word-wrap: break-word;
+  }
+
+  .testimonials-social-icon-pc-{{section.id}} {
+    width: {{ social_icon_size_mobile }}px;
+    height: {{ social_icon_size_mobile }}px;
+  }
+
+  .testimonials-social-icon-pc-{{section.id}} img,
+  .testimonials-social-icon-pc-{{section.id}} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonials-social-icon-pc-{{section.id}} svg path {
+    fill: {{ social_icon_color  }};
+  }
+
+  .testimonials-slide-text-pc-{{section.id}} {
+    margin-top: 24px;
+    text-align: left;
+  }
+
+  .testimonials-slide-text-pc-{{section.id}} * {
+    margin: 0;
+    font-size: {{ slide_content_size_mobile }}px;
+    color: {{ slide_content_color }};
+    font-weight: {{ slide_content_weight_mobile }};
+    font-family: {{ slide_content_font.family }}, {{ slide_content_font.fallback_family }};
+    line-height: 150%;
+    text-transform: unset;
+    text-decoration: none;
+  }
+
+  .testimonials-button-pc-{{section.id}} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    margin-top: 16px;
+    font-size: {{ button_size_mobile }}px;
+    color: {{ button_color }};
+    line-height: 100%;
+    text-align: center;
+    text-transform: unset;
+    {% if enable_button_underline == false %}
+    text-decoration: none;
+    {% else %}
+    text-decoration: underline;
+    {% endif %}
+    padding: 10px 16px;
+    border-radius: {{ button_border_radius }}px;
+    transition: all 0.25s ease 0s;
+    background-color: {{ button_bg_color }};
+    border: {{ button_border_size }}px {{ button_border_style }} {{ button_border_color }};
+    cursor: pointer;
+  }
+
+  .testimonials-button-inner-pc-{{section.id}} {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .testimonials-button-pc-{{section.id}}:hover {
+    /* color: #303030; */
+    transition: all 0.25s ease 0s;
+  }
+
+  .testimonials-button-pc-{{section.id}} svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}},
+  .testimonials-btn-next-pc-{{section.id}} {
+    display: flex;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border: 0px;
+    border-radius: 100px;
+    background: transparent;
+    background: {{ slide_global_color }};
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,.15); */
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}} .animate-icon,
+  .testimonials-btn-next-pc-{{section.id}} .animate-icon {
+    pointer-events: none;
+    place-items: center;
+    display: grid;
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}} .animate-icon:before,
+  .testimonials-btn-next-pc-{{section.id}} .animate-icon:before {
+    content: "";
+    grid-area: 1 / -1;
+    transition: all .2s ease;
+    width: 8px;
+    height: 8px;
+    transform: rotate(calc(1 * 45deg));
+    box-sizing: border-box;
+    border-style: solid;
+    border: 0px;
+    border-right: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    position: relative;
+    left: -1px;
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}} .animate-icon:before {
+    left: unset;
+    right: -1px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}} .animate-icon:after,
+  .testimonials-btn-next-pc-{{section.id}} .animate-icon:after {
+    content: "";
+    grid-area: 1 / -1;
+    transition: all .2s ease;
+    width: 7.7px;
+    height: 1.6px;
+    transform-origin: center;
+    opacity: 0;
+    background: currentColor;
+    transform: scaleX(.5);
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}} span,
+  .testimonials-btn-next-pc-{{section.id}} span {
+    color: {{ button_bg_color}};
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}}.swiper-button-disabled,
+  .testimonials-btn-next-pc-{{section.id}}.swiper-button-disabled {
+    opacity: 0.5;
+  }
+
+  .testimonials-btn-prev-pc-{{section.id}}.swiper-button-lock,
+  .testimonials-btn-next-pc-{{section.id}}.swiper-button-lock {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .testimonials-pagination-pc-{{section.id}} {
+    position: static !important;
+    margin: 0px auto !important;
+    margin-top: 24px !important;
+    width: 100% !important;
+    max-width: fit-content;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonials-pagination-pc-{{section.id}} .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    border: 0px !important;
+    background-color: {{ slide_global_color }} !important;
+    opacity: 0.4 !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .testimonials-pagination-pc-{{section.id}} .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    transform: scale(1.3) !important;
+    opacity: 1 !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  @media(min-width: 1024px) {
+
+    .section-pc-{{section.id}} {
+      margin-top: {{ layout_margin_top }}px;
+      margin-bottom: {{ layout_margin_bottom }}px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 0px;
+    }
+
+    .section-pc-{{section.id}}-settings {
+      padding: 0 5rem;
+      padding-top: 36px;
+      padding-bottom: 36px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    .testimonials-heading-pc-{{section.id}} {
+      text-align: center;
+    }
+
+    .testimonials-heading-pc-{{section.id}} * {
+      font-size: {{ heading_size }}px;
+      font-weight: {{ heading_weight }};
+    }
+
+    .testimonials-text-pc-{{section.id}} {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .testimonials-text-pc-{{section.id}} * {
+      font-size: {{ text_size }}px;
+      font-weight: {{ text_weight }};
+    }
+
+    .testimonials-slider-body-pc-{{section.id}} {
+      margin-top: 72px;
+    }
+
+    .testimonials-slider-pc-{{section.id}} {
+      margin-left: -0rem !important;
+      margin-right: -0rem !important;
+    }
+
+    .testimonials-content-pc-{{section.id}} {
+      align-items: start;
+      padding: 40px 24px;
+    }
+
+    .testimonials-author-image-pc-{{section.id}} {
+      width: 48px;
+    }
+
+    .testimonials-author-name-pc-{{section.id}} {
+      font-size: {{ author_size }}px;
+      font-weight: {{ author_weight }};
+    }
+
+    .testimonials-author-job-title-pc-{{section.id}}{
+      font-size: {{ job_title_size }}px;
+      font-weight: {{ job_title_weight }};
+    }
+
+    .testimonials-social-icon-pc-{{section.id}} {
+      width: {{ social_icon_size }}px;
+      height: {{ social_icon_size }}px;
+    }
+
+    .testimonials-slide-text-pc-{{section.id}} {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .testimonials-slide-text-pc-{{section.id}} * {
+      font-size: {{ slide_content_size }}px;
+      font-weight: {{ slide_content_weight }};
+    }
+
+    .testimonials-button-pc-{{section.id}} {
+      align-items: left;
+      margin-top: 20px;
+      padding: 10px 16px;
+      font-size: {{ button_size }}px;
+      font-weight: {{ button_weight }};
+    }
+
+    .testimonials-btn-prev-pc-{{section.id}},
+    .testimonials-btn-next-pc-{{section.id}} {
+      width: 48px;
+      height: 48px;
+      transition: all 0.25s ease 0s;
+    }
+
+    .testimonials-btn-prev-pc-{{section.id}} .animate-icon:before,
+    .testimonials-btn-next-pc-{{section.id}} .animate-icon:before {
+      width: 10px;
+      height: 10px;
+    }
+
+    .testimonials-btn-prev-pc-{{section.id}} .animate-icon:after,
+    .testimonials-btn-next-pc-{{section.id}} .animate-icon:after {
+      width: 9.7px;
+    }
+
+    .testimonials-pagination-pc-{{section.id}} {
+      margin-top: 32px !important;
+    }
+
+    .testimonials-pagination-pc-{{section.id}} .swiper-pagination-bullet {
+      width: 8px !important;
+      height: 8px !important;
+    }
+  }
+</style>
+<style>
+  .section-pc-{{section.id}}-settings {
+{% if layout_enable_max_width == true %}
+  max-width: 100%;
+  {% else %}
+    max-width: 1400px;
+    {% endif %}
+  }
+</style>
+
+
+<style>
+  .testimonials-image-pc-{{section.id}} {
+    aspect-ratio: 12/12;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .testimonials-image-pc-{{section.id}} {
+      aspect-ratio: 12/12;
+    }
+  }
+</style>
+
+<style>
+  
+</style>
+
+<style>
+  .testimonials-btn-prev-pc-{{section.id}}:hover,
+  .testimonials-btn-next-pc-{{section.id}}:hover {
+    transform: scale(0.9);
+  }
+
+  @media(min-width: 1024px) {
+    .testimonials-btn-prev-pc-{{section.id}}:hover,
+    .testimonials-btn-next-pc-{{section.id}}:hover {
+      transform: scale(0.9);
+    }
+  }
+</style>
+
+<style>
+  .testimonials-btn-prev-pc-{{section.id}},
+  .testimonials-btn-next-pc-{{section.id}} {
+    display: none;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .testimonials-btn-prev-pc-{{section.id}},
+    .testimonials-btn-next-pc-{{section.id}} {
+      display: flex;
+    }
+  }
+</style>
+
+<style>
+  .testimonials-pagination-pc-{{section.id}} {
+    display: flex !important;
+  }
+</style>
+
+<style>
+  @media(min-width: 1024px) {
+    .testimonials-pagination-pc-{{section.id}} {
+      display: flex !important;
+    }
+  }
+</style>
+
+<style>
+  .testimonials-slider-pc-{{section.id}}.preview .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 15px;
+  }
+
+  .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}} {
+    width: 100%;
+  }
+
+  .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}}:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  @media(min-width: 1024px) {
+    .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}}:not(:first-child) {
+      margin-left: 39px;
+    }
+
+    .testimonials-slider-pc-{{section.id}}.preview .testimonials-slide-pc-{{section.id}} {
+      width: calc(100% / 3 - (24px));
+    }
+  }
+</style>
+
+<div
+  class="section-pc-{{section.id}} testimonials-pc-{{section.id}}"
+  style="background-color:{{ layout_background }}; background-image: ;"
+>
+  <div class="section-pc-{{section.id}}-settings">
+    {% if heading %}
+    <div class="testimonials-heading-pc-{{section.id}}">
+      <h2> {{ heading }}</h2>
+    </div>
+    {% endif %}
+
+    {% if text %}
+    <div class="testimonials-text-pc-{{section.id}}">
+      <p>{{ text }}</p>
+    </div>
+    {% endif %}
+
+    <div class="testimonials-slider-body-pc-{{section.id}}">
+      {% if show_navigation == true %}
+      <button
+        class="testimonials-btn-prev-pc-{{section.id}} "
+        
+      >
+        <span class="animate-icon"></span>
+      </button>
+  {% endif %}
+      <div class="testimonials-slider-pc-{{section.id}} swiper">
+        <div
+          class="swiper-wrapper"
+          >
+          {% for block in section.blocks %}
+          <div
+            class="testimonials-slide-pc-{{section.id}} swiper-slide "
+            
+          >
+            <div class="testimonials-image-pc-{{section.id}}">
+              {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | img_url: 'master' }}"
+                alt=""
+                loading="lazy"
+              >
+              {% else %}
+              {{ 'product-1' |  placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="testimonials-content-pc-{{section.id}}">
+              <div class="testimonials-author-pc-{{section.id}}">
+                <div class="testimonials-author-inner-pc-{{section.id}}">
+                  <div class="testimonials-author-image-pc-{{section.id}}">
+                    {% if block.settings.author_image != blank %}
+                    <img
+                      src="{{ block.settings.author_image | img_url: 'master' }}"
+                      alt=""
+                      loading="lazy"
+                    >
+                    {% else %}
+                    {{ 'product-1' |  placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  </div>
+                  <div class="testimonials-author-content-pc-{{section.id}}">
+                  {% if block.settings.author_name %}
+                  <p class="testimonials-author-name-pc-{{section.id}}">{{ block.settings.author_name }}</p>
+                  {% endif %}
+                  {% if block.settings.author_job_title %}
+                  <p class="testimonials-author-job-title-pc-{{section.id}}">{{ block.settings.author_job_title }}</p>
+                  {% endif %}
+                  </div>
+                </div>
+
+                <div class="testimonials-social-icon-pc-{{section.id}}">
+                  {% if block.settings.social_icon == 'tiktok' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0850/7673/8376/files/tik-tok.svg?v=1731484202" alt="" loading="lazy">
+                  {% elsif block.settings.social_icon == 'instagram' %}  
+                    <img src="https://cdn.shopify.com/s/files/1/0850/7673/8376/files/instagram.svg?v=1731233933" alt="" loading="lazy"> 
+                  {% elsif block.settings.social_icon == 'youtube' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0850/7673/8376/files/youtube.svg?v=1731484194" alt="" loading="lazy"> 
+                  {% elsif block.settings.social_icon == 'twitter' %}  
+                    <img src="https://cdn.shopify.com/s/files/1/0850/7673/8376/files/X_logo_2023_original.svg?v=1731484281" alt="" loading="lazy"> 
+                  {% endif %}  
+                </div>
+              </div>
+
+              <div class="testimonials-slide-text-pc-{{section.id}}">
+                <p>
+                  {{ block.settings.content }}
+                </p>
+              </div>
+
+              <a href="{{ block.settings.button_url }}" class="testimonials-button-pc-{{section.id}}">
+                <p class="testimonials-button-inner-pc-{{section.id}}">{{ block.settings.button_text}}</p>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+      </div>
+      {% if show_navigation == true %}
+      <button
+        class="testimonials-btn-next-pc-{{section.id}}"
+        
+      >
+        <span class="animate-icon"></span>
+      </button>
+        {% endif %}
+    </div>
+    {% if show_pagination == true %}
+    <div class="testimonials-pagination-pc-{{section.id}} swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+      
+    </div>
+        {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+    "name": "PC SOCIAL REVIEWS #3",
+    "settings": [
+         {
+            "type": "header",
+            "content": "This section is a property of PeakConversion",
+            "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info"
+        },
+        {
+            "type": "header",
+            "content": "Heading Settings"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Lorem ipsum dolor"
+        },
+        {
+            "type": "range",
+            "id": "heading_size",
+            "label": "Heading Size",
+            "default": 48,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "heading_weight",
+            "label": "Heading Weight",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#000000"
+        },
+        {
+            "type": "font_picker",
+            "id": "heading_font",
+            "label": "Heading Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "heading_size_mobile",
+            "label": "Heading Size Mobile",
+            "default": 24,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "heading_weight_mobile",
+            "label": "Heading Weight Mobile",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Text Settings"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "type": "range",
+            "id": "text_size",
+            "label": "Text Size",
+            "default": 16,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "text_weight",
+            "label": "Text Weight",
+            "default": "400",
+            "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "font_picker",
+            "id": "text_font",
+            "label": "Text Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "text_size_mobile",
+            "label": "Text Size Mobile",
+            "default": 12,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "text_weight_mobile",
+            "label": "Text Weight Mobile",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Slide Settings"
+        },
+        {
+            "type": "range",
+            "id": "slide_border_radius",
+            "label": "Slide Border Radius",
+            "default": 20,
+            "min": 0,
+            "max": 50,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "slide_border_size",
+            "label": "Slide Border Size",
+            "default": 0,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "slide_border_style",
+            "label": "Slide Border Style",
+            "default": "solid",
+            "options": [
+            { "value": "solid", "label": "Solid" },
+            { "value": "dashed", "label": "Dashed" },
+            { "value": "dotted", "label": "Dotted" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "slide_border_color",
+            "label": "Slide Border Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "slide_bg_color",
+            "label": "Slide Background Color",
+            "default": "#f8f8f8"
+        },
+        {
+            "type": "header",
+            "content": "Author Settings"
+        },
+        {
+            "type": "range",
+            "id": "author_size",
+            "label": "Author Size",
+            "default": 16,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "author_weight",
+            "label": "Author Weight",
+            "default": "100",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "author_color",
+            "label": "Author Color",
+            "default": "#303030"
+        },
+        {
+            "type": "font_picker",
+            "id": "author_font",
+            "label": "Author Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "author_size_mobile",
+            "label": "Author Size Mobile",
+            "default": 14,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "author_weight_mobile",
+            "label": "Author Weight Mobile",
+            "default": "300",
+            "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Job Title Settings"
+        },
+        {
+            "type": "range",
+            "id": "job_title_size",
+            "label": "Job Title Size",
+            "default": 14,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "job_title_weight",
+            "label": "Job Title Weight",
+            "default": "400",
+            "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "job_title_color",
+            "label": "Job Title Color",
+            "default": "#303030"
+        },
+        {
+            "type": "font_picker",
+            "id": "job_title_font",
+            "label": "Job Title Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "job_title_size_mobile",
+            "label": "Job Title Size Mobile",
+            "default": 12,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "job_title_weight_mobile",
+            "label": "Job Title Weight Mobile",
+            "default": "400",
+            "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Social Icon Settings"
+        },
+        {
+            "type": "range",
+            "id": "social_icon_size",
+            "label": "Social Icon Size",
+            "default": 28,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "color",
+            "id": "social_icon_color",
+            "label": "Social Icon Color",
+            "default": "#000000"
+        },
+        {
+            "type": "range",
+            "id": "social_icon_size_mobile",
+            "label": "Social Icon Size Mobile",
+            "default": 24,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Slide Content Settings"
+        },
+        {
+            "type": "range",
+            "id": "slide_content_size",
+            "label": "Slide Content Size",
+            "default": 16,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "slide_content_weight",
+            "label": "Slide Content Weight",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "slide_content_color",
+            "label": "Slide Content Color",
+            "default": "#303030"
+        },
+        {
+            "type": "font_picker",
+            "id": "slide_content_font",
+            "label": "Slide Content Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "slide_content_size_mobile",
+            "label": "Slide Content Size Mobile",
+            "default": 14,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "slide_content_weight_mobile",
+            "label": "Slide Content Weight Mobile",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Button Settings"
+        },
+        {
+            "type": "range",
+            "id": "button_size",
+            "label": "Button Size",
+            "default": 14,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "button_weight",
+            "label": "Button Weight",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button Color",
+            "default": "#303030"
+        },
+        {
+            "type": "font_picker",
+            "id": "button_font",
+            "label": "Button Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "button_size_mobile",
+            "label": "Button Size Mobile",
+            "default": 12,
+            "min": 10,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "button_weight_mobile",
+            "label": "Button Weight Mobile",
+            "default": "400",
+            "options": [
+            { "value": "100", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "900", "label": "Bold" }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "button_border_radius",
+            "label": "Button Border Radius",
+            "default": 0,
+            "min": 0,
+            "max": 50,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "button_border_size",
+            "label": "Button Border Size",
+            "default": 0,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "select",
+            "id": "button_border_style",
+            "label": "Button Border Style",
+            "default": "solid",
+            "options": [
+            { "value": "solid", "label": "Solid" },
+            { "value": "dashed", "label": "Dashed" },
+            { "value": "dotted", "label": "Dotted" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button Border Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "button_bg_color",
+            "label": "Button Background Color",
+            "default": "#f5db8b"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_button_underline",
+            "label": "Enable Button Underline",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "Slider Settings"
+        },
+        {
+            "type": "range",
+            "id": "slides_per_view_desktop",
+            "label": "Slides Per View Desktop",
+            "default": 3,
+            "min": 1,
+            "max": 10,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "slides_per_view_tablet",
+            "label": "Slides Per View Tablet",
+            "default": 2,
+            "min": 1,
+            "max": 10,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "slides_per_view_mobile",
+            "label": "Slides Per View Mobile",
+            "default": 1.3,
+            "min": 1,
+            "max": 10,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "space_between_slides_desktop",
+            "label": "Space Between Slides Desktop",
+            "default": 24,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "space_between_slides_tablet",
+            "label": "Space Between Slides Tablet",
+            "default": 20,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "space_between_slides_mobile",
+            "label": "Space Between Slides Mobile",
+            "default": 20,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "checkbox",
+            "id": "auto_play",
+            "label": "Auto Play",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "auto_play_speed",
+            "label": "Auto Play Speed",
+            "default": 3000,
+            "min": 1000,
+            "max": 5000,
+            "step": 500
+        },
+        {
+            "type": "checkbox",
+            "id": "loop",
+            "label": "Loop",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_pagination",
+            "label": "Show Pagination",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_navigation",
+            "label": "Show Navigation",
+            "default": true
+        },
+        {
+            "type": "color",
+            "id": "slide_global_color",
+            "label": "Slide Global Color",
+            "default": "#000000"
+        },
+        {
+            "type": "header",
+            "content": "Layout Settings"
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_top",
+            "label": "Layout Margin Top",
+            "default": 36,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_bottom",
+            "label": "Layout Margin Bottom",
+            "default": 36,
+            "min": 0,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "type": "color",
+            "id": "layout_background",
+            "label": "Layout Background",
+            "default": "#ffffff"
+        },
+        {
+            "type": "checkbox",
+            "id": "layout_enable_max_width",
+            "label": "Enable Max Width",
+            "default": false
+        }
+    ],
+    "blocks": [
+      {
+        "type": "slider",
+        "name": "Slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+          
+          },
+          {
+            "type": "select",
+            "id": "social_icon",
+            "label": "Social media icon",
+            "default": "tiktok",
+            "options": [
+            { "value": "tiktok", "label": "TikTok" },
+            { "value": "youtube", "label": "Youtube" },
+            { "value": "instagram", "label": "Instagram" },
+            { "value": "twitter", "label": "Twitter / X" }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "author_image",
+            "label": "Author Image"
+          },
+          {
+            "type": "text",
+            "id": "author_name",
+            "label": "Author Name",
+            "default": "@olivia"
+          },
+          {
+            "type": "text",
+            "id": "author_job_title",
+            "label": "Author Job Title",
+            "default": "Content Creator"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content",
+            "default": "Fantastic! Perfect for the caravan on the go. Get ready to take your caravan to the next level with this perfect addition!"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "+ Check full post"
+          }
+        ]
+      }
+    ],
+    "presets": [
+        {
+            "name": "PC SOCIAL REVIEWS #3",
+            "category": "Testimonials",
+            "blocks": [
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@john",
+                  "author_job_title": "Photographer",
+                  "content": "Amazing product! Highly recommend.",
+                  "button_url": "",
+                  "button_text": "Read more"
+                }
+              },
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@jane",
+                  "author_job_title": "Blogger",
+                  "content": "This has changed my life!",
+                  "button_url": "#",
+                  "button_text": "Discover"
+                }
+              },
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@mike",
+                  "author_job_title": "Influencer",
+                  "content": "A must-have for everyone.",
+                  "button_url": "",
+                  "button_text": "Learn more"
+                }
+              },
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@sara",
+                  "author_job_title": "Designer",
+                  "content": "Beautiful and functional.",
+                  "button_url": "",
+                  "button_text": "See details"
+                }
+              },
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@alex",
+                  "author_job_title": "Artist",
+                  "content": "Exceeded my expectations.",
+                  "button_url": "",
+                  "button_text": "View more"
+                }
+              },
+              {
+                "type": "slider",
+                "settings": {
+                  "image": "",
+                  "author_name": "@emma",
+                  "author_job_title": "Writer",
+                  "content": "Absolutely love it!",
+                  "button_url": "",
+                  "button_text": "Check it out"
+                }
+              }
+            ]
+        }
+    ]
+}
+{% endschema %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  function initTestimonials21() {
+    document.querySelector('.testimonials-slider-pc-{{section.id}}').classList.remove('preview');
+    const slider = new Swiper(".testimonials-slider-pc-{{section.id}}", {
+      speed: 300,
+      navigation: {
+        nextEl: '.testimonials-btn-next-pc-{{section.id}}',
+        prevEl: '.testimonials-btn-prev-pc-{{section.id}}',
+      },
+      pagination: {
+        el: '.testimonials-pagination-pc-{{section.id}}',
+        type: "bullets",
+        clickable: true
+      },
+      {% if auto_play == true %}
+      autoplay: {
+        delay: {{ auto_play_speed }},
+        disableOnInteraction: false,
+      },
+      {% endif %}
+      {% if loop == true %}
+      loop: true,
+      {% endif %}
+      breakpoints: {
+        320: {
+          spaceBetween: {{ space_between_slides_mobile }},
+          slidesPerView: {{ slides_per_view_mobile }},
+        },
+        768: {
+          spaceBetween: {{ space_between_slides_tablet }},
+          slidesPerView: {{ slides_per_view_tablet }},
+        },
+        1024: {
+          spaceBetween: {{ space_between_slides_desktop }},
+          slidesPerView: {{ slides_per_view_desktop }},
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTestimonials21);
+
+  if (Shopify.designMode) {
+    document.addEventListener('shopify:section:unload', initTestimonials21);
+    document.addEventListener('shopify:section:load', initTestimonials21);
+  }
+</script>

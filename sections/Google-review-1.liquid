@@ -1,0 +1,1035 @@
+{% liquid
+    assign section_name = section.settings.section_name
+    assign section_name_color = section.settings.section_name_color
+    assign section_name_size = section.settings.section_name_size
+    assign section_name_weight = section.settings.section_name_weight
+    assign review_svg = section.settings.review_svg
+    assign company_name = section.settings.company_name
+    assign company_link = section.settings.company_link
+    assign company_name_color = section.settings.company_name_color
+    assign company_name_size = section.settings.company_name_size
+    assign company_name_weight = section.settings.company_name_weight
+    assign review_rate = section.settings.review_rate
+    assign review_rate_color = section.settings.review_rate_color
+    assign review_rate_size = section.settings.review_rate_size
+    assign review_rate_weight = section.settings.review_rate_weight
+    assign review_stars = section.settings.review_stars
+    assign review_count = section.settings.review_count
+    assign review_count_color = section.settings.review_count_color
+    assign review_count_size = section.settings.review_count_size
+    assign review_count_weight = section.settings.review_count_weight
+    assign show_more_btn_text = section.settings.show_more_btn_text
+    assign hide_btn_text = section.settings.hide_btn_text
+    assign show_more_btn_color = section.settings.show_more_btn_color
+    assign show_more_btn_size = section.settings.show_more_btn_size
+    assign show_more_btn_weight = section.settings.show_more_btn_weight
+    assign review_content_size = section.settings.review_content_size
+    assign review_content_weight = section.settings.review_content_weight
+    assign review_content_color = section.settings.review_content_color
+    assign review_card_bg = section.settings.review_card_bg
+    assign review_card_border_size = section.settings.review_card_border_size 
+    assign review_border_color = section.settings.review_border_color
+    assign border_style = section.settings.border_style
+    assign review_card_radius = section.settings.review_card_radius
+    assign review_card_svg = section.settings.review_card_svg
+    assign review_card_svg_color = section.settings.review_card_svg_color
+    assign review_card_certified_badge = section.settings.review_card_certified_badge
+    assign review_card_certified_badge_color = section.settings.review_card_certified_badge_color
+    assign reviewer_name_color = section.settings.reviewer_name_color
+    assign reviewer_name_size = section.settings.reviewer_name_size
+    assign reviewer_name_weight = section.settings.reviewer_name_weight
+    assign reviewer_date_color = section.settings.reviewer_date_color
+    assign reviewer_date_size = section.settings.reviewer_date_size
+    assign reviewer_date_weight = section.settings.reviewer_date_weight
+
+    assign background_color = section.settings.background_color
+    assign margin_top = section.settings.margin_top 
+    assign margin_bottom = section.settings.margin_bottom
+
+    assign slider_nav = section.settings.slider_nav
+    assign slider_nav_color = section.settings.slider_nav_color
+    assign slide_per_view = section.settings.slide_per_view
+    assign slide_per_view_tablet = section.settings.slide_per_view_tablet
+    assign slide_per_view_mobile = section.settings.slide_per_view_mobile
+
+%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+<style>
+    :root {
+      --swiper-theme-color: {{slider_nav_color}} !important;
+    }
+    .bs-teaser-container-{{section.id}} {
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      margin: {{margin_top}}px auto {{ margin_bottom }}px auto;
+      background: {{ background_color }};
+      padding: 15px 8px;
+    }
+    .bs-teaser-container-{{section.id}} .bs-wrapper {
+      max-width: 1645px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .bs-teaser-container-{{section.id}} .bs-wrapper .teaser-title {
+      text-align: center;
+      font-size: {{ section_name_size }}px;
+      font-weight: {{ section_name_weight }};
+      color: {{ section_name_color }};
+      margin-bottom: 36px;
+      padding: 32px 0 15px 0;
+    }
+    .bs-teaser-container-{{section.id}} .swiper {
+      width: 75%;
+      overflow: hidden;
+      height: 75%;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: {{ review_card_bg}};
+      padding: 10px;
+      border: {{ review_card_border_size }}px {{ border_style }} {{ review_border_color }};
+      border-radius: {{ review_card_radius }}px;
+      color: rgb(119, 119, 119);
+      line-height: 1.45;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .stars-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .stars {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .stars svg {
+      color: {{ review_card_svg_color }};
+    }
+
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .badge {
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .badge svg {
+      fill: {{ review_card_certified_badge_color }};
+      stroke: #fff;
+      font-size: 20px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .article-head .glogo svg {
+      width: 17px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .bs-item-{{section.id}} .content {
+      font-size: {{ review_content_size }}px;
+      color: {{ review_content_color }};
+        font-weight: {{ review_content_weight }};
+      line-height: inherit;
+      position: relative;
+      height: 100%;
+      height: 100px;
+      transition: height 0.7s ease;
+      overflow: hidden;
+    }
+    .cs-height-{{section.id}}{
+      height: 50px !important;
+      transition: height 1s ease;
+    }
+    .cs-height-{{section.id}}:after{
+      content: '';
+       background: linear-gradient(to top, {{ review_card_bg }}, transparent);
+      height: 40px;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .item {
+      width: 100%;
+      display: flex;
+      align-items: start;
+      gap: 10px;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .item img {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .item-info .title {
+      font-weight: {{ reviewer_name_weight }};
+      font-size: {{ reviewer_name_size }}px;
+      line-height: normal;
+      color: {{ reviewer_name_color }};
+      margin: 0;
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide .item-info .details {
+      margin-top: -2px;
+      font-weight: {{ reviewer_date_weight }};
+      font-size: {{ reviewer_date_size }}px;
+      color: {{ reviewer_date_color }};
+    }
+    .bs-teaser-container-{{section.id}} .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+         object-fit: cover;
+    }/*# sourceMappingURL=main.css.map */
+    @media only screen and (max-width: 1024px){
+      .bs-teaser-container-{{section.id}} .swiper {
+      width: 75%;
+      overflow: hidden;
+      height: 75%;
+  }
+     .bs-teaser-container-{{section.id}} .cs-navv {
+      margin: auto;
+      right: 0;
+      top: 50%;
+  }
+  #shopify-section-{{ section.id }}  .swiper-button-next{
+      top: 75%;
+      display: block !important;
+        right: -18px !important;
+      width: 30px !important;
+    }
+    }
+    #shopify-section-{{ section.id }}  .swiper-button-next{
+      top: 75%;
+      display: block !important;
+        right: -12px ;
+      width: 30px !important;
+    }
+
+      #shopify-section-{{ section.id }}  .swiper-button-prev{
+          top: 75%;
+          display: block !important;
+          left: 30;
+      }
+</style>
+<style>
+    .viewed{
+      display: flex;
+      justify-content: space-between;
+      gap:20px;
+      position: relative;
+    }
+    .viewed .googleBadge{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+    }
+    .cs-navv{
+          position: absolute;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+      width: 79%;
+      right: 0;
+      top: 45%;
+    }
+    #shopify-section-{{ section.id }}  .swiper-button-next, .swiper-button-prev{
+      display: block !important;
+    }
+
+    #shopify-section-{{ section.id }}  .swiper-button-next::after, .swiper-button-prev::after{
+      font-size: 25px !important;
+    }
+  @media only screen and (max-width: 768px){
+      .viewed{
+        flex-direction: column;
+      }
+          .bs-teaser-container-{{section.id}} .cs-navv {
+          width: 95% !important;
+          top: 60%;
+          left: 0;
+          right: 0;
+          margin: auto;
+      }
+          .bs-teaser-container-{{section.id}} .swiper {
+          width: 85%;
+          overflow: hidden;
+          height: 75%;
+      }
+      .bs-teaser-container-{{section.id}} .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      }
+
+          .bs-teaser-container-{{section.id}} .swiper-slide article{
+              width:90%;
+              margin: auto;
+          }
+          .bs-teaser-container-{{section.id}} .swiper-slide .item{
+              width: 95%;
+              margin: auto;
+          }
+          #shopify-section-{{ section.id }}  .swiper-button-next{
+              top: 75%;
+              display: block !important;
+              right: -4px ;
+              width: 30px !important;
+          }
+
+              #shopify-section-{{ section.id }}  .swiper-button-prev{
+                  top: 75%;
+                  display: block !important;
+                  left: 10px;
+              }
+
+          .viewed .googleBadge{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: auto;
+              gap: 8px;
+          }
+              #shopify-section-{{ section.id }}  .swiper-button-next{
+              top: 75%;
+              display: block !important;
+              right: -25px !important;
+              width: auto;
+          }
+
+              #shopify-section-{{ section.id }}  .swiper-button-prev{
+              top: 75%;
+              display: block !important;
+              left: -7px;
+              width: auto;
+          }
+  }
+    @media only screen and (max-width: 600px){
+          .bs-teaser-container-{{section.id}} .cs-navv {
+          width: 95% !important;
+
+      }
+      .swiper-button-next:after, .swiper-button-prev:after {
+      font-family: swiper-icons;
+      font-size: 25px !important;
+      text-transform: none !important;
+      letter-spacing: 0;
+      font-variant: initial;
+      line-height: 1;
+  }
+    }
+    .cs-show-more{
+
+      display: flex;
+      align-items: end;
+      width: 100%;
+      font-weight: {{ show_more_btn_weight }};
+      font-size: {{ show_more_btn_size }}px;
+      color: {{ show_more_btn_color }};
+      transition: 1s height;
+      text-decoration: underline;
+
+    }
+      @media only screen and (max-width: 768px){
+
+        .bs-teaser-container-{{section.id}} .bs-wrapper .teaser-title {
+      text-align: center;
+      font-weight: 300;
+      font-size: 36px;
+      margin-bottom: 36px;
+      padding: 0px 0 0px 0 !important;
+    }
+    }
+</style>
+<div class="bs-teaser-container-{{section.id}}">
+  <div class="bs-wrapper">
+    {% if section_name != blank %}
+        <h2 class="teaser-title">{{ section_name }}</h2>
+    {% endif %}
+      
+    <div class="viewed">
+      <div class="googleBadge">
+        <i class="googleIcon">
+            {% if review_svg != blank %}
+                {{ review_svg}}
+            {% else %}
+          <svg viewBox="0 0 512 512" style="width: 80px;" class="sc-z7sjip-1 eZcvk">
+            <g height="100%" width="100%" fill="none" fill-rule="evenodd" style="fill: none;"><path d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z" fill="#4285f4"></path><path d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z" fill="#34a853"></path><path d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z" fill="#fbbc05"></path><path d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z" fill="#ea4335"></path><path d="M20 20h472v472H20V20z"></path></g>
+          </svg>
+            {% endif %}
+
+        </i>
+        <div>
+          <{% if company_link != blank %}a href="{{ company_link }}"{% else %}span{% endif %} style="color: {{ company_name_color }}; font-size: {{ company_name_size }}px; font-weight: {{ company_name_weight }};">{{ company_name }}</{% if company_link != blank %}a{% else %}span{% endif %}>
+          <div style="display: flex; align-items: center; color: {{ review_rate_color }}; font-size: {{ review_rate_size }}px; font-weight: {{ review_rate_weight }}px;">
+            <div style=""> {{ review_rate }}</div>
+            &nbsp;
+            <div style="white-space: nowrap; line-height: 0;">
+                {% if review_stars != blank %}
+                    {{ review_stars }}
+                {% else %}
+              <svg style="width: 13px;" viewBox="0 0 1792 1792" width="15" height="15" fill="currentColor">
+                <g width="15" height="15" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+              </svg>
+              <svg style="width: 13px;" viewBox="0 0 1792 1792" width="15" height="15" fill="currentColor">
+                <g width="15" height="15" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+              </svg>
+              <svg style="width: 13px;" viewBox="0 0 1792 1792" width="15" height="15" fill="currentColor">
+                <g width="15" height="15" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+              </svg>
+              <svg style="width: 13px;" viewBox="0 0 1792 1792" width="15" height="15" fill="currentColor">
+                <g width="15" height="15" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+              </svg>
+              <svg style="width: 13px;" viewBox="0 0 1792 1792" width="15" height="15" fill="currentColor">
+                <g width="15" height="15" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+              </svg>
+                {% endif %}
+            </div>
+          </div>
+
+          <div style="color: {{ review_count_color }}; font-size: {{ review_count_size }}px; font-weight: {{ review_count_weight }};">{{ review_count }}</div>
+        </div>
+      </div>
+      <div class="swiper mySwiperEl2-{{section.id}} ">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <article class="bs-item-{{section.id}}">
+                <div class="article-head">
+                  <div class="stars-badge">
+                    <div class="stars">
+                        {% if review_card_svg != blank %}
+                            {{ review_card_svg }}
+                        {% else %}
+                      <svg viewBox="0 0 1792 1792" width="17" height="17" fill="currentColor">
+                        <g width="17" height="17" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+                      </svg>
+                      <svg viewBox="0 0 1792 1792" width="17" height="17" fill="currentColor">
+                        <g width="17" height="17" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+                      </svg>
+                      <svg viewBox="0 0 1792 1792" width="17" height="17" fill="currentColor">
+                        <g width="17" height="17" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+                      </svg>
+                      <svg viewBox="0 0 1792 1792" width="17" height="17" fill="currentColor">
+                        <g width="17" height="17" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+                      </svg>
+                      <svg viewBox="0 0 1792 1792" width="17" height="17" fill="currentColor">
+                        <g width="17" height="17" style="fill: inherit;"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></g>
+                      </svg>
+                        {% endif %}
+                    </div>
+                    <div class="badge">
+                        {% if review_card_certified_badge != blank %}
+                            {{ review_card_certified_badge }}
+                        {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <g stroke-width="1.5"><path d="M10.521 2.624a2 2 0 0 1 2.958 0l1.02 1.12a2 2 0 0 0 1.572.651l1.513-.07a2 2 0 0 1 2.092 2.09l-.071 1.514a2 2 0 0 0 .651 1.572l1.12 1.02a2 2 0 0 1 0 2.958l-1.12 1.02a2 2 0 0 0-.651 1.572l.07 1.513a2 2 0 0 1-2.09 2.092l-1.514-.071a2 2 0 0 0-1.572.651l-1.02 1.12a2 2 0 0 1-2.958 0l-1.02-1.12a2 2 0 0 0-1.572-.651l-1.513.07a2 2 0 0 1-2.092-2.09l.071-1.514a2 2 0 0 0-.651-1.572l-1.12-1.02a2 2 0 0 1 0-2.958l1.12-1.02a2 2 0 0 0 .651-1.572l-.07-1.513a2 2 0 0 1 2.09-2.092l1.514.071a2 2 0 0 0 1.572-.651z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12l2 2l4-4"/></g>
+                      </svg>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="glogo">
+                    <svg viewBox="0 0 512 512" width="100%" class="sc-68d4lv-2 zBgFd">
+                      <g height="100%" width="100%" fill="none" fill-rule="evenodd" style="fill: none;"><path d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z" fill="#4285f4"></path><path d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z" fill="#34a853"></path><path d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z" fill="#fbbc05"></path><path d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z" fill="#ea4335"></path><path d="M20 20h472v472H20V20z"></path></g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="content cs-height-{{section.id}}">
+                  {{ block.settings.rc }}
+                </div>
+                {% assign review_content_word_count = block.settings.rc | split: ' ' | size %}
+                {% if review_content_word_count > 10 %}
+                  <div class="cs-show-more">Show More</div>
+                {% endif %}
+                {% comment %} <div class="cs-show-more">{{  show_more_btn_text }}</div> {% endcomment %}
+              </article>
+              <div class="item">
+                <img
+                  src="{% if block.settings.ri != blank %}{{ block.settings.ri | img_url: 'master' }}{% else %}https://cdn.shopify.com/s/files/1/0473/1984/2971/files/user.png?v=1725316816{% endif %}"
+                  alt=""
+                >
+                <div class="item-info">
+                  <div class="title">{{ block.settings.ra }}</div>
+                  <div class="details">{{ block.settings.rd }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+          {% if slider_nav == true %}
+      <div class="cs-navv">
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PC Google Review #1",
+  
+  "settings": [
+    {
+      "type": "header",
+      "content": "This section is a property of PeakConversion",
+      "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info - please save to see all changes"
+    },
+    {
+        "type": "header",
+        "content": "Section Settings"
+    },
+    {
+        "type": "text",
+        "id": "section_name",
+        "label": "Section Name",
+        "default": "Customer Reviews"
+    },
+    {
+        "type": "color",
+        "id": "section_name_color",
+        "label": "Section Name Color",
+        "default": "#000000"
+    },
+    {
+        "type": "range",
+        "id": "section_name_size",
+        "label": "Section Name Size",
+        "min": 10,
+        "max": 100,
+        "default": 24
+    },
+    {
+        "type": "select",
+        "id": "section_name_weight",
+        "label": "Section Name Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "bold"
+    },
+    {
+        "type": "header",
+        "content": "Company Settings"
+    },
+    {
+        "type": "html",
+        "id": "review_svg",
+        "label": "Review SVG"
+    },
+    {
+      "type": "url",
+      "id": "company_link",
+      "label": "Company link"
+    },
+    {
+        "type": "text",
+        "id": "company_name",
+        "label": "Company Name",
+        "default": "Google"
+    },
+    {
+        "type": "color",
+        "id": "company_name_color",
+        "label": "Company Name Color",
+        "default": "#000000"
+    },
+    {
+        "type": "range",
+        "id": "company_name_size",
+        "label": "Company Name Size",
+        "min": 10,
+        "max": 100,
+        "default": 18
+    },
+    {
+        "type": "select",
+        "id": "company_name_weight",
+        "label": "Company Name Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "bold"
+    },
+    {
+        "type": "header",
+        "content": "Review Settings"
+    },
+    {
+        "type": "text",
+        "id": "review_rate",
+        "label": "Review Rate",
+        "default": "4.5"
+    },
+    {
+        "type": "color",
+        "id": "review_rate_color",
+        "label": "Review Rate Color",
+        "default": "#e7711b"
+    },
+    {
+        "type": "range",
+        "id": "review_rate_size",
+        "label": "Review Rate Size",
+        "min": 10,
+        "max": 100,
+        "default": 16
+    },
+    {
+        "type": "select",
+        "id": "review_rate_weight",
+        "label": "Review Rate Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "bold"
+    },
+    {
+        "type": "html",
+        "id": "review_stars",
+        "label": "Review Stars"
+    },
+    {
+        "type": "text",
+        "id": "review_count",
+        "label": "Review Count",
+        "default": "123 reviews"
+    },
+    {
+        "type": "color",
+        "id": "review_count_color",
+        "label": "Review Count Color",
+        "default": "#999999"
+    },
+    {
+        "type": "range",
+        "id": "review_count_size",
+        "label": "Review Count Size",
+        "min": 10,
+        "max": 100,
+        "default": 14
+    },
+    {
+        "type": "select",
+        "id": "review_count_weight",
+        "label": "Review Count Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "normal"
+    },
+    {
+        "type": "header",
+        "content": "Button Settings"
+    },
+    {
+        "type": "text",
+        "id": "show_more_btn_text",
+        "label": "Show More Button Text",
+        "default": "Show More"
+    },
+    {
+        "type": "text",
+        "id": "hide_btn_text",
+        "label": "Hide Button Text",
+        "default": "Hide"
+    },
+    {
+        "type": "color",
+        "id": "show_more_btn_color",
+        "label": "Show More Button Color",
+        "default": "#3ba9d5"
+    },
+    {
+        "type": "range",
+        "id": "show_more_btn_size",
+        "label": "Show More Button Size",
+        "min": 10,
+        "max": 100,
+        "default": 14
+    },
+    {
+        "type": "select",
+        "id": "show_more_btn_weight",
+        "label": "Show More Button Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "normal"
+    },
+    {
+        "type": "header",
+        "content": "Review Content Settings"
+    },
+    {
+        "type": "range",
+        "id": "review_content_size",
+        "label": "Review Content Size",
+        "min": 10,
+        "max": 100,
+        "default": 14
+    },
+    {
+        "type": "select",
+        "id": "review_content_weight",
+        "label": "Review Content Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "normal"
+    },
+    {
+        "type": "color",
+        "id": "review_content_color",
+        "label": "Review Content Color",
+        "default": "#777777"
+    },
+    {
+        "type": "header",
+        "content": "Review Card Settings"
+    },
+    {
+        "type": "color",
+        "id": "review_card_bg",
+        "label": "Review Card Background",
+        "default": "#f1f1f1"
+    },
+    {
+        "type": "range",
+        "id": "review_card_border_size",
+        "label": "Review Card Border Size",
+        "min": 0,
+        "max": 10,
+        "default": 0
+    },
+    {
+        "type": "color",
+        "id": "review_border_color",
+        "label": "Review Border Color",
+        "default": "#f1f1f1"
+    },
+    {
+        "type": "select",
+        "id": "border_style",
+        "label": "Border Style",
+        "options": [
+            { "value": "solid", "label": "Solid" },
+            { "value": "inset", "label": "Inset" },
+            { "value": "outset", "label": "Outset" },
+            { "value": "dotted", "label": "Dotted" },
+            { "value": "dashed", "label": "Dashed" },
+            { "value": "double", "label": "Double" }
+        ],
+        "default": "solid"
+    },
+    {
+        "type": "range",
+        "id": "review_card_radius",
+        "label": "Review Card Radius",
+        "min": 0,
+        "max": 50,
+        "default": 5
+    },
+    {
+        "type": "html",
+        "id": "review_card_svg",
+        "label": "Review Card SVG"
+    },
+    {
+        "type": "color",
+        "id": "review_card_svg_color",
+        "label": "Review Card SVG Color",
+        "default": "#e7711b"
+    },
+    {
+        "type": "html",
+        "id": "review_card_certified_badge",
+        "label": "Review Card Certified Badge"
+    },
+    {
+        "type": "color",
+        "id": "review_card_certified_badge_color",
+        "label": "Review Card Certified Badge Color",
+        "default": "#2aa8d7"
+    },
+    {
+        "type": "header",
+        "content": "Reviewer Settings"
+    },
+    {
+        "type": "color",
+        "id": "reviewer_name_color",
+        "label": "Reviewer Name Color",
+        "default": "#007aff"
+    },
+    {
+        "type": "range",
+        "id": "reviewer_name_size",
+        "label": "Reviewer Name Size",
+        "min": 10,
+        "max": 100,
+        "default": 14
+    },
+    {
+        "type": "select",
+        "id": "reviewer_name_weight",
+        "label": "Reviewer Name Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "bold"
+    },
+    {
+        "type": "color",
+        "id": "reviewer_date_color",
+        "label": "Reviewer Date Color",
+        "default": "#999999"
+    },
+    {
+        "type": "range",
+        "id": "reviewer_date_size",
+        "label": "Reviewer Date Size",
+        "min": 10,
+        "max": 100,
+        "default": 12
+    },
+    {
+        "type": "select",
+        "id": "reviewer_date_weight",
+        "label": "Reviewer Date Weight",
+        "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" }
+        ],
+        "default": "normal"
+    },
+    {
+        "type": "header",
+        "content": "Container Settings"
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "min": 1,
+        "max": 100,
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "min": 1,
+        "max": 100,
+        "default": 20
+    },
+    {
+        "type": "header",
+        "content": "Slider Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "slider_nav",
+        "label": "Enable Slider Navigation",
+        "default": true
+    },
+    {
+        "type": "color",
+        "id": "slider_nav_color",
+        "label": "Slider Navigation Color",
+        "default": "#000000"
+    },
+    {
+        "type": "range",
+        "id": "slide_per_view",
+        "label": "Slides Per View (Desktop)",
+        "min": 1,
+        "step": 1,
+        "max": 10,
+        "default": 3
+    },
+    {
+        "type": "range",
+        "id": "slide_per_view_tablet",
+        "label": "Slides Per View (Tablet)",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "default": 2
+    },
+    {
+        "type": "range",
+        "id": "slide_per_view_mobile",
+        "label": "Slides Per View (Mobile)",
+        "min": 1,
+        "step": 1,
+        "max": 10,
+        "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "review google",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "rc",
+          "label": "Review content",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. ipsum dolor sit amet, consectetur adipisicing elit. ipsum dolor sit amet, consectetur adipisicing elit. Ipsum voluptatum ullam delectus laborum nulla itaque."
+        },
+        {
+          "type": "image_picker",
+          "id": "ri",
+          "label": "review image"
+        },
+        {
+          "type": "text",
+          "id": "ra",
+          "label": "reviewer name",
+          "default": "Gerard Tardieu"
+        },
+        {
+          "type": "text",
+          "id": "rd",
+          "label": "review date",
+          "default": "il y'a 10mois"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PC Google review #1",
+    "category": "Custom",
+    "blocks": [
+      {
+        "type": "review",
+        "settings": {
+        "rc": "Excellent service and quality products. Highly recommend! Excellent service and quality products. Highly recommend!",
+        "ri": "",
+        "ra": "Alice Dupont",
+        "rd": "il y'a 2 mois"
+        }
+      },
+      {
+        "type": "review",
+        "settings": {
+        "rc": "Great experience, will definitely come back. Great experience, will definitely come back.",
+        "ri": "",
+        "ra": "Jean Martin",
+        "rd": "il y'a 3 mois"
+        }
+      },
+      {
+        "type": "review",
+        "settings": {
+        "rc": "Fast delivery and excellent customer support. Fast delivery and excellent customer support.",
+        "ri": "",
+        "ra": "Marie Dubois",
+        "rd": "il y'a 1 mois"
+        }
+      },
+      {
+        "type": "review",
+        "settings": {
+        "rc": "High quality products at a reasonable price. High quality products at a reasonable price.",
+        "ri": "",
+        "ra": "Pierre Lefevre",
+        "rd": "il y'a 5 mois"
+        }
+      },
+      {
+        "type": "review",
+        "settings": {
+        "rc": "Very satisfied with my purchase. Will recommend to others. Very satisfied with my purchase. Will recommend to others. ",
+        "ri": "",
+        "ra": "Sophie Moreau",
+        "rd": "il y'a 4 mois"
+        }
+      }
+    ]
+    }
+  ]
+}
+{% endschema %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+   new Swiper(" .mySwiperEl2-{{section.id}}", {
+          slidesPerView: {{slide_per_view}},
+          speed: 1000,
+          spaceBetween: 30,
+          loop: true,
+          navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      breakpoints: {
+          0: {
+              slidesPerView: {{ slide_per_view_mobile }},
+              spaceBetween: 10
+          },
+          700: {
+              slidesPerView: {{ slide_per_view_tablet }},
+              spaceBetween: 15
+          },
+          1024: {
+              slidesPerView: {{ slide_per_view }},
+              spaceBetween: 20,
+              navigation: {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+              },
+          }
+      }
+  });
+
+ 
+  document.querySelectorAll(".bs-item-{{section.id}}").forEach((btn) => {
+    
+
+    const toggleBtn = btn.querySelector('.cs-show-more');
+    const reviewComment = btn.querySelector('.content');
+
+    toggleBtn.addEventListener('click', function () {
+      
+        reviewComment.classList.toggle('cs-height-{{section.id}}');
+      
+        if (reviewComment.classList.contains('cs-height-{{section.id}}')) {
+            toggleBtn.textContent = '{{show_more_btn_text}}';
+        } else {
+            toggleBtn.textContent = '{{hide_btn_text}}';
+        }
+    });
+  })
+</script>

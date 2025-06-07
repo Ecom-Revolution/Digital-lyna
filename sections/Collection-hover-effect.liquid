@@ -1,0 +1,1015 @@
+{% liquid
+
+    assign collection_list = section.settings.collection_list
+    assign heading = section.settings.heading
+    assign heading_size = section.settings.heading_size
+    assign heading_weight = section.settings.heading_weight
+    assign heading_color = section.settings.heading_color
+    assign heading_font = section.settings.heading_font
+    assign heading_position = section.settings.heading_position
+
+    assign heading_size_mobile = section.settings.heading_size_mobile
+    assign heading_position_mobile = section.settings.heading_position_mobile
+
+    assign card_border_radius = section.settings.card_border_radius
+    assign card_border_width = section.settings.card_border_width
+    assign card_border_style = section.settings.card_border_style
+    assign card_border_color = section.settings.card_border_color
+    assign card_color = section.settings.card_color
+    assign card_opacity = section.settings.card_opacity
+    assign card_heading_size = section.settings.card_heading_size
+    assign card_heading_weight = section.settings.card_heading_weight
+    assign card_heading_color = section.settings.card_heading_color
+    assign card_heading_font = section.settings.card_heading_font
+
+    assign card_subheading_size = section.settings.card_subheading_size
+    assign card_subheading_weight = section.settings.card_subheading_weight
+    assign card_subheading_font = section.settings.card_subheading_font
+    assign card_subheading_color = section.settings.card_subheading_color
+
+    assign card_subheading_size_mobile = section.settings.card_subheading_size_mobile
+
+    assign card_heading_size_mobile = section.settings.card_heading_size_mobile
+    
+    assign card_line_color = section.settings.card_line_color
+    assign card_stars_color = section.settings.card_stars_color
+
+    assign card_button_heading = section.settings.card_button_heading
+    assign card_button_radius = section.settings.card_button_radius
+    assign card_button_border_width = section.settings.card_button_border_width
+    assign card_button_border_style = section.settings.card_button_border_style
+    assign card_button_border_color = section.settings.card_button_border_color
+    assign card_button_color = section.settings.card_button_color
+    assign card_button_hover_color = section.settings.card_button_hover_color
+    assign card_button_background_color = section.settings.card_button_background_color
+    assign card_button_hover_background_color = section.settings.card_button_hover_background_color
+    assign card_button_size = section.settings.card_button_size
+    assign card_button_weight = section.settings.card_button_weight
+    assign card_button_font = section.settings.card_button_font
+
+    assign card_button_size_mobile = section.settings.card_button_size_mobile
+
+    assign layout_margin_top = section.settings.layout_margin_top
+    assign layout_margin_bottom = section.settings.layout_margin_bottom
+    assign layout_background = section.settings.layout_background
+%}
+<style>
+    :root {
+        --pc-desktop-height: ;
+    }
+
+    .pc-section-{{section.id}} {
+        margin-top: {{ layout_margin_top }};
+        margin-bottom: {{ layout_margin_bottom }};
+    }
+
+    .pc-section-{{section.id}}-settings {
+        margin: 0 auto;
+        padding-top: 27px;
+        padding-bottom: 45px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .pc-collection-heading-{{section.id}} {
+        text-align: {{ heading_position_mobile }};
+    }
+
+    .pc-collection-heading-{{section.id}} * {
+        margin: 0;
+        font-size: {{ heading_size_mobile }}px;
+        color: {{ heading_color }};
+        line-height: 150%;
+        text-transform: unset;
+        font-weight: {{ heading_weight }};
+        font-family: {{ heading_font.family }}{% if heading_font.fallback_families != blank %},{{ heading_font.fallback_families }}{% endif %};
+    }
+
+    .pc-collection-grid-{{section.id}} {
+        margin-top: 18px;
+        display: block;
+        gap: 4px;
+        align-items: stretch;
+        padding: 0px 0px;
+        border-radius: 0px;
+        border: 0px solid #000000;
+        background-color: #ffffff;
+    }
+
+    .pc-collection-item-{{section.id}} {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 0 0 calc((100% / 7) - 4px);
+        transition: all 0.25s ease-out 0s;
+        overflow: hidden;
+        padding: 32px 24px;
+        border-radius: {{ card_border_radius }}px;
+        border: {{ card_border_width }}px {{ card_border_style }} {{ card_border_color }};
+        background-color: {{ card_color }};
+        cursor: pointer;
+        max-height: 88px;
+        height: 100%;
+    }
+
+    .pc-collection-item-{{section.id}}.active {
+        max-height: 100vh;
+        transition: all 0.25s ease-out 0s;
+    }
+
+    .pc-collection-item-{{section.id}}:not(:first-child) {
+        margin-top: 4px;
+    }
+
+    /* .pc-collection-item-{{section.id}}.active {
+    transition: all 0.25s ease-out 0s;
+    flex: 0 0 calc(((100% / 7) * 3) - 4px);
+  } */
+
+    .pc-collection-image-{{section.id}} {
+        position: absolute;
+        width: 100%;
+        /* width: calc((((100vw-3.0rem - 0px) / 7) * 3) - 4px); */
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: {{ card_border_radius }}px;
+    }
+
+    .pc-collection-image-{{section.id}}:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: {{ card_border_radius }}px;
+        background-color: rgba(0, 0, 0, {{ card_opacity }});
+    }
+
+    .pc-collection-image-{{section.id}} img,
+    .pc-collection-image-{{section.id}} svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .pc-collection-image-{{section.id}} svg {
+        /* background-color: #ba1e1e; */
+    }
+
+    .pc-collection-reverse-{{section.id}} {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .pc-collection-reverse-{{section.id}} .pc-collection-title-{{section.id}} {
+        padding-bottom: 0px;
+    }
+
+    .pc-collection-reverse-{{section.id}} .pc-collection-title-{{section.id}}:after {
+        display: none;
+    }
+
+    .pc-collection-item-{{section.id}}.active .pc-collection-reverse-{{section.id}} {
+        display: none;
+    }
+
+    .pc-collection-content-{{section.id}} {
+        position: relative;
+        z-index: 2;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        gap: 20px;
+    }
+
+    .pc-collection-item-{{section.id}}.active .pc-collection-content-{{section.id}} {
+        display: flex;
+    }
+
+    .pc-collection-title-{{section.id}},
+    .pc-collection-title-{{section.id}} * {
+        text-align: left;
+        margin: 0;
+        font-size: {{ card_heading_size_mobile }}px;
+        color: {{ card_heading_color }};
+        line-height: 100%;
+        text-transform: uppercase;
+        font-weight: {{ card_heading_weight }};
+        font-family: {{ card_heading_font.family }}{% if card_heading_font.fallback_families != blank %}, {{ card_heading_font.fallback_families }}{% endif %};
+    }
+
+    .pc-collection-stars-{{section.id}} {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: start;
+    }
+
+    .pc-collection-stars-{{section.id}} svg,
+    .pc-collection-stars-{{section.id}} img {
+        display: block;
+        width: 22px;
+        height: 22px;
+        object-fit: cover;
+        flex: 0 0 22px;
+    }
+
+    .pc-collection-text-{{section.id}} {
+        margin-top: 11px;
+    }
+
+    .pc-collection-text-{{section.id}} * {
+        margin: 0;
+    }
+
+    .pc-collection-text-{{section.id}},
+    .pc-collection-text-{{section.id}} * {
+        text-align: left;
+        font-size: {{ card_subheading_size_mobile }}px;
+        color: {{ card_subheading_color }};
+        font-weight: {{ card_subheading_weight }};
+        font-family: {{ card_subheading_font.family }}{% if card_subheading_font.fallback_families != blank  %}, {{ card_subheading_font.fallback_families }}{% endif %};
+        line-height: 150%;
+        text-transform: unset;
+    }
+
+    .pc-collection-btn-{{section.id}} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: fit-content;
+        margin: 0;
+        font-size: {{ card_button_size_mobile }}px;
+        font-weight: {{ card_button_weight }};
+        color: {{ card_button_color }};
+        line-height: 100%;
+        text-align: center;
+        text-transform: unset;
+        text-decoration: none;
+        padding: 9px 15px;
+        border-radius: {{ card_button_radius }}px;
+        border: {{ card_button_border_width }}px {{ card_button_border_style }} {{ card_button_border_color }};
+        background-color: {{ card_button_background_color }};
+        transition: all 0.25s ease 0s;
+        font-family: {{ card_button_font.family }}{% if card_button_font.fallback_families != blank %}, {{ card_button_font.fallback_families }}{% endif %} ;
+    }
+
+    .pc-collection-btn-{{section.id}}:hover {
+        color:  {{ card_button_hover_color }};
+        border: {{ card_button_border_width }}px {{ card_button_border_style }} {{ card_button_border_color  }};
+        background-color: {{ card_button_hover_background_color }};
+        transition: all 0.25s ease 0s;
+    }
+
+    @media(min-width: 1024px) {
+        .pc-section-{{section.id}} {
+            margin-top: {{ layout_margin_top }}px;
+            margin-bottom: {{ layout_margin_bottom }}px;
+        }
+
+        .pc-section-{{section.id}}-settings {
+            padding: 0 5rem;
+            padding-top: 36px;
+            padding-bottom: 60px;
+            padding-left: 5rem;
+            padding-right: 5rem;
+        }
+
+        .pc-collection-heading-{{section.id}} {
+            text-align: {{ heading_position }};
+        }
+
+        .pc-collection-heading-{{section.id}} * {
+            font-size: {{ heading_size }}px;
+        }
+
+        .pc-collection-grid-{{section.id}} {
+            display: flex;
+            margin-top: 24px;
+            gap: 4px;
+            padding: 0px 0px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+
+        .pc-collection-item-{{section.id}} {
+            display: block;
+            flex: 0 0 0.5;
+            padding: 32px 24px;
+            max-height: 70vh;
+            height: 70vh;
+        }
+
+        .pc-collection-item-{{section.id}}:not(:first-child) {
+            margin-top: 0px;
+        }
+
+        .pc-collection-item-{{section.id}}.active {
+            height: 70vh;
+            flex: 0 0 calc(((100% / 7) * 3) - 4px);
+        }
+
+        .pc-collection-image-{{section.id}} {
+            width: calc(((100vw - 10rem - 0px) / 7 * 3) - 4px);
+        }
+
+        .pc-collection-content-{{section.id}} {
+            width: calc(((100vw - 10rem - 0px - 120px) / 7 * 3) - 4px);
+        }
+
+        .pc-collection-reverse-{{section.id}} {
+            transform: rotate(180deg);
+            writing-mode: vertical-lr;
+        }
+
+        .pc-collection-title-{{section.id}},
+        .pc-collection-title-{{section.id}} * {
+            text-align: left;
+            font-size: {{ card_heading_size }}px;
+        }
+
+        .pc-collection-stars-{{section.id}} {
+                margin-top: 16px;
+                justify-content: start;
+            }
+
+            .pc-collection-text-{{section.id}} {
+                margin-top: 14px;
+            }
+
+            .pc-collection-text-{{section.id}},
+            .pc-collection-text-{{section.id}} * {
+                text-align: left;
+                font-size: {{ card_subheading_size }}px;
+            }
+
+            .pc-collection-btn-{{section.id}} {
+                padding: 12px 20px;
+                font-size: {{ card_button_size }}px;
+            }
+        }
+
+        .pc-section-{{section.id}}-settings {
+            max-width: 130rem;
+        }
+
+        @media(min-width: 1024px) {
+            .pc-collection-image-{{section.id}} {
+                width: calc((((140rem - 10rem - 0px) / 7) * 3) - 4px);
+            }
+
+            .pc-collection-content-{{section.id}} {
+                width: calc((((140rem - 10rem - 0px - 96px) / 7) * 3) - 4px);
+            }
+        }
+
+        @media(min-width: 1024px) {
+            .pc-collection-item-{{section.id}} {
+                aspect-ratio: 12/12 !important;
+            }
+        }
+
+        .pc-collection-title-{{section.id}} {
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .pc-collection-title-{{section.id}}:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            background-color: {{ card_line_color }};
+        }
+
+        @media(min-width: 1024px) {
+            .pc-collection-btn-{{section.id}} {
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        }
+</style>
+
+
+<div class="pc-section-{{section.id}} pc-collection-{{section.id}}"
+    style="background-color: {{ layout_background }};">
+    <div class="pc-section-{{section.id}}-settings">
+
+
+        {% if heading != blank %}
+            <div class="pc-collection-heading-{{section.id}}">
+                <h2>{{ heading }}</h2>
+            </div>
+        {% endif %}
+
+
+        <div class="pc-collection-grid-{{section.id}}">
+
+            {% for collection in collection_list %}
+                <div class="pc-collection-item-{{section.id}} {% if forloop.index == 2 %}active{% endif %}"
+                    data-link="{{ collection.url }}">
+                    <div class="pc-collection-image-{{section.id}}">
+                        {% if collection.featured_image != blank %}
+                        <img src="{{ collection.featured_image | img_url: 'master' }}"
+                            alt="" loading="lazy">
+                        {% else %}
+                            {{ 'product-1' |  placeholder_svg_tag: 'placeholder_svg' }}
+                        {% endif %}
+
+                    </div>
+                    <div class="pc-collection-reverse-{{section.id}}">
+                        <div class="pc-collection-title-{{section.id}}">
+                            <h3>{{ collection.title }}</h3>
+                        </div>
+                    </div>
+                    <div class="pc-collection-content-{{section.id}}">
+                        <div
+                            class="pc-collection-content-top-{{section.id}}">
+                            <div
+                                class="pc-collection-title-{{section.id}}">
+                                <h3>{{ collection.title }}</h3>
+                            </div>
+
+                            <div
+                                class="pc-collection-stars-{{section.id}}">
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0,0,256,256" style="fill:#000000;">
+                                    <g fill="{{ card_stars_color }}" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <g transform="scale(5.12,5.12)">
+                                            <path
+                                                d="M10.2,48.6c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.3,-0.2 -0.5,-0.7 -0.4,-1.1l4.4,-16.4l-13.2,-10.7c-0.4,-0.2 -0.5,-0.7 -0.4,-1.1c0.1,-0.4 0.5,-0.7 0.9,-0.7l17,-0.9l6.1,-15.9c0.2,-0.3 0.6,-0.6 1,-0.6c0.4,0 0.8,0.3 0.9,0.6l6.1,15.9l17,0.9c0.4,0 0.8,0.3 0.9,0.7c0.1,0.4 0,0.8 -0.3,1.1l-13.2,10.7l4.4,16.4c0.1,0.4 0,0.8 -0.4,1.1c-0.3,0.2 -0.8,0.3 -1.1,0l-14.3,-9.2l-14.3,9.2c-0.2,0.2 -0.3,0.2 -0.5,0.2z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0,0,256,256" style="fill:#000000;">
+                                    <g fill="{{ card_stars_color }}" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <g transform="scale(5.12,5.12)">
+                                            <path
+                                                d="M10.2,48.6c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.3,-0.2 -0.5,-0.7 -0.4,-1.1l4.4,-16.4l-13.2,-10.7c-0.4,-0.2 -0.5,-0.7 -0.4,-1.1c0.1,-0.4 0.5,-0.7 0.9,-0.7l17,-0.9l6.1,-15.9c0.2,-0.3 0.6,-0.6 1,-0.6c0.4,0 0.8,0.3 0.9,0.6l6.1,15.9l17,0.9c0.4,0 0.8,0.3 0.9,0.7c0.1,0.4 0,0.8 -0.3,1.1l-13.2,10.7l4.4,16.4c0.1,0.4 0,0.8 -0.4,1.1c-0.3,0.2 -0.8,0.3 -1.1,0l-14.3,-9.2l-14.3,9.2c-0.2,0.2 -0.3,0.2 -0.5,0.2z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0,0,256,256" style="fill:#000000;">
+                                    <g fill="{{ card_stars_color }}" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <g transform="scale(5.12,5.12)">
+                                            <path
+                                                d="M10.2,48.6c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.3,-0.2 -0.5,-0.7 -0.4,-1.1l4.4,-16.4l-13.2,-10.7c-0.4,-0.2 -0.5,-0.7 -0.4,-1.1c0.1,-0.4 0.5,-0.7 0.9,-0.7l17,-0.9l6.1,-15.9c0.2,-0.3 0.6,-0.6 1,-0.6c0.4,0 0.8,0.3 0.9,0.6l6.1,15.9l17,0.9c0.4,0 0.8,0.3 0.9,0.7c0.1,0.4 0,0.8 -0.3,1.1l-13.2,10.7l4.4,16.4c0.1,0.4 0,0.8 -0.4,1.1c-0.3,0.2 -0.8,0.3 -1.1,0l-14.3,-9.2l-14.3,9.2c-0.2,0.2 -0.3,0.2 -0.5,0.2z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0,0,256,256" style="fill:#000000;">
+                                    <g fill="{{ card_stars_color }}" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <g transform="scale(5.12,5.12)">
+                                            <path
+                                                d="M10.2,48.6c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.3,-0.2 -0.5,-0.7 -0.4,-1.1l4.4,-16.4l-13.2,-10.7c-0.4,-0.2 -0.5,-0.7 -0.4,-1.1c0.1,-0.4 0.5,-0.7 0.9,-0.7l17,-0.9l6.1,-15.9c0.2,-0.3 0.6,-0.6 1,-0.6c0.4,0 0.8,0.3 0.9,0.6l6.1,15.9l17,0.9c0.4,0 0.8,0.3 0.9,0.7c0.1,0.4 0,0.8 -0.3,1.1l-13.2,10.7l4.4,16.4c0.1,0.4 0,0.8 -0.4,1.1c-0.3,0.2 -0.8,0.3 -1.1,0l-14.3,-9.2l-14.3,9.2c-0.2,0.2 -0.3,0.2 -0.5,0.2z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                    viewBox="0,0,256,256" style="fill:#000000;">
+                                    <g fill="{{ card_stars_color }}" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                        <g transform="scale(5.12,5.12)">
+                                            <path
+                                                d="M10.2,48.6c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.3,-0.2 -0.5,-0.7 -0.4,-1.1l4.4,-16.4l-13.2,-10.7c-0.4,-0.2 -0.5,-0.7 -0.4,-1.1c0.1,-0.4 0.5,-0.7 0.9,-0.7l17,-0.9l6.1,-15.9c0.2,-0.3 0.6,-0.6 1,-0.6c0.4,0 0.8,0.3 0.9,0.6l6.1,15.9l17,0.9c0.4,0 0.8,0.3 0.9,0.7c0.1,0.4 0,0.8 -0.3,1.1l-13.2,10.7l4.4,16.4c0.1,0.4 0,0.8 -0.4,1.1c-0.3,0.2 -0.8,0.3 -1.1,0l-14.3,-9.2l-14.3,9.2c-0.2,0.2 -0.3,0.2 -0.5,0.2z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+
+                            </div>
+                            {% if  collection.description != blank %}
+                            <div
+                                class="pc-collection-text-{{section.id}}">
+                                {{ collection.description }}
+                            </div>
+                    {% endif %}
+                        </div>
+                        <a href="/collections/backpacks"
+                            class="pc-collection-btn-{{section.id}}">{{  card_button_heading }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</div>
+{% schema %}
+{
+    "name": "PC - Collection #4",
+    "settings": [
+        {
+            "type": "header",
+            "content": "This section is a property of PeakConversion",
+            "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info"
+        },
+        {
+            "type": "header",
+            "content": "Collection list"
+        },
+        {
+            "type": "collection_list",
+            "id": "collection_list",
+            "label": "Collection List"
+        },
+        {
+            "type": "header",
+            "content": "Heading Settings"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Discover by Category"
+        },
+        {
+            "type": "range",
+            "id": "heading_size",
+            "label": "Heading Size",
+            "default": 57,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "heading_weight",
+            "label": "Heading Weight",
+            "default": "normal",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#303030"
+        },
+        {
+            "type": "font_picker",
+            "id": "heading_font",
+            "label": "Heading Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "select",
+            "id": "heading_position",
+            "label": "Heading Position",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "heading_size_mobile",
+            "label": "Heading Size Mobile",
+            "default": 30,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "heading_position_mobile",
+            "label": "Heading Position Mobile",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Card Settings"
+        },
+        {
+            "type": "range",
+            "id": "card_border_radius",
+            "label": "Card Border Radius",
+            "default": 8,
+            "min": 0,
+            "max": 50,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "card_border_width",
+            "label": "Card Border Width",
+            "default": 0,
+            "min": 0,
+            "max": 10,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "card_border_style",
+            "label": "Card Border Style",
+            "default": "solid",
+            "options": [
+                {
+                    "value": "solid",
+                    "label": "Solid"
+                },
+                {
+                    "value": "dashed",
+                    "label": "Dashed"
+                },
+                {
+                    "value": "dotted",
+                    "label": "Dotted"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "card_border_color",
+            "label": "Card Border Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "card_color",
+            "label": "Card Color",
+            "default": "#f5f5f1"
+        },
+        {
+            "type": "range",
+            "id": "card_opacity",
+            "label": "Card Opacity",
+            "default": 0.5,
+            "min": 0,
+            "max": 1,
+            "step": 0.1
+        },
+        {
+            "type": "range",
+            "id": "card_heading_size",
+            "label": "Card Heading Size",
+            "default": 24,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "card_heading_weight",
+            "label": "Card Heading Weight",
+            "default": "bold",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "card_heading_color",
+            "label": "Card Heading Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "font_picker",
+            "id": "card_heading_font",
+            "label": "Card Heading Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "card_heading_size_mobile",
+            "label": "Card Heading Size Mobile",
+            "default": 18,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "card_line_color",
+            "label": "Card Line Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "card_stars_color",
+            "label": "Card Stars Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "header",
+            "content": "Card Subheading Settings"
+        },
+        {
+            "type": "range",
+            "id": "card_subheading_size",
+            "label": "Card Subheading Size",
+            "default": 18,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "card_subheading_weight",
+            "label": "Card Subheading Weight",
+            "default": "normal",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "card_subheading_font",
+            "label": "Card Subheading Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "color",
+            "id": "card_subheading_color",
+            "label": "Card Subheading Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "range",
+            "id": "card_subheading_size_mobile",
+            "label": "Card Subheading Size Mobile",
+            "default": 16,
+            "min": 12,
+            "max": 72,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Button Settings"
+        },
+        {
+            "type": "text",
+            "id": "card_button_heading",
+            "label": "Button Heading",
+            "default": "shop now"
+        },
+        {
+            "type": "range",
+            "id": "card_button_radius",
+            "label": "Button Radius",
+            "default": 32,
+            "min": 0,
+            "max": 50,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "card_button_border_width",
+            "label": "Button Border Width",
+            "default": 0,
+            "min": 0,
+            "max": 10,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "card_button_border_style",
+            "label": "Button Border Style",
+            "default": "solid",
+            "options": [
+                {
+                    "value": "solid",
+                    "label": "Solid"
+                },
+                {
+                    "value": "dashed",
+                    "label": "Dashed"
+                },
+                {
+                    "value": "dotted",
+                    "label": "Dotted"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "card_button_border_color",
+            "label": "Button Border Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "card_button_color",
+            "label": "Button Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "card_button_hover_color",
+            "label": "Button Hover Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "card_button_background_color",
+            "label": "Button Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "card_button_hover_background_color",
+            "label": "Button Hover Background Color",
+            "default": "#000000"
+        },
+        {
+            "type": "range",
+            "id": "card_button_size",
+            "label": "Button Size",
+            "default": 14,
+            "min": 12,
+            "max": 24,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "card_button_weight",
+            "label": "Button Weight",
+            "default": "bold",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "font_picker",
+            "id": "card_button_font",
+            "label": "Button Font",
+            "default": "josefin_sans_n4"
+        },
+        {
+            "type": "range",
+            "id": "card_button_size_mobile",
+            "label": "Button Size Mobile",
+            "default": 12,
+            "min": 12,
+            "max": 24,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Layout Settings"
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_top",
+            "label": "Layout Margin Top",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "layout_margin_bottom",
+            "label": "Layout Margin Bottom",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "layout_background",
+            "label": "Layout Background",
+            "default": "#ffffff"
+        }
+    ],
+    "presets": [
+        {
+            "name": "PC - Collection #4"
+        }
+    ]
+}
+{% endschema %}
+<script>
+    function initCollection4() {
+        let items = document.querySelectorAll('.pc-collection-item-{{section.id}}');
+        items.forEach(el => {
+            if (window.innerWidth > 1023) {
+                el.addEventListener('mouseover', () => {
+                    let height = el.offsetHeight + "px";
+                    document.documentElement.style.setProperty('--pc-desktop-height', height);
+                    items.forEach(element => {
+                        element.classList.remove('active');
+                    })
+                    el.classList.add('active');
+                })
+                el.addEventListener('click', (e) => {
+                    window.location = el.getAttribute('data-link');
+                });
+            } else {
+                el.addEventListener('click', (e) => {
+                    if (window.innerWidth < 1023) {
+                        if (!el.classList.contains('active')) {
+                            e.preventDefault();
+                        } else {
+                            window.location = el.getAttribute('data-link');
+                        }
+                        items.forEach(element => {
+                            element.classList.remove('active');
+                        })
+                        el.classList.add('active');
+                    }
+                });
+            }
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', initCollection4);
+
+</script>

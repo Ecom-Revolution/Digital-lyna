@@ -1,0 +1,1525 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+  assign heading_weight = section.settings.heading_weight
+  assign heading_color = section.settings.heading_color
+  assign heading_font = section.settings.heading_font
+
+  assign heading_size_mobile = section.settings.heading_size_mobile
+
+  assign slider_color = section.settings.slider_color
+  assign slider_per_view = section.settings.slider_per_view
+  assign slider_per_view_mobile = section.settings.slider_per_view_mobile
+  assign slider_space_between = section.settings.slider_space_between
+  assign slider_space_between_mobile = section.settings.slider_space_between_mobile
+  assign enable_autoplay = section.settings.enable_autoplay
+  assign slider_speed = section.settings.slider_speed
+  assign enable_loop = section.settings.enable_loop
+  assign enable_pagination = section.settings.enable_pagination
+  assign enable_navigation = section.settings.enable_navigation
+
+  assign card_border_radius = section.settings.card_border_radius
+  assign card_background = section.settings.card_background
+  assign card_text_color = section.settings.card_text_color
+  assign card_border_width = section.settings.card_border_width
+  assign card_border_color = section.settings.card_border_color
+  assign card_border_style = section.settings.card_border_style
+  assign card_shadow = section.settings.card_shadow
+
+  assign layout_margin_top = section.settings.layout_margin_top
+  assign layout_margin_bottom = section.settings.layout_margin_bottom
+  assign layout_background = section.settings.layout_background
+%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  .pc-section-{{section.id}} {
+      margin-top: {{ layout_margin_top }}px;
+      margin-bottom: {{ layout_margin_bottom }}px;
+      overflow: hidden;
+  }
+
+  .pc-section-{{section.id}} .pc-section-{{section.id}}-settings {
+      margin: 0 auto;
+      padding-top: 27px;
+      padding-bottom: 27px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-heading-{{section.id}} {
+      text-align: center;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-heading-{{section.id}} * {
+      margin: 0;
+      font-weight: {{ heading_weight }};
+      font-size: {{ heading_size_mobile }}px;
+      color: {{ heading_color }};
+      line-height: 130%;
+      font-family: {{ heading_font.family }}, {% if heading_font.fallback == blank %} sans-serif {% else %} {{ heading_font.fallback }} {% endif %} !important;
+      text-transform: unset;
+      text-decoration: none;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-slider-body-{{section.id}} {
+      display: flex;
+      margin-top: 10px;
+      align-items: center;
+      gap: 15px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}} {
+      flex: 1 1 0 !important;
+      padding: 20px 0px !important;
+      margin-left: -1.5rem !important;
+      margin-right: -1.5rem !important;
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}} {
+      box-sizing: border-box !important;
+      padding: 12px 16px !important;
+      border: {{ card_border_width }}px {{ card_border_style }} {{ card_border_color }} ;
+      border-radius: {{ card_border_radius }}px;
+      background-color: {{ card_background }};
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-{{section.id}} {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 10px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-image-{{section.id}} {
+      flex-shrink: 0;
+      width: 40px;
+      border-radius: 100px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-image-{{section.id}} img,
+  .pc-section-{{section.id}} .pc-testimonials-author-image-{{section.id}} svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-image-{{section.id}} svg {
+      background-color: #AFAFAF;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-text-{{section.id}} {
+      margin: 0;
+      font-weight: 700;
+      font-size: 15px;
+      color: {{ card_text_color }};
+      line-height: 130%;
+      text-transform: unset;
+      word-wrap: break-word;
+      text-align: left;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-author-time-{{section.id}} {
+      margin: 0;
+      margin-top: 2px;
+      font-size: 13px;
+      color: {{ card_text_color }};
+      line-height: 130%;
+      text-transform: unset;
+      word-wrap: break-word;
+      text-align: left;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-text-{{section.id}} {
+      margin-top: 10px;
+      text-align: left;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-text-{{section.id}} * {
+      margin: 0;
+      font-size: 13px;
+      color: {{ card_text_color}};
+      line-height: 170%;
+      text-transform: unset;
+      text-decoration: none;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0px;
+      margin-right: 0px;
+      border-radius: 0px;
+      overflow: hidden;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} img,
+  .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-comments-{{section.id}} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 12px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-count-comments-{{section.id}} {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-count-comments-icons-{{section.id}} {
+      display: flex;
+      align-items: center;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-count-comments-icon-{{section.id}} {
+      width: 18px;
+      height: 18px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-count-comments-icon-{{section.id}} img,
+  .pc-section-{{section.id}} .pc-testimonials-count-comments-icon-{{section.id}} svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-count-comment-{{section.id}} {
+      margin: 0;
+      width: 100%;
+      text-align: left;
+      font-size: 12px;
+      color: {{ card_text_color }};
+      line-height: 130%;
+      text-transform: unset;
+      word-wrap: break-word;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-comment-{{section.id}} {
+      margin: 0;
+      font-size: 12px;
+      color: {{ card_text_color }};
+      line-height: 130%;
+      text-transform: unset;
+      word-wrap: break-word;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}},
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} {
+      display: flex;
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border: 0px;
+      border: 0px solid #c7c7c7;
+      border-radius: 100px;
+      background: transparent;
+      background: {{ slider_color }};
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      -webkit-appearance: none;
+      /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,.15); */
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} .pc-animate-icon {
+      pointer-events: none;
+      place-items: center;
+      display: grid;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon:before,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} .pc-animate-icon:before {
+      content: "";
+      grid-area: 1 / -1;
+      transition: all .2s ease;
+      width: 8px;
+      height: 8px;
+      transform: rotate(calc(1 * 45deg));
+      box-sizing: border-box;
+      border-style: solid;
+      border: 0px;
+      border-right: 2px solid currentColor;
+      border-top: 2px solid currentColor;
+      position: relative;
+      left: -1px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon:before {
+      left: unset;
+      right: -1px;
+      border-right: 0px;
+      border-top: 0px;
+      border-bottom: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon:after,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} .pc-animate-icon:after {
+      content: "";
+      grid-area: 1 / -1;
+      transition: all .2s ease;
+      width: 7.7px;
+      height: 1.6px;
+      transform-origin: center;
+      opacity: 0;
+      background: currentColor;
+      transform: scaleX(.5);
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} span,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} span {
+      color: #ffffff;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}}.swiper-button-disabled,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}}.swiper-button-disabled {
+      opacity: 0.5;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}}.swiper-button-lock,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}}.swiper-button-lock {
+      opacity: 0;
+      pointer-events: none;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} {
+      position: static !important;
+      margin: 0px auto !important;
+      margin-top: 16px !important;
+      width: 100% !important;
+      max-width: fit-content;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} .swiper-pagination-bullet {
+      width: 6px !important;
+      height: 6px !important;
+      border: 0px !important;
+      background-color: {{ slider_color }}!important;
+      opacity: 0.4 !important;
+      transition: all 0.25s ease 0s;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      transform: scale(1.3) !important;
+      opacity: 1 !important;
+      transition: all 0.25s ease 0s;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-buttons-{{section.id}} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-top: 1px solid #a4b0be;
+      margin-top: 10px;
+      padding-top: 10px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-button-{{section.id}} {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-button-icon-{{section.id}} {
+      width: 16px;
+      height: 16px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-button-icon-{{section.id}} svg path {
+      fill: #000000;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-button-icon-{{section.id}} svg,
+  .pc-section-{{section.id}} .pc-testimonials-button-icon-{{section.id}} img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-button-text-{{section.id}} {
+      margin: 0;
+      font-size: 12px;
+      color: {{ card_text_color }};
+      line-height: 130%;
+      text-transform: unset;
+      word-wrap: break-word;
+  }
+
+  @media(min-width: 1024px) {
+
+      .pc-section-{{section.id}} .pc-section-{{section.id}} {
+          margin-top: {{ layout_margin_top }}px;
+          margin-bottom: {{ layout_margin_bottom }}px;
+      }
+
+      .pc-section-{{section.id}} .pc-section-{{section.id}}-settings {
+          padding: 0 5rem;
+          padding-top: 36px;
+          padding-bottom: 36px;
+          padding-left: 1rem;
+          padding-right: 1rem;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-heading-{{section.id}} {
+          text-align: center;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-heading-{{section.id}} * {
+          font-size: {{ heading_size }}px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-slider-body-{{section.id}} {
+          margin-top: 10px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}} {
+          margin-left: -0rem !important;
+          margin-right: -0rem !important;
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}} {
+          padding: 12px 16px !important;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-author-{{section.id}} {
+          justify-content: start;
+          gap: 10px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-author-image-{{section.id}} {
+          width: 40px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-author-text-{{section.id}} {
+          font-size: 15px;
+          text-align: left;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-author-time-{{section.id}} {
+          margin-top: 2px;
+          font-size: 13px;
+          text-align: left;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-text-{{section.id}} {
+          margin-top: 10px;
+          text-align: left;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-text-{{section.id}} * {
+          font-size: 14px;
+          margin: 0;
+        }
+
+      .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+          margin-top: 10px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-comments-{{section.id}} {
+          margin-top: 12px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-count-comment-{{section.id}} {
+          font-size: 13px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-comment-{{section.id}} {
+          font-size: 13px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-count-comments-icon-{{section.id}} {
+          width: 18px;
+          height: 18px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}},
+      .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} {
+          width: 48px;
+          height: 48px;
+          transition: all 0.25s ease 0s;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon:before,
+      .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} .pc-animate-icon:before {
+          width: 10px;
+          height: 10px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}} .pc-animate-icon:after,
+      .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} .pc-animate-icon:after {
+          width: 9.7px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} {
+          margin-top: 20px !important;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} .swiper-pagination-bullet {
+          width: 6px !important;
+          height: 6px !important;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-buttons-{{section.id}} {
+          margin-top: 10px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-button-text-{{section.id}} {
+          font-size: 13px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-button-icon-{{section.id}} {
+          width: 16px;
+          height: 16px;
+      }
+  }
+
+
+  .pc-section-{{section.id}} .pc-section-{{section.id}}-settings {
+      max-width: 1400px;
+  }
+
+
+  @media(min-width: 1024px) {
+      .pc-section-{{section.id}} .pc-testimonials-author-{{section.id}} {
+          flex-direction: row;
+      }
+  }
+
+
+  .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+      aspect-ratio: 12/8;
+  }
+
+
+  @media(min-width: 1024px) {
+      .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+          aspect-ratio: 12/8;
+      }
+  }
+
+
+  .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+      width: auto;
+      margin-left: -16px;
+      margin-right: -16px;
+  }
+
+  @media(min-width: 1024px) {
+      .pc-section-{{section.id}} .pc-testimonials-image-{{section.id}} {
+          margin-left: -16px;
+          margin-right: -16px;
+      }
+  }
+
+  {% if card_shadow == true %}
+  .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}} {
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.149);
+  }
+  {% endif %}
+
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}}:hover,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}}:hover {
+      transition: all 0.3s ease 0s;
+      border: 0px solid #c7c7c7;
+      background: {{ slider_color }};
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}}:hover .pc-animate-icon,
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}}:hover .pc-animate-icon {
+      color: #ffffff;
+  }
+
+
+  .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}},
+  .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} {
+      display: none;
+  }
+
+
+  @media(min-width: 1024px) {
+
+      .pc-section-{{section.id}} .pc-testimonials-btn-prev-{{section.id}},
+      .pc-section-{{section.id}} .pc-testimonials-btn-next-{{section.id}} {
+          display: flex;
+      }
+  }
+
+
+  .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} {
+      display: flex !important;
+  }
+
+
+  @media(min-width: 1024px) {
+      .pc-section-{{section.id}} .pc-testimonials-pagination-{{section.id}} {
+          display: flex !important;
+      }
+  }
+
+
+  .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}}.preview .swiper-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 15px;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}}.preview .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}} {
+      width: 100%;
+  }
+
+  .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}}.preview .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}}:not(:first-child) {
+      margin-left: 24px;
+  }
+
+  @media(min-width: 1024px) {
+      .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}}.preview .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}}:not(:first-child) {
+          margin-left: 47px;
+      }
+
+      .pc-section-{{section.id}} .pc-testimonials-slider-{{section.id}}.preview .pc-section-{{section.id}} .pc-testimonials-slide-{{section.id}} {
+          width: calc(100% / 3 - (32px));
+      }
+  }
+</style>
+
+<div
+  class="pc-section-{{section.id}} pc-testimonials-{{section.id}}"
+  style="background-color:{{ layout_background }}; background-image: ;"
+>
+  <div class="pc-section-{{section.id}}-settings">
+    {% if heading != blank %}
+      <div class="pc-testimonials-heading-{{section.id}}">
+        <h2>{{ heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="pc-testimonials-slider-body-{{section.id}}">
+    {% if enable_navigation == true %}  
+    <button class="pc-testimonials-btn-prev-{{section.id}}">
+        <span class="pc-animate-icon"></span>
+      </button>
+{% endif %}
+      <div
+        class="pc-testimonials-slider-{{section.id}} swiper "
+      >
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+          <div class="pc-testimonials-slide-{{section.id}} swiper-slide">
+            <div class="pc-testimonials-author-{{section.id}}">
+              <div
+                class="pc-testimonials-author-image-{{section.id}}"
+              >
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image |  img_url: 'master' }}"
+                  alt=""
+                >
+                {% else %}
+                {{ 'image' |  placeholder_svg_tag: 'placeholder_svg' }}
+              {% endif %}
+              </div>
+              <div
+                class="pc-testimonials-author-content-{{section.id}}"
+              >
+                <p
+                  class="pc-testimonials-author-text-{{section.id}}"
+                >
+                  {{ block.settings.name }}
+                </p>
+
+                <p
+                  class="pc-testimonials-author-time-{{section.id}}"
+                >
+                  {{ block.settings.date }}
+                </p>
+              </div>
+            </div>
+
+            <div class="pc-testimonials-text-{{section.id}}">
+              {{block.settings.content}}
+            </div>
+
+            <div class="pc-testimonials-image-{{section.id}}">
+            {% if block.settings.post_media != blank %}  
+            <img
+                src="{{ block.settings.post_media | img_url: 'master' }}"
+                alt=""
+              >
+              {% else %}
+                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            </div>
+
+            <div class="pc-testimonials-comments-{{section.id}}">
+              <div
+                class="pc-testimonials-count-comments-{{section.id}}"
+              >
+                <div
+                  class="pc-testimonials-count-comments-icons-{{section.id}}"
+                >
+                {% if block.settings.enable_likes == true %}
+                  <div
+                    class="pc-testimonials-count-comments-icon-{{section.id}}"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      fill="none"
+                      viewBox="0 0 16 16"
+                    >
+                      <defs>
+                          <linearGradient id="gradient-column_YpyKXV0" x1="8" x2="8" y2="16"
+                              gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#18AFFF"></stop>
+                              <stop offset="1" stop-color="#0062DF"></stop>
+                          </linearGradient>
+                      </defs>
+                      <path fill="url(#gradient-column_YpyKXV0)"
+                          d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Z"></path>
+                      <path fill="#fff"
+                          d="M12.162 7.338c.176.123.338.245.338.674 0 .43-.229.604-.474.725.1.163.132.36.089.546-.077.344-.392.611-.672.69.121.194.159.385.015.62-.185.295-.346.407-1.058.407H7.5c-.988 0-1.5-.546-1.5-1V7.665c0-1.23 1.467-2.275 1.467-3.13L7.361 3.47c-.005-.065.008-.224.058-.27.08-.079.301-.2.635-.2.218 0 .363.041.534.123.581.277.732.978.732 1.542 0 .271-.414 1.083-.47 1.364 0 0 .867-.192 1.879-.199 1.061-.006 1.749.19 1.749.842 0 .261-.219.523-.316.666ZM3.6 7h.8a.6.6 0 0 1 .6.6v3.8a.6.6 0 0 1-.6.6h-.8a.6.6 0 0 1-.6-.6V7.6a.6.6 0 0 1 .6-.6Z">
+                      </path>
+                    </svg>
+                  </div>
+        {% endif %}
+        {% if block.settings.enable_love == true %}
+                  <div
+                    class="pc-testimonials-count-comments-icon-{{section.id}}"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      fill="none"
+                      viewBox="0 0 16 16"
+                    >
+                      <defs>
+                          <linearGradient id="gradient-column_YpyKXV1" x1="8" x2="8" y2="16"
+                              gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#FF6680"></stop>
+                              <stop offset="1" stop-color="#E61739"></stop>
+                          </linearGradient>
+                      </defs>
+                      <path fill="url(#gradient-column_YpyKXV1)"
+                          d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Z"></path>
+                      <path fill="#fff"
+                          d="M10.473 4C8.275 4 8 5.824 8 5.824S7.726 4 5.528 4c-2.114 0-2.73 2.222-2.472 3.41C3.736 10.55 8 12.75 8 12.75s4.265-2.2 4.945-5.34c.257-1.188-.36-3.41-2.472-3.41Z">
+                      </path>
+                    </svg>
+                  </div>
+        {% endif %}
+        {% if block.settings.enable_much_love == true %}
+                  <div
+                    class="pc-testimonials-count-comments-icon-{{section.id}}"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 16 16"
+                    >
+                      <linearGradient id="gradient-column_bAXfdp2a" x1="-2.313" x2="-2.313"
+                          y1="19.862" y2="20.738"
+                          gradientTransform="matrix(16 0 0 -16 45 333)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#f28a2d"></stop>
+                          <stop offset="1" stop-color="#fde86f"></stop>
+                      </linearGradient>
+                      <path fill="url(#gradient-column_bAXfdp2a)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2b" cx="-2.313" cy="20.313"
+                          r=".5" gradientTransform="matrix(16 0 0 -16 45 333)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#f28a2d" stop-opacity="0"></stop>
+                          <stop offset="1" stop-color="#f08423" stop-opacity=".34"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2b)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2c" cx="-2.644" cy="20.358"
+                          r=".101"
+                          gradientTransform="matrix(14.5998 6.5456 5.063 -11.2928 -62.74 255.526)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#f28a2d" stop-opacity=".5"></stop>
+                          <stop offset="1" stop-color="#f28a2d" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2c)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2d" cx="-2.227" cy="19.541"
+                          r=".283"
+                          gradientTransform="matrix(12.5663 -9.904 -3.6032 -4.5717 110.263 79.053)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#f28a2d" stop-opacity=".5"></stop>
+                          <stop offset="1" stop-color="#f28a2d" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2d)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2e" cx="-2.531" cy="19.776"
+                          r=".107"
+                          gradientTransform="matrix(15.7394 -2.8762 -.572 -3.1299 56.242 56.647)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#d45f00" stop-opacity=".15"></stop>
+                          <stop offset="1" stop-color="#f28a2d" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2e)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2f" cx="-2.098" cy="20.131"
+                          r=".106"
+                          gradientTransform="matrix(15.6768 3.1995 .6363 -3.1176 30.972 71.62)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#d45f00" stop-opacity=".15"></stop>
+                          <stop offset="1" stop-color="#d45f00" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2f)" fill-rule="evenodd"
+                          d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                          clip-rule="evenodd"></path>
+                      <linearGradient id="gradient-column_bAXfdp2g" x1="-1.619" x2="-1.619"
+                          y1="18.2" y2="16.681"
+                          gradientTransform="matrix(3.4035 0 0 -.9374 13.51 22.37)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#482314"></stop>
+                          <stop offset="1" stop-color="#9a4111"></stop>
+                      </linearGradient>
+                      <path fill="url(#gradient-column_bAXfdp2g)" fill-rule="evenodd"
+                          d="M9.7 5.9c-.1-.3-3.3-.3-3.4 0-.1.3.6.7 1.7.7s1.8-.4 1.7-.7z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2h" cx="-3.9" cy="18.924"
+                          r=".872"
+                          gradientTransform="matrix(0 -2.1326 -2.1327 0 45.352 -4.046)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#3b446b"></stop>
+                          <stop offset=".688" stop-color="#202340"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2h)" fill-rule="evenodd"
+                          d="M6 4.1c0 .7-.4.9-1 1-.6.1-1.1-.2-1.1-1 0-.6.3-1.4 1.1-1.4.7 0 1 .8 1 1.4z"
+                          clip-rule="evenodd"></path>
+                      <path fill="#4e506a" fill-rule="evenodd"
+                          d="M4.9 3.1c.1.1.1.4-.1.5-.1.1-.3.2-.4 0s-.1-.3 0-.5c.2-.1.4-.1.5 0z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2i" cx="-3.914" cy="18.924"
+                          r=".872"
+                          gradientTransform="matrix(0 -2.1326 -2.1327 0 51.366 -4.077)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#3b446b"></stop>
+                          <stop offset=".688" stop-color="#202340"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2i)" fill-rule="evenodd"
+                          d="M10 4.1c0 .7.4.9 1.1 1 .6.1 1.1-.2 1.1-1 0-.6-.3-1.4-1.1-1.4S10 3.5 10 4.1z"
+                          clip-rule="evenodd"></path>
+                      <path fill="#4e506a" fill-rule="evenodd"
+                          d="M11 3.1c.1.1 0 .3-.1.5-.1.1-.3.1-.4 0s0-.3.1-.5c.2-.2.3-.2.4 0z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2j" cx="-5.202" cy="20.231"
+                          r=".298"
+                          gradientTransform="matrix(-.339 -1.3177 -6.1081 1.5713 126.811 -36.933)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#e38200"></stop>
+                          <stop offset="1" stop-color="#cd6700"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2j)" fill-rule="evenodd"
+                          d="M3.4 2.1c-.2.2 0 .5.3.4.6-.3 1.8-.6 2.8-.5.3 0 .4 0 .3-.4 0-.3-.4-.5-1.2-.4-1.2.1-2 .7-2.2.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2k" cx="-4.247" cy="20.267"
+                          r=".314"
+                          gradientTransform="matrix(.2577 -1.3359 -7.9278 -1.5293 172.702 26.852)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#e38200"></stop>
+                          <stop offset="1" stop-color="#cd6700"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2k)" fill-rule="evenodd"
+                          d="M10.4 1.2c-.8-.1-1.2.1-1.2.4-.1.4 0 .4.3.4 1.1-.1 2.3.2 2.8.5.4.2.5-.2.3-.4s-1-.8-2.2-.9z"
+                          clip-rule="evenodd"></path>
+                      <linearGradient id="gradient-column_bAXfdp2l" x1="-2.17" x2="-2.407"
+                          y1="20.358" y2="19.647"
+                          gradientTransform="matrix(9.7496 0 0 -9.079 27.91 194.578)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#f34462"></stop>
+                          <stop offset="1" stop-color="#cc0820"></stop>
+                      </linearGradient>
+                      <path fill="url(#gradient-column_bAXfdp2l)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2m" cx="-1.839" cy="20.363"
+                          r=".29"
+                          gradientTransform="matrix(8.51 3.1636 3.1637 -8.51 -39.932 190.042)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#ff7091" stop-opacity=".7"></stop>
+                          <stop offset="1" stop-color="#fe6d8e" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2m)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2n" cx="-2.308" cy="20.509"
+                          r=".29"
+                          gradientTransform="matrix(8.51 3.1636 3.1637 -8.51 -40.975 191.442)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#ff7091" stop-opacity=".7"></stop>
+                          <stop offset="1" stop-color="#fe6d8e" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2n)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2o" cx="-2.505" cy="20.75"
+                          r=".249"
+                          gradientTransform="matrix(-1.8271 8.8932 12.246 2.5158 -254.697 -18.163)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#9c0600"></stop>
+                          <stop offset="1" stop-color="#9c0600" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2o)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2p" cx="-1.547" cy="20.349"
+                          r=".15"
+                          gradientTransform="matrix(7.812 4.6261 5.8059 -9.8043 -94.645 218.657)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#9c0600" stop-opacity=".5"></stop>
+                          <stop offset="1" stop-color="#9c0600" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2p)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2q" cx="-2.763" cy="20.429"
+                          r=".13"
+                          gradientTransform="matrix(8.5228 -3.1289 -4.0321 -10.983 107.977 224.84)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#9c0600" stop-opacity=".5"></stop>
+                          <stop offset="1" stop-color="#9c0600" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2q)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <radialGradient id="gradient-column_bAXfdp2r" cx="-1.795" cy="20.148"
+                          r=".175"
+                          gradientTransform="matrix(7.5205 5.0863 5.5088 -8.1451 -88.557 187.152)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#9c0600" stop-opacity=".999"></stop>
+                          <stop offset="1" stop-color="#9c0600" stop-opacity="0"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2r)" fill-rule="evenodd"
+                          d="M9.7 8.5c-2.1-.6-2.8.8-2.8.8S7.1 7.7 5 7c-2-.6-3.2 1.3-3.3 2.4-.2 2.5 2 5.3 2.8 6.3.1.3.4.3.7.3 1.2-.3 4.6-1.4 5.9-3.6.5-1.1.6-3.3-1.4-3.9z"
+                          clip-rule="evenodd"></path>
+                      <defs>
+                          <filter id="gradient-column_bAXfdp2s" width="6.9" height="5.4"
+                              x="-.2" y="7.2" filterUnits="userSpaceOnUse">
+                              <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0">
+                              </feColorMatrix>
+                          </filter>
+                      </defs>
+                      <mask id="gradient-column_bAXfdp2u" width="6.9" height="5.4" x="-.2"
+                          y="7.2" maskUnits="userSpaceOnUse">
+                          <path fill="#fff" fill-rule="evenodd"
+                              d="M16 8c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"
+                              clip-rule="evenodd" filter="url(#gradient-column_bAXfdp2s)">
+                          </path>
+                      </mask>
+                      <radialGradient id="gradient-column_bAXfdp2t" cx="-2.204" cy="20.844"
+                          r="1.226"
+                          gradientTransform="matrix(4.3582 3.2271 3.227 -4.3582 -57.739 105.424)"
+                          gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#eda83a"></stop>
+                          <stop offset="1" stop-color="#ffdc5e"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2t)" fill-rule="evenodd"
+                          d="M1.3 7.7c-.5-.5-1.4-.8-1.5.4-.1.9.3 2.5 1.4 3.4 2.8 2.2 5.3 1 5.4-.6.1-1.2-1.4-1.1-1.8-1.1v-.1c.1-.1.3-.2.4-.3.4-.3.2-.8-.3-.7-.1 0-1.3.4-2.1.1-.8-.3-.9-.6-1.5-1.1z"
+                          clip-rule="evenodd" mask="url(#gradient-column_bAXfdp2u)"></path>
+                      <radialGradient id="gradient-column_bAXfdp2v" cx="15.654" cy="7.737"
+                          r="8.846" gradientUnits="userSpaceOnUse">
+                          <stop offset="0" stop-color="#eda83a"></stop>
+                          <stop offset="1" stop-color="#ffdc5e"></stop>
+                      </radialGradient>
+                      <path fill="url(#gradient-column_bAXfdp2v)"
+                          d="M14.3 7.8c.3-.6.8-.4 1.1-.3.4.1.7.4.7 1 0 1.5-.2 2.9-1.5 4.3-2.3 2.6-6.2 2.2-6.6.6-.3-1.2 1.1-1.4 1.6-1.4v-.1c-.2-.1-.3-.2-.5-.3-.4-.3-.3-.9.2-.8.6.1 1.4.3 2 .2 1.9-.2 2.2-1.7 3-3.2z">
+                      </path>
+                    </svg>
+                  </div>
+        {% endif %}
+                </div>
+                <p
+                  class="pc-testimonials-count-comment-{{section.id}}"
+                >
+                  {{ block.settings.likes }}
+                </p>
+              </div>
+
+              <div class="pc-testimonials-comment-{{section.id}}">{{ block.settings.comments}}</div>
+            </div>
+            <div class="pc-testimonials-buttons-{{section.id}}">
+              <div class="pc-testimonials-button-{{section.id}}">
+                <div
+                  class="pc-testimonials-button-icon-{{section.id}}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    enable-background="new 0 0 512 512"
+                    height="512"
+                    viewBox="0 0 512 512"
+                    width="512"
+                  >
+                    <path
+                        d="m476.229 223.454c-13.977-16.845-35.861-27.309-57.113-27.309h-56.219c12.652-20.162 22.174-40.451 27.977-59.771 8.855-29.482 8.545-55.182-.897-74.322-10.635-21.558-32.187-33.431-60.683-33.431-6.481 0-12.322 3.91-14.792 9.902-22.188 53.817-80.062 131.167-134.589 182.122-5.564-19.327-23.395-33.511-44.488-33.511h-68.5c-25.529 0-46.299 20.77-46.299 46.298v203.646c0 25.529 20.77 46.299 46.299 46.299h68.5c15.617 0 29.443-7.781 37.833-19.661 12.692 12.211 29.518 19.661 47.955 19.661h172.481c19.068 0 36.048-8.119 49.106-23.479 10.764-12.663 18.409-29.77 22.107-49.471l25.423-135.427c3.411-18.17-1.597-36.476-14.101-51.546zm-326.506 213.625c0 7.884-6.414 14.299-14.298 14.299h-68.5c-7.884 0-14.299-6.415-14.299-14.299v-203.646c0-7.884 6.415-14.298 14.299-14.298h68.5c7.884 0 14.298 6.414 14.298 14.298zm309.156-167.983-25.422 135.428c-4.252 22.651-16.931 46.854-39.764 46.854h-172.481c-21.774 0-39.488-19.694-39.488-43.902v-145.741c60.311-50.068 127.854-136.057 157.672-200.327 15.909 2.692 20.279 11.549 21.884 14.801 10.385 21.051 1.766 69.522-41.697 126.199-3.707 4.833-4.347 11.353-1.652 16.815s8.257 8.921 14.349 8.921h86.837c11.8 0 24.552 6.179 32.486 15.742 4.467 5.386 9.357 14.13 7.276 25.21z">
+                    </path>
+                  </svg>
+                </div>
+                <p
+                  class="pc-testimonials-button-text-{{section.id}}"
+                >
+                  Like
+                </p>
+              </div>
+
+              <div class="pc-testimonials-button-{{section.id}}">
+                <div
+                  class="pc-testimonials-button-icon-{{section.id}}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    enable-background="new 0 0 512 512"
+                    height="512"
+                    viewBox="0 0 512 512"
+                    width="512"
+                  >
+                    <path
+                        d="m411.289 14.988h-310.578c-46.239 0-83.856 37.618-83.856 83.856v203.555c0 46.239 37.618 83.857 83.856 83.857h36.607v64.208c0 17.804 9.469 33.261 25.33 41.348 6.822 3.479 14.052 5.2 21.225 5.2 9.503 0 18.906-3.022 27.118-8.98l140.274-101.776h60.024c46.239 0 83.856-37.618 83.856-83.857v-203.555c.001-46.239-37.617-83.856-83.856-83.856zm51.857 287.411c0 28.594-23.263 51.857-51.856 51.857h-65.217c-3.375 0-6.664 1.067-9.396 3.05l-144.479 104.825c-4.608 3.345-9.94 3.761-15.013 1.174-5.073-2.586-7.866-7.147-7.866-12.841v-80.208c0-8.836-7.164-16-16-16h-52.607c-28.594 0-51.856-23.263-51.856-51.857v-203.555c0-28.594 23.263-51.856 51.856-51.856h310.578c28.594 0 51.856 23.263 51.856 51.856z">
+                    </path>
+                  </svg>
+                </div>
+                <p
+                  class="pc-testimonials-button-text-{{section.id}}"
+                >
+                  Comment
+                </p>
+              </div>
+
+              <div class="pc-testimonials-button-{{section.id}}">
+                <div
+                  class="pc-testimonials-button-icon-{{section.id}} pc-testimonials-button-icon-share-{{section.id}}"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    enable-background="new 0 0 512 512"
+                    height="512"
+                    viewBox="0 0 512 512"
+                    width="512"
+                  >
+                    <path
+                        d="m491.184 177.664-174.226-143.783c-4.778-3.943-11.402-4.773-17.005-2.133-5.603 2.641-9.179 8.279-9.179 14.473v58.521c-71.923 3.86-138.994 33.709-190.316 85.031-55.108 55.109-85.458 128.38-85.458 206.315 0 24.95 3.165 49.754 9.407 73.723 1.835 7.048 8.2 11.968 15.483 11.968 7.284 0 13.648-4.919 15.483-11.968 28.413-109.11 123.908-186.805 235.4-193.627v57.604c0 6.194 3.576 11.833 9.179 14.473s12.228 1.811 17.005-2.133l174.226-143.783c3.683-3.04 5.816-7.565 5.816-12.34s-2.132-9.302-5.815-12.341zm-168.41 122.174v-40.143c0-8.836-7.164-16-16-16-111.16 0-210.621 62.81-259.702 158.554-.048-2.051-.072-4.106-.072-6.161 0-143.24 116.534-259.774 259.774-259.774 8.836 0 16-7.164 16-16v-40.143l133.088 109.834z">
+                    </path>
+                  </svg>
+                </div>
+                <p
+                  class="pc-testimonials-button-text-{{section.id}}"
+                >
+                  Share
+                </p>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+         
+        </div>
+        
+      </div>
+      {% if enable_navigation == true %}
+      <button
+        class="pc-testimonials-btn-next-{{section.id}}"
+      >
+        <span class="pc-animate-icon"></span>
+      </button>
+      {% endif %}
+    </div>
+    {% if enable_pagination == true %}
+    <div
+      class="pc-testimonials-pagination-{{section.id}} swiper-pagination "
+    >
+     
+    </div>
+        {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Social Review #5",
+"settings":[
+    {
+        "type": "header",
+        "content": "This section is a property of PeakConversion",
+        "info": "Do not sell or reproduce. contact us at franklinjounda@gmail.com for more info"
+    },
+    {
+        "type": "header",
+        "content": "Heading Settings"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Testimonials"
+    },
+    {
+        "type": "range",
+        "id": "heading_size",
+        "label": "Heading Size",
+        "default": 32,
+        "min": 10,
+        "max": 50
+    },
+    {
+        "type": "select",
+        "id": "heading_weight",
+        "label": "Heading Weight",
+        "default": "700",
+        "options": [
+            {
+                "value": "400",
+                "label": "Normal"
+            },
+            {
+                "value": "700",
+                "label": "Bold"
+            }
+        ]
+    },
+    {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#333333"
+    },
+    {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "josefin_sans_n4"
+    },
+    {
+        "type": "range",
+        "id": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "default": 28,
+        "min": 10,
+        "max": 40
+    },
+    {
+        "type": "header",
+        "content": "Slider Settings"
+    },
+    {
+        "type": "color",
+        "id": "slider_color",
+        "label": "Slider Color",
+        "default": "#333333"
+    },
+    {
+        "type": "range",
+        "id": "slider_per_view",
+        "label": "Slider Per View",
+        "default": 3,
+        "min": 1,
+        "max": 5
+    },
+    {
+        "type": "range",
+        "id": "slider_per_view_mobile",
+        "label": "Slider Per View Mobile",
+        "default": 1,
+        "min": 1,
+        "max": 3
+    },
+    {
+        "type": "range",
+        "id": "slider_space_between",
+        "label": "Slider Space Between",
+        "default": 32,
+        "min": 0,
+        "max": 50
+    },
+    {
+        "type": "range",
+        "id": "slider_space_between_mobile",
+        "label": "Slider Space Between Mobile",
+        "default": 24,
+        "min": 0,
+        "max": 50
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_autoplay",
+        "label": "Enable Autoplay",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "slider_speed",
+        "label": "Slider Speed",
+        "default": 2500,
+        "min": 500,
+        "max": 5000,
+        "step": 100
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_loop",
+        "label": "Enable Loop",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_pagination",
+        "label": "Enable Pagination",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_navigation",
+        "label": "Enable Navigation",
+        "default": true
+    },
+    {
+        "type": "header",
+        "content": "Card Settings"
+    },
+    {
+        "type": "color",
+        "id": "card_background",
+        "label": "Card Background",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "card_text_color",
+        "label": "Card Text Color",
+        "default": "#333333"
+    },
+    {
+        "type": "range",
+        "id": "card_border_radius",
+        "label": "Card Border Radius",
+        "default": 8,
+        "min": 0,
+        "max": 50
+    },
+    {
+        "type": "range",
+        "id": "card_border_width",
+        "label": "Card Border Width",
+        "default": 1,
+        "min": 0,
+        "max": 10
+    },
+    {
+        "type": "color",
+        "id": "card_border_color",
+        "label": "Card Border Color",
+        "default": "#dfdfdf"
+    },
+    {
+        "type": "select",
+        "id": "card_border_style",
+        "label": "Card Border Style",
+        "default": "solid",
+        "options": [
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            }
+        ]
+    },
+    {
+        "type": "checkbox",
+        "id": "card_shadow",
+        "label": "Card Shadow",
+        "default": true
+    },
+    {
+        "type": "header",
+        "content": "Layout Settings"
+    },
+    {
+        "type": "range",
+        "id": "layout_margin_top",
+        "label": "Layout Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100
+    },
+    {
+        "type": "range",
+        "id": "layout_margin_bottom",
+        "label": "Layout Margin Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100
+    },
+    {
+        "type": "color",
+        "id": "layout_background",
+        "label": "Layout Background",
+        "default": "#ffffff"
+    }
+
+],
+"blocks": [
+    {
+        "type": "review",
+        "name": "Review",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Author Image"
+            },
+            {
+                "type": "text",
+                "id": "name",
+                "label": "Author Name",
+                "default": "John Doe"
+            },
+            {
+                "type": "text",
+                "id": "date",
+                "label": "Date",
+                "default": "22h ago"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Review Content",
+                "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+            },
+            {
+                "type": "image_picker",
+                "id": "post_media",
+                "label": "Media"
+            },
+            {
+                "type": "header",
+                "content": "Likes & comments"
+            },
+            {
+                "type": "text",
+                "id": "likes",
+                "label": "Likes",
+                "default": "1.2k"
+            },
+            {
+                "type": "text",
+                "id": "comments",
+                "label": "Comments",
+                "default": "120 Comments"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_likes",
+                "label": "Enable Like",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_love",
+                "label": "Enable Love",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_much_love",
+                "label": "Enable Much Love",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_share",
+                "label": "Enable Share",
+                "default": true
+            }
+
+        ]
+    }
+],
+"presets": [
+    {
+        "category": "Review",
+        "name": "Social Review #5",
+        "blocks": [
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "Koreen P.",
+                    "content": "<p>Lorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "6days ago",
+                    "likes": "923",
+                    "comments": "39 comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            },
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "Kimmy W.",
+                    "content": "<p>Lorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "2h ago",
+                    "likes": "9k",
+                    "comments": "68k comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            },
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "Izuna S.",
+                    "content": "<p>Lorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "yesterday",
+                    "likes": "457",
+                    "comments": "16 comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            },
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "Clark K.",
+                    "content": "<p>TLorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "7h ago",
+                    "likes": "2k",
+                    "comments": "120k comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            },
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "John K.",
+                    "content": "<p>Lorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "10h ago",
+                    "likes": "20.3k",
+                    "comments": "89 comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            },
+            {
+                "type": "review",
+                "settings": {
+                    "image": "",
+                    "name": "John D.",
+                    "content": "<p>Lorem ipsum dolor sit amet consectur adiscing sarip, scola hostis in bellum umbra sanctus expello nex</p>",
+                    "date": "12h ago",
+                    "likes": "1.5k",
+                    "comments": "45 comments",
+                    "enable_likes": true,
+                    "enable_love": true,
+                    "enable_much_love": true,
+                    "enable_share": true
+                }
+            }
+        ]
+    }
+]
+}
+{% endschema %}
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  function initTestimonials20() {
+      document.querySelector('.pc-testimonials-slider-{{section.id}}').classList.remove('preview');
+      new Swiper(".pc-testimonials-slider-{{section.id}}", {
+          speed: {{ slider_speed }},
+          {% if enable_loop == true %}
+          loop: true,
+          {% endif %}
+          {% if enable_autoplay == true %}
+            autoplay: {
+                delay: {{ slider_speed }}
+            }
+            {% endif %}
+          navigation: {
+              nextEl: '.pc-testimonials-btn-next-{{section.id}}',
+              prevEl: '.pc-testimonials-btn-prev-{{section.id}}',
+          },
+          pagination: {
+              el: '.pc-testimonials-pagination-{{section.id}}',
+              type: "bullets",
+              clickable: true
+          },
+          breakpoints: {
+              320: {
+                  spaceBetween: {{ slider_space_between_mobile }},
+                  slidesPerView: {{ slider_per_view_mobile }}.3,
+              },
+              768: {
+                  spaceBetween: {{ slider_space_between_mobile }},
+                  slidesPerView: {{ slider_per_view_mobile }}.5,
+              },
+              1024: {
+                  spaceBetween: {{ slider_space_between }},
+                  slidesPerView: {{ slider_per_view }},
+              }
+          }
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTestimonials20);
+</script>
