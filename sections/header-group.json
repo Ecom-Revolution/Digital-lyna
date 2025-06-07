@@ -1,1 +1,81 @@
-{"type":"header","name":"t:sections.header.settings.header-group.label","sections":{"header":{"type":"header","settings":{"header_type":"left-logo","logo_width":90,"menu":"main-menu","enable_country_selector":true,"enable_language_selector":false,"enable_search":true}},"announcement-bar":{"type":"announcement-bar","settings":{"text":"For example, a test of the announcement of some news"}}},"order":["announcement-bar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header.settings.header-group.label",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "banner_jjkMDy": {
+          "type": "banner",
+          "settings": {
+            "item": "FREE SHIPPING",
+            "item_lnk": ""
+          }
+        },
+        "banner_VfgYNW": {
+          "type": "banner",
+          "settings": {
+            "item": "FREE SHIPPING",
+            "item_lnk": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_jjkMDy",
+        "banner_VfgYNW"
+      ],
+      "settings": {
+        "text_color": "#ffffff",
+        "text_size": 12,
+        "text_weight": "normal",
+        "italic": false,
+        "border_style": "solid",
+        "border_color": "#000000",
+        "border_size": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding": 1.8,
+        "bg_color": "#000000",
+        "gradient_bg": "linear-gradient(90deg, #ff7e5f, #feb47b)",
+        "duration": 60,
+        "reverse": false,
+        "font": "josefin_sans_n4"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "header_type": "left-logo",
+        "full_width": false,
+        "logo_width": 90,
+        "menu": "main-menu",
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "enable_social": false,
+        "sticky_header_type": "on-scroll-up",
+        "enable_search": true,
+        "search_color_scheme": "",
+        "enable_box_shadow": true,
+        "collection_list": [],
+        "product_list": [],
+        "image_ratio": "5/4",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
