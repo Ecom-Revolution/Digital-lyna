@@ -17,14 +17,14 @@
         "banner_jjkMDy": {
           "type": "banner",
           "settings": {
-            "item": "FREE SHIPPING",
+            "item": "TIKTOK SHOP",
             "item_lnk": ""
           }
         },
         "banner_VfgYNW": {
           "type": "banner",
           "settings": {
-            "item": "FREE SHIPPING",
+            "item": "TIKTOK SHOP",
             "item_lnk": ""
           }
         }
@@ -37,15 +37,15 @@
         "text_color": "#ffffff",
         "text_size": 12,
         "text_weight": "normal",
-        "italic": false,
+        "italic": true,
         "border_style": "solid",
-        "border_color": "#000000",
+        "border_color": "#011624",
         "border_size": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "padding": 1.8,
         "bg_color": "#000000",
-        "gradient_bg": "linear-gradient(90deg, #ff7e5f, #feb47b)",
+        "gradient_bg": "",
         "duration": 60,
         "reverse": false,
         "font": "josefin_sans_n4"
