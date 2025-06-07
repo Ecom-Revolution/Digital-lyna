@@ -602,14 +602,14 @@
           "type": "accordion",
           "settings": {
             "question": "Quand est-ce que je recevrai mon Ebook?",
-            "answer": "<p>Some description</p>",
+            "answer": "<p><strong>Tu recevras ton ebook sur ta boite mail immédiatement après avoir passer commande.</strong></p>",
             "opened": true
           }
         },
         "block_2": {
           "type": "accordion",
           "settings": {
-            "question": "Some title",
+            "question": "1. Comment les eBooks peuvent-ils m’aider à réussir sur TikTok Shop ?",
             "answer": "<p>Some description</p>",
             "opened": false
           }
