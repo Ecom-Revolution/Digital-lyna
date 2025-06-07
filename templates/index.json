@@ -143,101 +143,89 @@
         "margin_bottom": "no-indent"
       }
     },
-    "1f309bc4-1a66-455b-90cb-63c739d1df21": {
-      "type": "multirow",
+    "scrollinglogocloud_P6paMp": {
+      "type": "scrollinglogocloud",
       "blocks": {
-        "template--15231063785533__1f309bc4-1a66-455b-90cb-63c739d1df21-column-1": {
-          "type": "column",
+        "slide_NJPNg6": {
+          "type": "slide",
           "settings": {
-            "icon": "none",
-            "icon_color_scheme": "",
-            "icon_fill_type": "gradient",
-            "show_video": false,
-            "autoplay_video": true,
-            "muted_video": true,
-            "loop_video": true,
-            "heading": "Heading",
-            "heading_line": "simple",
-            "line_color": "#1566e0",
-            "word_break": false,
-            "text": "Description",
-            "show_button": true,
-            "button_label": "Label",
-            "button_link": "",
-            "button_style": "primary"
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
+          }
+        },
+        "slide_eptV48": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
+          }
+        },
+        "slide_qprYHH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
+          }
+        },
+        "slide_GHP4kj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
+          }
+        },
+        "slide_AwkWq7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
+          }
+        },
+        "slide_EPGTTW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tiktok_sans_texte.png",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "template--15231063785533__1f309bc4-1a66-455b-90cb-63c739d1df21-column-1"
+        "slide_NJPNg6",
+        "slide_eptV48",
+        "slide_qprYHH",
+        "slide_GHP4kj",
+        "slide_AwkWq7",
+        "slide_EPGTTW"
       ],
+      "name": "SS - Scrolling Logo Cloud",
       "settings": {
-        "section_type": "transparent",
-        "color_scheme": "background-2",
-        "subheading": "",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566e0",
-        "word_break": false,
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text": "",
-        "text_align": "left",
-        "icon_size": "recommended",
-        "box_shadow": true,
-        "icon_style": "colored",
-        "image_alignment": "right",
-        "image_width": "large",
-        "image_ratio": "landscape",
-        "object_fit": "cover",
-        "card_heading_size": "h5",
-        "padding_top": "l",
-        "padding_bottom": "m",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
-      }
-    },
-    "5c94bd84-824f-4368-a89e-e1a1cdccf6d3": {
-      "type": "logo-list",
-      "blocks": {
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4": {
-          "type": "logo",
-          "settings": {
-            "image_1": "shopify://shop_images/ChatGPT_Image_7_juin_2025_a_14_21_48.png",
-            "image_width": 140
-          }
-        }
-      },
-      "block_order": [
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4"
-      ],
-      "settings": {
-        "layout": "static",
-        "color_scheme": "scheme-cb0ffcf7-a7c9-4565-80fe-2ddcd94c6278",
-        "enable_border": true,
-        "border_full": false,
-        "subheading": "",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566e0",
-        "word_break": false,
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text": "",
-        "horizontal_alignment": "center",
-        "vertical_alignment": "middle",
-        "speed_slider_1": 4000,
-        "speed_slider_2": 6000,
-        "padding_top": "m",
-        "padding_bottom": "l",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
+        "ss-title": "",
+        "heading_custom": false,
+        "heading_font": "gluten_n4",
+        "header_size": 30,
+        "header_align": "center",
+        "scrolling_velocity": 52,
+        "pause_hover": false,
+        "shadow": false,
+        "sliders_mt": 0,
+        "logo_padding_top": 0,
+        "logo_padding_bottom": 0,
+        "slider_gap": 10,
+        "slider_gap_mobile": 10,
+        "slider_direction": "left",
+        "icon_width": 100,
+        "header_color": "#ffffff",
+        "border_color": "#ffffff",
+        "background-color": "#000000",
+        "slider-background-color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "lazy": true
       }
     },
     "ec8eb8a5-0272-4472-a5f6-cbe0ad1f37a3": {
@@ -269,6 +257,46 @@
         "margin_bottom": "no-indent",
         "padding_top": "l",
         "padding_bottom": "no-indent"
+      }
+    },
+    "5c94bd84-824f-4368-a89e-e1a1cdccf6d3": {
+      "type": "logo-list",
+      "blocks": {
+        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4": {
+          "type": "logo",
+          "settings": {
+            "image_1": "shopify://shop_images/tiktook.png",
+            "image_width": 140
+          }
+        }
+      },
+      "block_order": [
+        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4"
+      ],
+      "settings": {
+        "layout": "static",
+        "color_scheme": "background-2",
+        "enable_border": true,
+        "border_full": false,
+        "subheading": "",
+        "subheading_style": "subtitle",
+        "subheading_icon": "none",
+        "heading": "",
+        "heading_size": "h2",
+        "heading_line": "simple",
+        "line_color": "#1566e0",
+        "word_break": false,
+        "heading_animation": "none",
+        "word_break_an": false,
+        "text": "",
+        "horizontal_alignment": "center",
+        "vertical_alignment": "middle",
+        "speed_slider_1": 4000,
+        "speed_slider_2": 6000,
+        "padding_top": "m",
+        "padding_bottom": "l",
+        "margin_top": "no-indent",
+        "margin_bottom": "no-indent"
       }
     },
     "testimonials": {
@@ -456,9 +484,9 @@
   },
   "order": [
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
-    "1f309bc4-1a66-455b-90cb-63c739d1df21",
-    "5c94bd84-824f-4368-a89e-e1a1cdccf6d3",
+    "scrollinglogocloud_P6paMp",
     "ec8eb8a5-0272-4472-a5f6-cbe0ad1f37a3",
+    "5c94bd84-824f-4368-a89e-e1a1cdccf6d3",
     "testimonials",
     "collapsible-content"
   ]

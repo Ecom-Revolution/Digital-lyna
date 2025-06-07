@@ -17,14 +17,14 @@
         "banner_jjkMDy": {
           "type": "banner",
           "settings": {
-            "item": "TIKTOK SHOP",
+            "item": "LIVRAISON IMMÉDIATE",
             "item_lnk": ""
           }
         },
         "banner_VfgYNW": {
           "type": "banner",
           "settings": {
-            "item": "TIKTOK SHOP",
+            "item": "LIVRAISON IMMÉDIATE",
             "item_lnk": ""
           }
         }
@@ -48,7 +48,7 @@
         "gradient_bg": "",
         "duration": 60,
         "reverse": false,
-        "font": "josefin_sans_n4"
+        "font": "monaco_n4"
       }
     },
     "header": {

@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "color_scheme": "light",
+    "color_scheme": "dark",
+    "dark_mode_toggle": false,
     "type_header_font": "inter_n6",
     "type_header_letter_spacing": -0.5,
     "type_header_line_height": 1.2,
