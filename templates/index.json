@@ -12,81 +12,93 @@
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40": {
       "type": "animated-image-collage",
       "blocks": {
-        "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-1": {
+        "column_FLYykV": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-2": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-3": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-4": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-5": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-6": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-7": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-8": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-9": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-10": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-11": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-12": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         }
       },
       "block_order": [
-        "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-1",
+        "column_FLYykV",
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-2",
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-3",
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-4",
