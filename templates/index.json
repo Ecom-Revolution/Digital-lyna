@@ -200,150 +200,26 @@
         "margin_bottom": "no-indent"
       }
     },
-    "dbbd77aa-b38d-4df0-a757-03142a78e36b": {
-      "type": "image-with-text",
-      "blocks": {
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-1": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "icon_fill_type": "solid",
-            "heading": "Some heading",
-            "text": "Some description"
-          }
-        },
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-2": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "icon_fill_type": "solid",
-            "heading": "Some heading",
-            "text": "Some description"
-          }
-        },
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-3": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "icon_fill_type": "solid",
-            "heading": "Some heading",
-            "text": "Some description"
-          }
-        },
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-4": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "icon_fill_type": "solid",
-            "heading": "Some heading",
-            "text": "Some description"
-          }
-        }
-      },
-      "block_order": [
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-1",
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-2",
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-3",
-        "template--15231063785533__dbbd77aa-b38d-4df0-a757-03142a78e36b-column-4"
-      ],
-      "settings": {
-        "layout": "image_last",
-        "color_scheme": "background-2",
-        "subheading": "",
-        "subheading_style": "subtitle",
-        "subheading_icon": "none",
-        "heading": "",
-        "heading_size": "h2",
-        "heading_line": "simple",
-        "line_color": "#1566e0",
-        "word_break": false,
-        "heading_animation": "none",
-        "word_break_an": false,
-        "text": "",
-        "text_align": "left",
-        "inner_subheading": "",
-        "inner_heading": "Some heading",
-        "inner_heading_line": "simple",
-        "inner_line_color": "#1566e0",
-        "inner_word_break": false,
-        "description": "<p>Description of your company, products, collections, and so on.</p>",
-        "text_align_inner": "top",
-        "height": "square",
-        "overlay_opacity": 0.2,
-        "logo_width": 75,
-        "add_text": "Some text",
-        "author_color_scheme": "",
-        "icon_size": "recommended",
-        "box_shadow": false,
-        "icon_style": "colored",
-        "show_button": true,
-        "button_label": "Button label",
-        "button_link": "",
-        "button_style": "primary",
-        "show_button_2": false,
-        "button_label_2": "Button label",
-        "button_link_2": "",
-        "button_style_2": "simple",
-        "padding_top": "l",
-        "padding_bottom": "m",
-        "margin_top": "no-indent",
-        "margin_bottom": "no-indent"
-      }
-    },
     "5c94bd84-824f-4368-a89e-e1a1cdccf6d3": {
       "type": "logo-list",
       "blocks": {
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-1": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140
-          }
-        },
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-2": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140
-          }
-        },
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-3": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140
-          }
-        },
         "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4": {
           "type": "logo",
           "settings": {
-            "image_width": 140
-          }
-        },
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-5": {
-          "type": "logo",
-          "settings": {
-            "image_width": 140
-          }
-        },
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-6": {
-          "type": "logo",
-          "settings": {
+            "image_1": "shopify://shop_images/ChatGPT_Image_7_juin_2025_a_14_21_48.png",
             "image_width": 140
           }
         }
       },
       "block_order": [
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-1",
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-2",
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-3",
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4",
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-5",
-        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-6"
+        "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4"
       ],
       "settings": {
         "layout": "static",
-        "color_scheme": "background-2",
+        "color_scheme": "scheme-cb0ffcf7-a7c9-4565-80fe-2ddcd94c6278",
         "enable_border": true,
         "border_full": false,
-        "subheading": "Subheading",
+        "subheading": "",
         "subheading_style": "subtitle",
         "subheading_icon": "none",
         "heading": "",
@@ -581,7 +457,6 @@
   "order": [
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
     "1f309bc4-1a66-455b-90cb-63c739d1df21",
-    "dbbd77aa-b38d-4df0-a757-03142a78e36b",
     "5c94bd84-824f-4368-a89e-e1a1cdccf6d3",
     "ec8eb8a5-0272-4472-a5f6-cbe0ad1f37a3",
     "testimonials",
