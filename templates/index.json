@@ -15,84 +15,72 @@
         "column_FLYykV": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-4": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-5": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-6": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-7": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-8": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-9": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-10": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-11": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         },
         "template--15231063785533__aa66337f-82f0-4c84-aea6-b5ef91ad5d40-column-12": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/tiktok-logo-shop.webp",
             "image_width": 420
           }
         }
@@ -155,48 +143,99 @@
         "margin_bottom": "no-indent"
       }
     },
+    "announcement_bar_NGPzEW": {
+      "type": "announcement-bar",
+      "blocks": {
+        "banner_nTcGwL": {
+          "type": "banner",
+          "settings": {
+            "item": "Lorem ipsum dolor sit amet",
+            "item_lnk": ""
+          }
+        },
+        "banner_ry6wLg": {
+          "type": "banner",
+          "settings": {
+            "item": "Ut enim ad minima veniam",
+            "item_lnk": ""
+          }
+        },
+        "banner_r3fVUG": {
+          "type": "banner",
+          "settings": {
+            "item": "Neque porro quisquam est",
+            "item_lnk": ""
+          }
+        },
+        "banner_HBYhdJ": {
+          "type": "banner",
+          "settings": {
+            "item": "At vero eos et accusamus",
+            "item_lnk": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_nTcGwL",
+        "banner_ry6wLg",
+        "banner_r3fVUG",
+        "banner_HBYhdJ"
+      ],
+      "name": "PC- ANNOUCEMENT BAR #1",
+      "settings": {
+        "text_color": "#fff",
+        "text_size": 12,
+        "text_weight": "normal",
+        "italic": false,
+        "border_style": "solid",
+        "border_color": "#000",
+        "border_size": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding": 1,
+        "bg_color": "#000",
+        "gradient_bg": "",
+        "duration": 199,
+        "reverse": false,
+        "font": "josefin_sans_n4"
+      }
+    },
     "scrollinglogocloud_P6paMp": {
       "type": "scrollinglogocloud",
       "blocks": {
         "slide_NJPNg6": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         },
         "slide_eptV48": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         },
         "slide_qprYHH": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         },
         "slide_GHP4kj": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         },
         "slide_AwkWq7": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         },
         "slide_EPGTTW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/tiktok_sans_texte.png",
             "link": ""
           }
         }
@@ -303,7 +342,7 @@
         "heading": "Heading",
         "heading_size": "h2",
         "heading_line": "simple",
-        "line_color": "#1566E0",
+        "line_color": "#1566e0",
         "word_break": false,
         "heading_animation": "none",
         "word_break_an": false,
@@ -383,7 +422,7 @@
         "subheading_icon": "none",
         "heading": "Révenue Générée grâce à Tiktok Shop 🤑💸",
         "heading_line": "simple",
-        "line_color": "#1566E0",
+        "line_color": "#1566e0",
         "word_break": false,
         "text": "Some description",
         "text_align": "left",
@@ -412,8 +451,6 @@
         "word_break_an": false,
         "text": "",
         "text_align": "left",
-        "image_before": "shopify://shop_images/tiktok_shop_revenueeee.png",
-        "image_after": "shopify://shop_images/tiktok_shop_revenue.png",
         "overlay_opacity": 0.1,
         "color_scheme_text": "",
         "text_left": "Avant",
@@ -436,7 +473,6 @@
         "template--15231063785533__5c94bd84-824f-4368-a89e-e1a1cdccf6d3-logo-4": {
           "type": "logo",
           "settings": {
-            "image_1": "shopify://shop_images/tiktook.png",
             "image_width": 140
           }
         }
@@ -655,6 +691,7 @@
   },
   "order": [
     "aa66337f-82f0-4c84-aea6-b5ef91ad5d40",
+    "announcement_bar_NGPzEW",
     "scrollinglogocloud_P6paMp",
     "featured_product_gnxifV",
     "numbers_h3D6tw",
